@@ -1,1 +1,271 @@
-<h1>WORLD TERRACE 2026</h1>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"/>
+<title>ワールドテラス2026 | みやざきインターナショナルフェスタ</title>
+<meta name="description" content="みやざきインターナショナルフェスタ ワールドテラス2026 当日ウェブパンフレット。2026年10月17日(土) 大淀川河川広場"/>
+<meta name="theme-color" content="#1a0533"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+<style>
+/* ============================================================
+   ROOT & RESET
+============================================================ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  /* 夕焼けパレット */
+  --sky-deep:    #0d0420;
+  --sky-navy:    #1a0533;
+  --sky-indigo:  #2d1060;
+  --sky-violet:  #5c1a8a;
+  --sky-magenta: #a0255c;
+  --sky-crimson: #c93a2a;
+  --sky-orange:  #e8622c;
+  --sky-amber:   #f5a823;
+  --sky-gold:    #ffd166;
+  --sky-peach:   #ffb997;
+  --sky-cream:   #fff4e8;
+
+  /* 花火アクセント */
+  --fw-cyan:     #5bc8eb;
+  --fw-mint:     #00e5c8;
+  --fw-pink:     #ff5fa0;
+  --fw-white:    #fff8f0;
+
+  /* ガラス */
+  --glass:       rgba(255,248,240,.07);
+  --glass-b:     rgba(255,248,240,.13);
+  --glass-hover: rgba(255,248,240,.12);
+
+  /* テキスト */
+  --t-main:  #fff8f0;
+  --t-sub:   rgba(255,248,240,.65);
+  --t-muted: rgba(255,248,240,.38);
+
+  --r-card: 18px;
+}
+
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  font-family:'Noto Sans JP','Hiragino Kaku Gothic ProN',sans-serif;
+  background:var(--sky-deep);
+  color:var(--t-main);
+  overflow-x:hidden;
+  -webkit-tap-highlight-color:transparent;
+}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-thumb{background:var(--sky-amber);border-radius:2px}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;border:none;background:none;font-family:inherit;color:inherit}
+img{display:block;max-width:100%}
+
+/* ============================================================
+   SKY CANVAS
+============================================================ */
+#sky{
+  position:fixed;inset:0;z-index:0;
+  width:100%;height:100%;
+  pointer-events:none;
+}
+
+/* ============================================================
+   LAYOUT
+============================================================ */
+.z1{position:relative;z-index:1}
+.wrap{max-width:540px;margin:0 auto;padding:0 18px}
+
+section{
+  position:relative;z-index:1;
+  padding:56px 0 48px;
+}
+section::before{
+  content:'';position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(to bottom,transparent,rgba(13,4,32,.5) 60%,rgba(13,4,32,.85));
+  pointer-events:none;
+}
+
+/* ============================================================
+   TYPOGRAPHY SYSTEM
+============================================================ */
+.sec-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'Cinzel',serif;
+  font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--sky-amber);margin-bottom:10px;
+}
+.sec-eyebrow::before{
+  content:'';display:inline-block;
+  width:20px;height:1px;background:var(--sky-amber);
+}
+.sec-title{
+  font-family:'Cinzel',serif;
+  font-size:clamp(22px,6vw,32px);font-weight:700;line-height:1.2;
+  background:linear-gradient(140deg,var(--fw-white) 0%,var(--sky-gold) 55%,var(--sky-peach) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:8px;
+}
+.sec-sub{
+  font-size:13px;line-height:1.85;color:var(--t-sub);
+  font-weight:300;
+}
+
+/* ============================================================
+   GLASS CARD
+============================================================ */
+.glass{
+  background:var(--glass);
+  border:1px solid var(--glass-b);
+  border-radius:var(--r-card);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+}
+.glass-warm{
+  background:linear-gradient(135deg,rgba(232,98,44,.12),rgba(160,37,92,.08));
+  border:1px solid rgba(245,168,35,.18);
+  border-radius:var(--r-card);
+  backdrop-filter:blur(14px);
+}
+
+/* ============================================================
+   RAINBOW DIVIDER
+============================================================ */
+.rainbow{
+  height:3px;position:relative;z-index:1;
+  background:linear-gradient(90deg,
+    #e63946,#ff6b35,#ffd166,#06d6a0,#118ab2,#7b2fbe,#ff4d8b);
+  opacity:.8;
+}
+
+/* ============================================================
+   NAV
+============================================================ */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:300;
+  background:rgba(13,4,32,.82);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(255,248,240,.08);
+}
+.nav-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  max-width:540px;margin:0 auto;padding:12px 18px;
+}
+.nav-brand{
+  font-family:'Cinzel',serif;font-size:12px;font-weight:600;letter-spacing:.1em;
+  background:linear-gradient(90deg,var(--sky-amber),var(--sky-peach));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.nav-ham{
+  width:34px;height:34px;border-radius:50%;
+  background:rgba(245,168,35,.15);border:1px solid rgba(245,168,35,.25);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+  transition:.3s;
+}
+.nav-ham span{display:block;width:15px;height:1.5px;background:var(--sky-gold);border-radius:1px;transition:.3s}
+.nav-ham.open span:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
+.nav-ham.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nav-ham.open span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
+
+/* DRAWER */
+#drawer{
+  position:fixed;inset:0;z-index:290;
+  background:rgba(10,2,26,.97);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;
+  opacity:0;pointer-events:none;transition:opacity .3s;
+}
+#drawer.open{opacity:1;pointer-events:all}
+#drawer a{
+  font-family:'Cinzel',serif;font-size:13px;font-weight:600;letter-spacing:.1em;
+  color:var(--t-main);padding:13px 40px;border-radius:8px;width:280px;text-align:center;
+  border:1px solid transparent;transition:.2s;
+}
+#drawer a:hover{border-color:rgba(245,168,35,.3);color:var(--sky-gold);background:rgba(245,168,35,.06)}
+.drawer-x{
+  position:absolute;top:18px;right:18px;
+  width:38px;height:38px;border-radius:50%;
+  background:rgba(255,248,240,.08);color:var(--t-sub);font-size:18px;
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid var(--glass-b);
+}
+
+/* ============================================================
+   HERO
+============================================================ */
+#hero{
+  min-height:100svh;
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-end;
+  padding-bottom:56px;text-align:center;
+  padding-top:72px;
+}
+.hero-flags{
+  font-size:20px;letter-spacing:4px;margin-bottom:18px;
+  animation:floatY 4s ease-in-out infinite;
+}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.hero-event{
+  font-family:'Cinzel',serif;font-size:10px;letter-spacing:.22em;
+  color:var(--sky-amber);text-transform:uppercase;margin-bottom:14px;
+  padding:5px 16px;border:1px solid rgba(245,168,35,.3);border-radius:100px;
+  display:inline-block;background:rgba(245,168,35,.06);
+}
+.hero-title{
+  font-family:'Cinzel',serif;
+  font-size:clamp(36px,11vw,72px);font-weight:700;line-height:1.05;
+  background:linear-gradient(160deg,#fff8f0 0%,#ffd166 38%,#f5a823 65%,#e8622c 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:10px;
+  text-shadow:none;
+  filter:drop-shadow(0 0 40px rgba(245,168,35,.3));
+}
+.hero-theme{
+  font-family:'Playfair Display',serif;
+  font-size:15px;font-style:italic;
+  color:var(--sky-peach);opacity:.9;margin-bottom:24px;line-height:1.5;
+}
+.hero-meta{display:flex;flex-direction:column;align-items:center;gap:8px;margin-bottom:32px}
+.hero-chip{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 20px;border-radius:100px;
+  background:rgba(255,248,240,.09);
+  border:1px solid rgba(255,248,240,.15);
+  font-size:13px;font-weight:500;letter-spacing:.04em;
+}
+.hero-cta{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:15px 34px;border-radius:100px;
+  background:linear-gradient(135deg,var(--sky-orange),var(--sky-magenta));
+  color:var(--fw-white);font-family:'Cinzel',serif;
+  font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  box-shadow:0 0 40px rgba(232,98,44,.4),0 4px 20px rgba(0,0,0,.3);
+  transition:transform .2s,box-shadow .2s;
+}
+.hero-cta:active{transform:scale(.97)}
+.hero-scroll{
+  position:absolute;bottom:18px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:5px;
+  font-family:'Cinzel',serif;font-size:8px;letter-spacing:.2em;color:var(--t-muted);
+  animation:scrollBounce 2.5s ease-in-out infinite;
+}
+.hero-scroll::after{content:'';display:block;width:1px;height:32px;
+  background:linear-gradient(to bottom,var(--sky-amber),transparent)}
+@keyframes scrollBounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-8px)}}
+
+/* HERO ANIMATIONS */
+.hero-flags,.hero-event,.hero-title,.hero-theme,.hero-meta,.hero-cta{
+  opacity:0;animation:fadeUp .8s forwards;
+}
+.hero-flags   {animation-delay:.1s}
+.hero-event   {animation-delay:.25s}
+.hero-title   {animation-delay:.4s}
+.hero-theme   {animation-delay:.6s}
+.hero-meta    {animation-delay:.75s}
+.hero-cta     {animation-delay:.9s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+
+/* ============================================================
+   COUNTER
+============================================================ */
+#counter{
+  background:linear-gradient(135deg,rgba(26,5,51,.9),rgba(44,12,80,.9));
+  border-top:
