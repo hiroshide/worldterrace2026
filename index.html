@@ -268,4 +268,1148 @@ section::before{
 ============================================================ */
 #counter{
   background:linear-gradient(135deg,rgba(26,5,51,.9),rgba(44,12,80,.9));
-  border-top:
+  border-top:1px solid rgba(245,168,35,.15);
+  border-bottom:1px solid rgba(245,168,35,.15);
+  padding:28px 18px;text-align:center;
+}
+.ctr-label{
+  font-family:'Cinzel',serif;font-size:10px;letter-spacing:.2em;
+  color:var(--sky-amber);text-transform:uppercase;margin-bottom:14px;
+}
+.ctr-num{
+  font-family:'Cinzel',serif;
+  font-size:56px;font-weight:700;line-height:1;
+  background:linear-gradient(135deg,var(--sky-gold),var(--sky-peach));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:4px;
+  filter:drop-shadow(0 0 20px rgba(245,168,35,.35));
+}
+.ctr-unit{font-size:12px;color:var(--t-muted);margin-bottom:20px;letter-spacing:.08em}
+.ctr-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 30px;border-radius:100px;
+  background:linear-gradient(135deg,var(--sky-orange),var(--sky-crimson));
+  color:var(--fw-white);font-family:'Cinzel',serif;
+  font-size:13px;font-weight:600;letter-spacing:.08em;
+  box-shadow:0 0 28px rgba(232,98,44,.4);
+  transition:transform .15s,box-shadow .15s;
+}
+.ctr-btn:active{transform:scale(.96)}
+.ctr-btn.done{
+  background:linear-gradient(135deg,rgba(0,229,200,.2),rgba(91,200,235,.2));
+  border:1px solid rgba(0,229,200,.3);color:var(--fw-mint);
+  box-shadow:0 0 20px rgba(0,229,200,.15);
+}
+.ctr-note{font-size:11px;color:var(--t-muted);margin-top:10px;line-height:1.6}
+
+/* ============================================================
+   MAP
+============================================================ */
+.map-wrap{
+  margin:0 18px 18px;border-radius:20px;overflow:hidden;
+  border:1px solid var(--glass-b);
+  box-shadow:0 8px 40px rgba(0,0,0,.4);
+}
+.map-legend{
+  display:grid;grid-template-columns:1fr 1fr;gap:8px;
+  margin:0 18px;
+}
+.leg-item{
+  display:flex;align-items:center;gap:9px;
+  padding:10px 12px;border-radius:12px;
+  background:var(--glass);border:1px solid var(--glass-b);
+  cursor:pointer;transition:background .2s;
+}
+.leg-item:active{background:var(--glass-hover)}
+.leg-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.leg-name{font-size:11px;font-weight:700;line-height:1.2}
+.leg-en{font-family:'Cinzel',serif;font-size:9px;color:var(--t-muted);letter-spacing:.06em}
+
+/* ============================================================
+   TIMELINE (STAGE)
+============================================================ */
+.tl{display:flex;flex-direction:column;gap:10px;margin:0 18px}
+.tl-item{
+  display:flex;gap:14px;
+  padding:16px;border-radius:16px;
+  background:var(--glass);border:1px solid var(--glass-b);
+  border-left:3px solid var(--sky-crimson);
+  transition:background .2s;
+}
+.tl-item.hl{
+  background:linear-gradient(135deg,rgba(232,98,44,.12),rgba(160,37,92,.08));
+  border-left-color:var(--sky-amber);
+  border-color:rgba(245,168,35,.2);
+}
+.tl-time{
+  flex-shrink:0;min-width:50px;
+  font-family:'Cinzel',serif;font-size:12px;font-weight:600;
+  color:var(--sky-amber);line-height:1.4;
+}
+.tl-end{font-size:10px;color:var(--t-muted);font-family:'Noto Sans JP',sans-serif;font-weight:300}
+.tl-name{font-size:14px;font-weight:700;margin-bottom:4px;line-height:1.3}
+.tl-desc{font-size:12px;color:var(--t-sub);line-height:1.65}
+.tl-org{margin-top:5px;font-size:11px;color:var(--fw-cyan);font-weight:500}
+
+/* ============================================================
+   FOOD
+============================================================ */
+.food-beer{
+  margin:0 18px 18px;padding:18px;border-radius:18px;
+  background:linear-gradient(135deg,rgba(26,5,51,.8),rgba(60,14,100,.6));
+  border:1px solid rgba(245,168,35,.2);
+  display:flex;align-items:center;gap:16px;
+}
+.food-beer-icon{font-size:44px}
+.food-beer-title{font-family:'Cinzel',serif;font-size:16px;font-weight:600;color:var(--sky-gold);margin-bottom:4px}
+.food-beer-sub{font-size:12px;color:var(--t-sub);line-height:1.6}
+.food-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 18px}
+.food-card{
+  padding:15px 13px;border-radius:16px;
+  background:var(--glass);border:1px solid var(--glass-b);
+  transition:background .2s;
+}
+.food-card:active{background:var(--glass-hover)}
+.food-flag{font-size:26px;margin-bottom:7px}
+.food-country{
+  font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;
+  color:var(--sky-amber);text-transform:uppercase;margin-bottom:3px;
+}
+.food-name{font-size:13px;font-weight:700;margin-bottom:3px}
+.food-menu{font-size:11px;color:var(--t-sub);line-height:1.6}
+
+/* ============================================================
+   CULTURE
+============================================================ */
+.cul-grid{display:flex;flex-direction:column;gap:10px;margin:0 18px}
+.cul-card{
+  display:flex;gap:14px;align-items:flex-start;
+  padding:18px;border-radius:16px;
+  background:var(--glass);border:1px solid var(--glass-b);
+  border-top:3px solid var(--sky-violet);
+}
+.cul-icon{font-size:36px;flex-shrink:0;filter:drop-shadow(0 0 8px rgba(160,37,92,.4))}
+.cul-name{font-size:14px;font-weight:700;margin-bottom:4px}
+.cul-desc{font-size:12px;color:var(--t-sub);line-height:1.7;margin-bottom:7px}
+.cul-org{
+  font-size:10px;font-weight:700;color:var(--fw-cyan);
+  background:rgba(91,200,235,.1);border:1px solid rgba(91,200,235,.2);
+  display:inline-block;padding:3px 10px;border-radius:100px;font-family:'Cinzel',serif;letter-spacing:.06em;
+}
+
+/* ============================================================
+   SPORTS
+============================================================ */
+.sp-grid{display:flex;flex-direction:column;gap:10px;margin:0 18px}
+.sp-card{
+  padding:18px;border-radius:16px;
+  background:var(--glass);border:1px solid var(--glass-b);
+  border-left:3px solid var(--fw-mint);
+}
+.sp-head{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.sp-icon{font-size:32px;filter:drop-shadow(0 0 8px rgba(0,229,200,.3))}
+.sp-name{font-size:14px;font-weight:700;line-height:1.3}
+.sp-badge{
+  font-family:'Cinzel',serif;font-size:9px;letter-spacing:.08em;
+  color:var(--fw-mint);background:rgba(0,229,200,.1);
+  border:1px solid rgba(0,229,200,.2);
+  padding:2px 8px;border-radius:100px;display:inline-block;margin-top:3px;
+}
+.sp-desc{font-size:12px;color:var(--t-sub);line-height:1.7;margin-bottom:8px}
+.sp-exp{
+  font-size:12px;font-weight:600;color:var(--fw-mint);
+  background:rgba(0,229,200,.07);border-radius:10px;padding:8px 12px;
+  border-left:2px solid rgba(0,229,200,.4);
+}
+
+/* ============================================================
+   BOUSAI
+============================================================ */
+.bou-intro{
+  margin:0 18px 18px;padding:16px;border-radius:14px;
+  background:linear-gradient(135deg,rgba(245,168,35,.08),rgba(232,98,44,.06));
+  border:1px solid rgba(245,168,35,.2);
+}
+.bou-intro-t{font-size:12px;font-weight:700;color:var(--sky-amber);margin-bottom:5px}
+.bou-intro-b{font-size:12px;color:var(--t-sub);line-height:1.8}
+.bou-grid{display:flex;flex-direction:column;gap:10px;margin:0 18px}
+.bou-card{
+  padding:18px;border-radius:16px;
+  background:var(--glass);border:1px solid var(--glass-b);
+  border-top:3px solid var(--sky-amber);
+}
+.bou-head{display:flex;align-items:center;gap:9px;font-size:15px;font-weight:700;margin-bottom:8px}
+.bou-body{font-size:12px;color:var(--t-sub);line-height:1.8;margin-bottom:10px}
+.bou-lang{
+  background:rgba(0,229,200,.05);border:1px solid rgba(0,229,200,.15);
+  border-radius:12px;padding:12px;
+}
+.bou-lang-lbl{
+  font-family:'Cinzel',serif;font-size:9px;letter-spacing:.12em;
+  color:var(--fw-mint);text-transform:uppercase;margin-bottom:7px;
+}
+.bou-ya{font-size:12px;line-height:1.8;margin-bottom:6px}
+.bou-en{font-size:12px;color:var(--t-sub);line-height:1.7;font-style:italic;font-family:'Playfair Display',serif}
+
+/* ============================================================
+   STAMP RALLY
+============================================================ */
+#stamp{
+  background:linear-gradient(160deg,rgba(13,4,32,.95) 0%,rgba(26,5,51,.97) 100%);
+}
+.st-progress{
+  margin:0 18px 20px;padding:18px;border-radius:16px;
+  background:var(--glass);border:1px solid var(--glass-b);
+}
+.st-prog-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-size:13px;font-weight:700}
+.st-prog-count{
+  font-family:'Cinzel',serif;font-size:22px;font-weight:700;
+  color:var(--sky-gold);
+  filter:drop-shadow(0 0 10px rgba(245,168,35,.4));
+}
+.st-bar{height:7px;background:rgba(255,248,240,.08);border-radius:4px;overflow:hidden;margin-bottom:10px}
+.st-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--sky-amber),var(--sky-orange));transition:width .6s cubic-bezier(.4,0,.2,1)}
+.st-miles{display:flex;gap:8px}
+.mile{
+  flex:1;text-align:center;padding:7px 4px;border-radius:10px;
+  font-size:11px;color:var(--t-muted);
+  border:1px solid rgba(255,248,240,.08);line-height:1.3;
+}
+.mile.on{background:rgba(245,168,35,.1);border-color:rgba(245,168,35,.3);color:var(--sky-gold);font-weight:700}
+
+.st-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:0 18px 14px}
+.st-item{
+  aspect-ratio:1;border-radius:14px;
+  border:1.5px dashed rgba(255,248,240,.18);
+  background:rgba(255,248,240,.04);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;
+  cursor:pointer;transition:all .3s;position:relative;overflow:hidden;
+}
+.st-item.got{
+  border-style:solid;border-color:var(--sky-amber);
+  background:rgba(245,168,35,.1);
+}
+.st-item.got::after{
+  content:'✓';position:absolute;top:5px;right:9px;
+  font-size:12px;font-weight:900;color:var(--sky-amber);font-family:'Cinzel',serif;
+}
+.st-emoji{font-size:28px;transition:transform .3s}
+.st-item.got .st-emoji{filter:drop-shadow(0 0 8px rgba(245,168,35,.6))}
+.st-name{font-size:9px;color:var(--t-sub);text-align:center;line-height:1.3;padding:0 3px}
+.st-item.got .st-name{color:var(--sky-gold);font-weight:700}
+.st-note{text-align:center;margin:0 18px 18px;font-size:11px;color:var(--t-muted);line-height:1.7}
+
+.prize-cards{display:flex;flex-direction:column;gap:10px;margin:0 18px 20px}
+.prize-card{
+  display:flex;align-items:center;gap:14px;
+  padding:16px;border-radius:16px;
+  background:var(--glass);border:1px solid var(--glass-b);
+  transition:.3s;
+}
+.prize-card.on{
+  background:linear-gradient(135deg,rgba(245,168,35,.1),rgba(232,98,44,.07));
+  border-color:rgba(245,168,35,.25);
+}
+.prize-icon{font-size:34px;flex-shrink:0;transition:.3s}
+.prize-card:not(.on) .prize-icon{filter:grayscale(1);opacity:.3}
+.prize-cond{
+  font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;
+  color:var(--t-muted);text-transform:uppercase;margin-bottom:3px;
+}
+.prize-card.on .prize-cond{color:var(--sky-amber)}
+.prize-name{font-size:13px;font-weight:700;margin-bottom:2px}
+.prize-desc{font-size:11px;color:var(--t-sub);line-height:1.5}
+.prize-lock{margin-left:auto;flex-shrink:0;font-size:20px;transition:.3s}
+.prize-card:not(.on) .prize-lock{opacity:.2}
+
+.ach-box{
+  margin:0 18px 18px;padding:24px;border-radius:20px;
+  background:linear-gradient(135deg,rgba(245,168,35,.12),rgba(232,98,44,.1));
+  border:1px solid rgba(245,168,35,.3);
+  text-align:center;display:none;
+}
+.ach-box.show{display:block}
+.ach-star{font-size:54px;margin-bottom:8px;animation:spinStar 3s linear infinite}
+@keyframes spinStar{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.ach-title{
+  font-family:'Cinzel',serif;font-size:20px;font-weight:700;
+  color:var(--sky-gold);margin-bottom:6px;
+  filter:drop-shadow(0 0 12px rgba(245,168,35,.5));
+}
+.ach-sub{font-size:12px;color:var(--t-sub);line-height:1.7;margin-bottom:18px}
+.ach-actions{display:flex;flex-direction:column;gap:9px}
+.btn-show{
+  padding:14px;border-radius:100px;
+  background:linear-gradient(135deg,var(--sky-amber),var(--sky-orange));
+  color:var(--fw-white);font-family:'Cinzel',serif;font-size:13px;font-weight:700;letter-spacing:.06em;
+  box-shadow:0 4px 20px rgba(232,98,44,.4);transition:transform .15s;
+}
+.btn-show:active{transform:scale(.97)}
+.btn-exch{
+  padding:12px;border-radius:100px;
+  background:rgba(255,248,240,.06);color:var(--t-muted);
+  font-size:12px;font-weight:600;border:1px solid rgba(255,248,240,.08);
+}
+.btn-exch.done{background:rgba(0,229,200,.1);color:var(--fw-mint);border-color:rgba(0,229,200,.25)}
+.st-reset{text-align:center;margin:0 18px}
+.btn-rst{font-size:11px;color:var(--t-muted);border-bottom:1px solid rgba(255,248,240,.12);padding-bottom:1px}
+
+/* ============================================================
+   ACCESS
+============================================================ */
+.acc-cards{display:flex;flex-direction:column;gap:10px;margin:0 18px}
+.acc-card{
+  display:flex;gap:14px;align-items:flex-start;
+  padding:17px;border-radius:16px;
+  background:var(--glass);border:1px solid var(--glass-b);
+}
+.acc-icon{font-size:26px;flex-shrink:0;margin-top:1px;
+  filter:drop-shadow(0 0 6px rgba(91,200,235,.3))}
+.acc-mode{font-size:14px;font-weight:700;margin-bottom:4px;color:var(--sky-peach)}
+.acc-detail{font-size:12px;color:var(--t-sub);line-height:1.8}
+.acc-detail strong{color:var(--t-main)}
+.map-btn{
+  display:flex;align-items:center;justify-content:center;gap:9px;
+  margin:18px 18px 0;
+  padding:14px;border-radius:100px;
+  background:linear-gradient(135deg,rgba(91,200,235,.2),rgba(17,138,178,.2));
+  border:1px solid rgba(91,200,235,.3);
+  color:var(--fw-cyan);font-family:'Cinzel',serif;
+  font-size:12px;font-weight:600;letter-spacing:.08em;
+  transition:.2s;
+}
+
+/* ============================================================
+   CONTACT
+============================================================ */
+.contact-card{
+  margin:0 18px;padding:6px 0;border-radius:20px;
+  background:var(--glass);border:1px solid var(--glass-b);
+  overflow:hidden;
+}
+.contact-row{
+  display:flex;align-items:flex-start;gap:13px;
+  padding:16px 18px;border-bottom:1px solid rgba(255,248,240,.06);
+}
+.contact-row:last-child{border-bottom:none}
+.ci{font-size:20px;flex-shrink:0;margin-top:1px;filter:drop-shadow(0 0 6px rgba(245,168,35,.25))}
+.cl{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.12em;color:var(--sky-amber);text-transform:uppercase;margin-bottom:3px}
+.cv{font-size:13px;font-weight:600}
+.cv a{color:var(--fw-cyan)}
+
+/* ============================================================
+   FOOTER
+============================================================ */
+footer{
+  position:relative;z-index:1;
+  background:rgba(8,2,18,.95);
+  border-top:1px solid rgba(255,248,240,.06);
+  padding:36px 18px;text-align:center;
+}
+.ft-logo{
+  font-family:'Cinzel',serif;font-size:16px;font-weight:700;letter-spacing:.1em;
+  background:linear-gradient(90deg,var(--sky-amber),var(--sky-peach));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:8px;
+}
+.ft-sub{font-size:11px;color:var(--t-muted);line-height:1.8;margin-bottom:16px}
+.ft-copy{font-size:10px;color:var(--t-muted);letter-spacing:.06em}
+
+/* ============================================================
+   TOAST
+============================================================ */
+#toast{
+  position:fixed;bottom:72px;left:50%;transform:translateX(-50%) translateY(16px);
+  padding:11px 24px;border-radius:100px;
+  background:rgba(26,5,51,.96);border:1px solid rgba(245,168,35,.25);
+  color:var(--t-main);font-size:13px;font-weight:700;
+  box-shadow:0 4px 24px rgba(0,0,0,.4);
+  opacity:0;transition:.3s;pointer-events:none;z-index:9000;white-space:nowrap;
+}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ============================================================
+   REVEAL
+============================================================ */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .55s ease,transform .55s ease}
+.rv.in{opacity:1;transform:none}
+.rv1{transition-delay:.08s}.rv2{transition-delay:.16s}.rv3{transition-delay:.24s}
+</style>
+</head>
+<body>
+
+<!-- SKY CANVAS -->
+<canvas id="sky"></canvas>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<!-- ============================================================
+     NAV
+============================================================ -->
+<nav id="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">🌍 WORLD TERRACE 2026</div>
+    <button class="nav-ham" id="navHam" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div id="drawer">
+  <button class="drawer-x" id="dClose">✕</button>
+  <a href="#hero"    onclick="closeD()">🏠 TOP</a>
+  <a href="#mapSec"  onclick="closeD()">🗺 全体MAP</a>
+  <a href="#stage"   onclick="closeD()">🎤 ステージ</a>
+  <a href="#food"    onclick="closeD()">🍜 飲食エリア</a>
+  <a href="#culture" onclick="closeD()">🎨 文化体験</a>
+  <a href="#sports"  onclick="closeD()">⚽ スポーツ</a>
+  <a href="#bousai"  onclick="closeD()">🚒 防災エリア</a>
+  <a href="#stamp"   onclick="closeD()">🎯 スタンプラリー</a>
+  <a href="#access"  onclick="closeD()">📍 アクセス</a>
+  <a href="#contact" onclick="closeD()">📞 問い合わせ</a>
+</div>
+
+<!-- ============================================================
+     HERO
+============================================================ -->
+<section id="hero" class="z1" style="padding-top:72px">
+  <div class="wrap" style="display:flex;flex-direction:column;align-items:center;text-align:center">
+    <div class="hero-flags">🇯🇵🇺🇸🇫🇷🇧🇷🇰🇷🇮🇳🇳🇬🇦🇺🇨🇳🇵🇭</div>
+    <div class="hero-event">みやざきインターナショナルフェスタ</div>
+    <h1 class="hero-title">WORLD<br>TERRACE<br>2026</h1>
+    <p class="hero-theme">Beyond Exchange<br>〜交流を超えよう〜</p>
+    <div class="hero-meta">
+      <div class="hero-chip">📅 2026年10月17日（土）</div>
+      <div class="hero-chip">⏰ 11:00 〜 18:00</div>
+      <div class="hero-chip">📍 大淀川河川広場</div>
+    </div>
+    <a href="#mapSec" class="hero-cta">会場MAPを見る ↓</a>
+  </div>
+  <div class="hero-scroll">SCROLL</div>
+</section>
+
+<!-- ============================================================
+     COUNTER
+============================================================ -->
+<section id="counter" class="z1" style="padding:0">
+  <div class="ctr-label">👥 来場者カウンター / Visitor Counter</div>
+  <div class="ctr-num" id="ctrNum">---</div>
+  <div class="ctr-unit">人が来場しました</div>
+  <button class="ctr-btn" id="ctrBtn" onclick="handleCount()">✋ 来場しました！</button>
+  <div class="ctr-note">※ ボタンを1回押すと来場者数に加算されます</div>
+</section>
+
+<div class="rainbow z1"></div>
+
+<!-- ============================================================
+     MAP
+============================================================ -->
+<section id="mapSec" class="z1">
+  <div class="wrap section-header" style="margin-bottom:20px">
+    <div class="sec-eyebrow">MAP</div>
+    <h2 class="sec-title">🗺 全体MAP</h2>
+    <p class="sec-sub">エリアをタップしてジャンプ</p>
+  </div>
+
+  <div class="map-wrap rv">
+    <svg viewBox="0 0 360 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;background:linear-gradient(180deg,#1a3a5c 0%,#2d5a8e 100%)">
+      <!-- 河川 -->
+      <defs>
+        <linearGradient id="riverGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#4a90d9" stop-opacity=".9"/>
+          <stop offset="100%" stop-color="#2d6aad" stop-opacity=".7"/>
+        </linearGradient>
+        <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1a0533"/>
+          <stop offset="40%" stop-color="#5c1a8a"/>
+          <stop offset="70%" stop-color="#a0255c"/>
+          <stop offset="100%" stop-color="#e8622c"/>
+        </linearGradient>
+      </defs>
+      <!-- 夕焼け空 背景 -->
+      <rect x="0" y="0" width="360" height="60" fill="url(#skyGrad)"/>
+      <!-- 川 -->
+      <path d="M0 0 Q90 20 180 15 Q270 10 360 25 L360 62 Q270 48 180 52 Q90 56 0 42 Z" fill="url(#riverGrad)" opacity=".85"/>
+      <text x="180" y="38" text-anchor="middle" fill="rgba(255,255,255,.7)" font-size="11" font-family="serif" font-weight="bold">大淀川</text>
+      <!-- 芝地 -->
+      <rect x="0" y="52" width="360" height="248" fill="#2a5c34" opacity=".5"/>
+      <!-- 通路 -->
+      <rect x="168" y="52" width="24" height="248" fill="rgba(255,240,200,.12)"/>
+      <rect x="0" y="168" width="360" height="18" fill="rgba(255,240,200,.1)"/>
+
+      <!-- 入口 -->
+      <rect x="148" y="260" width="64" height="32" rx="8" fill="#1a0533"/>
+      <text x="180" y="280" text-anchor="middle" fill="#ffd166" font-size="11" font-family="serif" font-weight="bold">🚪 入口</text>
+
+      <!-- 本部 -->
+      <a href="#contact">
+        <rect x="8" y="56" width="64" height="38" rx="8" fill="rgba(92,26,138,.85)"/>
+        <text x="40" y="71" text-anchor="middle" fill="#ffd166" font-size="9" font-family="serif" font-weight="bold">🏢 本部</text>
+        <text x="40" y="84" text-anchor="middle" fill="rgba(255,255,255,.6)" font-size="7" font-family="serif">HQ</text>
+      </a>
+      <!-- エコ -->
+      <circle cx="318" cy="72" r="24" fill="rgba(0,229,200,.2)" stroke="#00e5c8" stroke-width="1.5" opacity=".9"/>
+      <text x="318" y="68" text-anchor="middle" fill="#00e5c8" font-size="12" font-family="serif">♻️</text>
+      <text x="318" y="81" text-anchor="middle" fill="#00e5c8" font-size="7" font-family="serif">エコSTA</text>
+
+      <!-- メインステージ -->
+      <a href="#stage">
+        <rect x="86" y="58" width="188" height="72" rx="12" fill="rgba(201,58,42,.85)"/>
+        <text x="180" y="87" text-anchor="middle" fill="white" font-size="14" font-family="serif" font-weight="bold">🎤 ステージエリア</text>
+        <text x="180" y="103" text-anchor="middle" fill="rgba(255,255,255,.75)" font-size="9" font-family="serif">Stage Area — tap here</text>
+      </a>
+
+      <!-- 飲食 -->
+      <a href="#food">
+        <rect x="8" y="102" width="84" height="74" rx="10" fill="rgba(232,98,44,.82)"/>
+        <text x="50" y="130" text-anchor="middle" fill="white" font-size="11" font-family="serif" font-weight="bold">🍜 飲食</text>
+        <text x="50" y="146" text-anchor="middle" fill="white" font-size="11" font-family="serif" font-weight="bold">エリア</text>
+        <text x="50" y="162" text-anchor="middle" fill="rgba(255,255,255,.65)" font-size="8" font-family="serif">Food Area</text>
+      </a>
+
+      <!-- 文化体験 -->
+      <a href="#culture">
+        <rect x="268" y="102" width="84" height="74" rx="10" fill="rgba(92,26,138,.82)"/>
+        <text x="310" y="130" text-anchor="middle" fill="white" font-size="11" font-family="serif" font-weight="bold">🎨 文化</text>
+        <text x="310" y="146" text-anchor="middle" fill="white" font-size="11" font-family="serif" font-weight="bold">体験</text>
+        <text x="310" y="162" text-anchor="middle" fill="rgba(255,255,255,.65)" font-size="8" font-family="serif">Culture</text>
+      </a>
+
+      <!-- スポーツ -->
+      <a href="#sports">
+        <rect x="8" y="184" width="84" height="68" rx="10" fill="rgba(0,180,140,.8)"/>
+        <text x="50" y="212" text-anchor="middle" fill="white" font-size="11" font-family="serif" font-weight="bold">⚽ スポーツ</text>
+        <text x="50" y="228" text-anchor="middle" fill="rgba(255,255,255,.65)" font-size="8" font-family="serif">Sports</text>
+      </a>
+
+      <!-- 防災 -->
+      <a href="#bousai">
+        <rect x="268" y="184" width="84" height="68" rx="10" fill="rgba(200,140,0,.82)"/>
+        <text x="310" y="212" text-anchor="middle" fill="white" font-size="11" font-family="serif" font-weight="bold">🚒 防災</text>
+        <text x="310" y="228" text-anchor="middle" fill="rgba(255,255,255,.65)" font-size="8" font-family="serif">Disaster</text>
+      </a>
+
+      <!-- 花火観覧 -->
+      <ellipse cx="180" cy="210" rx="72" ry="40" fill="rgba(232,98,44,.08)" stroke="rgba(245,168,35,.5)" stroke-width="1.5" stroke-dasharray="6,4"/>
+      <text x="180" y="206" text-anchor="middle" fill="#ffd166" font-size="11" font-family="serif" font-weight="bold">🎆 花火観覧</text>
+      <text x="180" y="220" text-anchor="middle" fill="rgba(255,209,102,.7)" font-size="8" font-family="serif">Fireworks Viewing</text>
+
+      <!-- トイレ -->
+      <circle cx="340" cy="186" r="18" fill="rgba(17,138,178,.85)"/>
+      <text x="340" y="183" text-anchor="middle" fill="white" font-size="11">🚻</text>
+      <text x="340" y="197" text-anchor="middle" fill="rgba(255,255,255,.8)" font-size="7">WC</text>
+
+      <!-- 星 -->
+      <circle cx="30" cy="20" r="1.5" fill="#ffd166" opacity=".8"/>
+      <circle cx="100" cy="8" r="1" fill="white" opacity=".6"/>
+      <circle cx="250" cy="15" r="1.2" fill="#ffb997" opacity=".7"/>
+      <circle cx="330" cy="8" r="1" fill="white" opacity=".5"/>
+    </svg>
+  </div>
+
+  <div class="map-legend rv rv1">
+    <div class="leg-item" onclick="gotoSection('#stage')">
+      <div class="leg-dot" style="background:#c93a2a"></div>
+      <div><div class="leg-name">🎤 ステージ</div><div class="leg-en">Stage Area</div></div>
+    </div>
+    <div class="leg-item" onclick="gotoSection('#food')">
+      <div class="leg-dot" style="background:#e8622c"></div>
+      <div><div class="leg-name">🍜 飲食エリア</div><div class="leg-en">Food Area</div></div>
+    </div>
+    <div class="leg-item" onclick="gotoSection('#culture')">
+      <div class="leg-dot" style="background:#5c1a8a"></div>
+      <div><div class="leg-name">🎨 文化体験</div><div class="leg-en">Culture Zone</div></div>
+    </div>
+    <div class="leg-item" onclick="gotoSection('#sports')">
+      <div class="leg-dot" style="background:#00b48c"></div>
+      <div><div class="leg-name">⚽ スポーツ</div><div class="leg-en">Sports Area</div></div>
+    </div>
+    <div class="leg-item" onclick="gotoSection('#bousai')">
+      <div class="leg-dot" style="background:#c88c00"></div>
+      <div><div class="leg-name">🚒 防災エリア</div><div class="leg-en">Disaster Prev.</div></div>
+    </div>
+    <div class="leg-item">
+      <div class="leg-dot" style="background:#118ab2"></div>
+      <div><div class="leg-name">🚻 トイレ / ♻️ エコ</div><div class="leg-en">Facilities</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="rainbow z1"></div>
+
+<!-- ============================================================
+     STAGE
+============================================================ -->
+<section id="stage" class="z1">
+  <div class="wrap" style="margin-bottom:20px">
+    <div class="sec-eyebrow">STAGE</div>
+    <h2 class="sec-title">🎤 ステージエリア</h2>
+    <p class="sec-sub">パフォーマンス タイムスケジュール</p>
+  </div>
+  <div class="tl" id="stageTL"></div>
+</section>
+
+<div class="rainbow z1"></div>
+
+<!-- ============================================================
+     FOOD
+============================================================ -->
+<section id="food" class="z1">
+  <div class="wrap" style="margin-bottom:20px">
+    <div class="sec-eyebrow">FOOD</div>
+    <h2 class="sec-title">🍜 飲食エリア</h2>
+    <p class="sec-sub">世界の味が大淀川に集結！</p>
+  </div>
+  <div class="food-beer rv">
+    <div class="food-beer-icon">🍺</div>
+    <div>
+      <div class="food-beer-title">世界のビール販売</div>
+      <div class="food-beer-sub">ドイツ・ベルギー・アイルランドなど<br>各国クラフトビール 10種類以上</div>
+    </div>
+  </div>
+  <div class="food-grid" id="foodGrid"></div>
+</section>
+
+<div class="rainbow z1"></div>
+
+<!-- ============================================================
+     CULTURE
+============================================================ -->
+<section id="culture" class="z1">
+  <div class="wrap" style="margin-bottom:20px">
+    <div class="sec-eyebrow">CULTURE</div>
+    <h2 class="sec-title">🎨 文化体験エリア</h2>
+    <p class="sec-sub">世界の文化を体験しよう</p>
+  </div>
+  <div class="cul-grid" id="culGrid"></div>
+</section>
+
+<div class="rainbow z1"></div>
+
+<!-- ============================================================
+     SPORTS
+============================================================ -->
+<section id="sports" class="z1">
+  <div class="wrap" style="margin-bottom:20px">
+    <div class="sec-eyebrow">SPORTS</div>
+    <h2 class="sec-title">⚽ スポーツエリア</h2>
+    <p class="sec-sub">宮崎のスポーツを体感しよう</p>
+  </div>
+  <div class="sp-grid" id="spGrid"></div>
+</section>
+
+<div class="rainbow z1"></div>
+
+<!-- ============================================================
+     BOUSAI
+============================================================ -->
+<section id="bousai" class="z1">
+  <div class="wrap" style="margin-bottom:20px">
+    <div class="sec-eyebrow">DISASTER PREVENTION</div>
+    <h2 class="sec-title">🚒 防災エリア</h2>
+    <p class="sec-sub">備えよう、いざというときのために<br><em style="font-family:'Playfair Display',serif">Be Prepared for Emergencies</em></p>
+  </div>
+  <div class="bou-intro rv">
+    <div class="bou-intro-t">⚠️ 防災エリアについて</div>
+    <div class="bou-intro-b">宮崎市消防局・防災関係機関が協力し、楽しみながら防災知識を学べるコーナーです。外国人の方も英語・やさしい日本語でご参加いただけます。</div>
+  </div>
+  <div class="bou-grid" id="bouGrid"></div>
+</section>
+
+<div class="rainbow z1"></div>
+
+<!-- ============================================================
+     STAMP RALLY
+============================================================ -->
+<section id="stamp" class="z1">
+  <div class="wrap" style="margin-bottom:20px">
+    <div class="sec-eyebrow">STAMP RALLY</div>
+    <h2 class="sec-title">🎯 スタンプラリー</h2>
+    <p class="sec-sub">各エリアのQRコードを読んでスタンプGET！<br>集めて景品をもらおう</p>
+  </div>
+
+  <div class="st-progress rv">
+    <div class="st-prog-row">
+      <span>スタンプ進捗</span>
+      <span class="st-prog-count"><span id="stCount">0</span> / 6</span>
+    </div>
+    <div class="st-bar"><div class="st-fill" id="stFill" style="width:0%"></div></div>
+    <div class="st-miles">
+      <div class="mile" id="mile3">🎁 3エリア達成</div>
+      <div class="mile" id="mile6">🏆 全エリア達成</div>
+    </div>
+  </div>
+
+  <div class="st-grid" id="stGrid"></div>
+  <p class="st-note rv">※ 各エリア設置のQRコードで自動スタンプ<br>デモ：直接タップでスタンプ確認できます</p>
+
+  <div class="ach-box" id="achBox">
+    <div class="ach-star" id="achStar">⭐</div>
+    <div class="ach-title" id="achTitle">達成！</div>
+    <div class="ach-sub" id="achSub">景品交換所でこの画面を見せてください</div>
+    <div class="ach-actions">
+      <button class="btn-show" onclick="showAch()">🎁 景品交換所で見せる</button>
+      <button class="btn-exch" id="btnExch" onclick="markExch()">景品交換済みにする</button>
+    </div>
+  </div>
+
+  <div class="prize-cards" id="prizeCards"></div>
+  <div class="st-reset"><button class="btn-rst" onclick="resetStamps()">スタンプをリセットする</button></div>
+</section>
+
+<div class="rainbow z1"></div>
+
+<!-- ============================================================
+     ACCESS
+============================================================ -->
+<section id="access" class="z1">
+  <div class="wrap" style="margin-bottom:20px">
+    <div class="sec-eyebrow">ACCESS</div>
+    <h2 class="sec-title">📍 アクセス</h2>
+    <p class="sec-sub">大淀川河川広場</p>
+  </div>
+  <div class="acc-cards">
+    <div class="acc-card rv"><div class="acc-icon">🚶</div><div><div class="acc-mode">徒歩 / On foot</div><div class="acc-detail"><strong>JR宮崎駅</strong>より徒歩約 <strong>12分</strong><br>橘通りを南下、大淀川河川敷へ</div></div></div>
+    <div class="acc-card rv rv1"><div class="acc-icon">🚌</div><div><div class="acc-mode">シャトルバス / Shuttle Bus</div><div class="acc-detail">宮崎駅バスターミナルより<strong>無料シャトル</strong><br>10:30〜17:30（30分間隔）・予約不要</div></div></div>
+    <div class="acc-card rv rv2"><div class="acc-icon">🚗</div><div><div class="acc-mode">お車 / By Car</div><div class="acc-detail">宮崎ICより約 <strong>15分</strong>・臨時駐車場 500台（無料）<br>※混雑のため公共交通推奨</div></div></div>
+    <div class="acc-card rv rv3"><div class="acc-icon">✈️</div><div><div class="acc-mode">空路 / By Air</div><div class="acc-detail">宮崎ブーゲンビリア空港より車で約 <strong>20分</strong></div></div></div>
+  </div>
+  <a href="https://maps.google.com/?q=大淀川河川広場+宮崎市" target="_blank" class="map-btn rv">🗺 Google Mapsで開く</a>
+</section>
+
+<div class="rainbow z1"></div>
+
+<!-- ============================================================
+     CONTACT
+============================================================ -->
+<section id="contact" class="z1">
+  <div class="wrap" style="margin-bottom:20px">
+    <div class="sec-eyebrow">CONTACT</div>
+    <h2 class="sec-title">📞 問い合わせ</h2>
+  </div>
+  <div class="contact-card rv">
+    <div class="contact-row"><div class="ci">🏢</div><div><div class="cl">主催</div><div class="cv">ワールドテラス2026実行委員会</div></div></div>
+    <div class="contact-row"><div class="ci">📞</div><div><div class="cl">電話</div><div class="cv"><a href="tel:0985000000">0985-00-0000</a></div></div></div>
+    <div class="contact-row"><div class="ci">✉️</div><div><div class="cl">メール</div><div class="cv"><a href="mailto:info@world-terrace.jp">info@world-terrace.jp</a></div></div></div>
+    <div class="contact-row"><div class="ci">📸</div><div><div class="cl">SNS</div><div class="cv">@worldterrace2026</div></div></div>
+    <div class="contact-row"><div class="ci">⏰</div><div><div class="cl">当日受付</div><div class="cv">10:30 〜 17:00（本部テント）</div></div></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-logo">🌍 WORLD TERRACE 2026</div>
+  <div class="ft-sub">みやざきインターナショナルフェスタ<br>2026年10月17日（土）11:00〜18:00 大淀川河川広場</div>
+  <div class="ft-copy">© 2026 ワールドテラス2026実行委員会</div>
+</footer>
+
+<!-- ============================================================
+     JAVASCRIPT
+============================================================ -->
+<script>
+'use strict';
+
+/* ============================================================
+   ★ DATA — ここを編集してください ★
+============================================================ */
+const STAGE = [
+  {t:'11:00',e:'11:20',name:'オープニングセレモニー',desc:'実行委員長挨拶・各国代表紹介・フラッグパレード',org:'ワールドテラス実行委員会',hl:true},
+  {t:'11:30',e:'12:00',name:'宮崎民謡 & ダンス',desc:'宮崎の伝統的な民謡と盆踊りをご披露',org:'宮崎民謡保存会'},
+  {t:'12:15',e:'13:00',name:'K-POP & 韓国文化パフォーマンス',desc:'韓国の伝統舞踊からK-POPまで幅広いステージ',org:'在宮崎韓国文化協会'},
+  {t:'13:15',e:'14:00',name:'サンバ × 和太鼓 コラボ',desc:'ブラジルのサンバと宮崎の和太鼓が奇跡のコラボ！',org:'宮崎サンバチーム・太鼓会',hl:true},
+  {t:'14:30',e:'15:15',name:'フィリピン伝統舞踊',desc:'カリノアン・マグラオングなど色鮮やかな民族舞踊',org:'フィリピン友好協会宮崎'},
+  {t:'15:30',e:'16:15',name:'インド × アフリカンビート',desc:'ボリウッドダンスとアフリカの太鼓が融合するセッション',org:'宮崎インドコミュニティ・アフリカ文化協会'},
+  {t:'16:30',e:'17:20',name:'グランドフィナーレ 大合唱',desc:'全出演者・来場者参加型のワールドソング大合唱',org:'全出演団体',hl:true},
+  {t:'17:30',e:'18:00',name:'閉会式 & 打ち上げ花火 🎆',desc:'フィナーレを飾る打ち上げ花火！大淀川の夜空を彩ります',org:'主催者',hl:true},
+];
+const FOOD = [
+  {flag:'🇯🇵',country:'Japan',name:'宮崎チキン南蛮',menu:'チキン南蛮定食、冷や汁、地鶏炭火焼'},
+  {flag:'🇰🇷',country:'Korea',name:'韓国料理',menu:'チヂミ、トッポギ、プルコギ、キムチ'},
+  {flag:'🇧🇷',country:'Brazil',name:'ブラジル料理',menu:'シュラスコ、フェイジョアーダ、ポン・デ・ケージョ'},
+  {flag:'🇮🇳',country:'India',name:'インド料理',menu:'バターチキンカレー、ナン、ラッシー'},
+  {flag:'🇵🇭',country:'Philippines',name:'フィリピン料理',menu:'アドボ、シニガン、ハロハロ'},
+  {flag:'🇹🇭',country:'Thailand',name:'タイ料理',menu:'パッタイ、トムヤムスープ、グリーンカレー'},
+  {flag:'🇲🇽',country:'Mexico',name:'メキシコ料理',menu:'タコス、ケサディーヤ、グアカモレ'},
+  {flag:'🇮🇹',country:'Italy',name:'イタリア料理',menu:'ナポリピッツァ（窯焼き）、ジェラート'},
+  {flag:'🇫🇷',country:'France',name:'フランス料理',menu:'クレープ、キッシュ、フレンチフライ'},
+  {flag:'🇻🇳',country:'Vietnam',name:'ベトナム料理',menu:'フォー、バインミー、生春巻き'},
+];
+const CULTURE = [
+  {icon:'👘',name:'民族衣装体験',desc:'世界10ヶ国以上の民族衣装を着て記念撮影！スタッフが着付けをお手伝いします。所要時間：約15分',org:'ワールドコスチュームクラブ宮崎'},
+  {icon:'🎭',name:'伝統遊び体験',desc:'各国の伝統的な遊びやゲームを体験。ケン玉（日本）、ユノ（韓国）、コマ（フィリピン）など。子どもから大人まで楽しめます',org:'国際交流おもちゃ箱'},
+  {icon:'🖌️',name:'アート体験ワークショップ',desc:'世界のアート手法で作品づくり。アフリカンアート、曼荼羅アート、墨絵体験など。世界に一つの作品を持ち帰ろう！',org:'宮崎国際アートサークル'},
+  {icon:'🗣️',name:'多言語交流コーナー',desc:'外国人留学生・在住外国人と気軽に話せるコーナー。英語・中国語・スペイン語などでフリートーク。言語交換歓迎！',org:'宮崎県国際交流協会'},
+  {icon:'🍳',name:'世界の料理教室',desc:'参加型の料理ワークショップ。韓国キンパ・インドチャパティ・メキシコタコスなど毎時間テーマが変わります。定員8名・先着順',org:'ワールドキッチン宮崎'},
+];
+const SPORTS = [
+  {icon:'⚽',name:'テゲバジャーロ宮崎',type:'プロサッカー',desc:'J3リーグ所属の宮崎のプロサッカークラブ。選手が直接ファンと交流！',exp:'ミニゲーム体験・フォトセッション・グッズ販売'},
+  {icon:'🏀',name:'宮崎シーガイアバスケットボールクラブ',type:'プロバスケ',desc:'宮崎を拠点とするバスケットボールチーム。3x3コートで来場者挑戦受付中！',exp:'3on3チャレンジ・フリースロー体験'},
+  {icon:'🥊',name:'宮崎格闘技連盟',type:'武道・格闘技',desc:'空手・柔道・剣道など宮崎の武道を紹介。外国人に大人気の体験コーナー',exp:'空手型体験・防具試着'},
+  {icon:'🏐',name:'宮崎インターナショナルスポーツクラブ',type:'地域サークル',desc:'外国人と日本人が一緒に楽しむ多文化スポーツサークル。初心者歓迎！',exp:'ビーチバレー体験・ウォーキングサッカー'},
+  {icon:'🏋️',name:'宮崎スポーツ推進委員会',type:'健康増進',desc:'誰でも楽しめる軽スポーツ体験。スポーツ鬼ごっこ・ノルディックウォーキングなど',exp:'ニュースポーツ体験・健康チェック'},
+];
+const BOUSAI = [
+  {icon:'🚒',t:'消防体験',b:'消火器の使い方を学ぼう！訓練用消火器で実際に体験できます。消防士さんの仕事も間近で見られます。',ya:'火（ひ）が出たら、消火器（しょうかき）を使います。体験（たいけん）できます。',en:'Learn how to use a fire extinguisher. Hands-on experience available.'},
+  {icon:'🌍',t:'起震車による地震体験',b:'起震車に乗って実際の地震の揺れを体験。震度7の揺れも体験でき、身を守る行動を学べます。',ya:'じしんの ゆれを たいけんします。からだで かんじて まなびます。',en:'Experience earthquake shaking up to intensity 7. Learn how to protect yourself.'},
+  {icon:'🍱',t:'防災食体験',b:'非常食（アルファ米・缶詰パン）の試食。備蓄食料の展示・配布も。「おいしい非常食」最新情報も紹介します。',ya:'ひじょうしょく（たいさく の たべもの）を たべてみましょう。',en:'Try emergency survival food. You can taste and learn about disaster food supplies.'},
+  {icon:'🏠',t:'外国人のための防災情報',b:'宮崎県の災害リスク・避難場所・緊急連絡先を多言語で紹介。ハザードマップの見方、避難所の使い方も説明します。',ya:'やさしい にほんごと えいごで ひじょうじの ことを おしえます。',en:'Disaster info in easy Japanese & English. Learn about evacuation shelters and emergency numbers in Miyazaki.'},
+];
+const SPOTS = [
+  {id:'stage',   emoji:'🎤', name:'ステージ'},
+  {id:'food',    emoji:'🍜', name:'飲食エリア'},
+  {id:'culture', emoji:'🎨', name:'文化体験'},
+  {id:'sports',  emoji:'⚽', name:'スポーツ'},
+  {id:'bousai',  emoji:'🚒', name:'防災エリア'},
+  {id:'eco',     emoji:'♻️', name:'エコSTA'},
+];
+const PRIZES = [
+  {need:3, icon:'🎁', name:'3エリア達成賞', desc:'オリジナルステッカーセット＋エコバッグ'},
+  {need:6, icon:'🏆', name:'全エリア達成賞（特賞）', desc:'宮崎産フルーツ詰め合わせ or 来年招待券（抽選）'},
+];
+
+/* ============================================================
+   RENDER
+============================================================ */
+function r(id, html){ document.getElementById(id).innerHTML = html; }
+
+function renderStage(){
+  r('stageTL', STAGE.map((s,i)=>`
+    <div class="tl-item ${s.hl?'hl':''} rv" style="transition-delay:${i*.05}s">
+      <div class="tl-time">${s.t}<div class="tl-end">〜 ${s.e}</div></div>
+      <div><div class="tl-name">${s.name}</div><div class="tl-desc">${s.desc}</div><div class="tl-org">📌 ${s.org}</div></div>
+    </div>`).join(''));
+}
+function renderFood(){
+  r('foodGrid', FOOD.map((f,i)=>`
+    <div class="food-card rv" style="transition-delay:${i*.04}s">
+      <div class="food-flag">${f.flag}</div>
+      <div class="food-country">${f.country}</div>
+      <div class="food-name">${f.name}</div>
+      <div class="food-menu">${f.menu}</div>
+    </div>`).join(''));
+}
+function renderCulture(){
+  r('culGrid', CULTURE.map((c,i)=>`
+    <div class="cul-card rv" style="transition-delay:${i*.06}s">
+      <div class="cul-icon">${c.icon}</div>
+      <div><div class="cul-name">${c.name}</div><div class="cul-desc">${c.desc}</div><span class="cul-org">${c.org}</span></div>
+    </div>`).join(''));
+}
+function renderSports(){
+  r('spGrid', SPORTS.map((s,i)=>`
+    <div class="sp-card rv" style="transition-delay:${i*.05}s">
+      <div class="sp-head"><div class="sp-icon">${s.icon}</div><div><div class="sp-name">${s.name}</div><span class="sp-badge">${s.type}</span></div></div>
+      <div class="sp-desc">${s.desc}</div>
+      <div class="sp-exp">${s.exp}</div>
+    </div>`).join(''));
+}
+function renderBousai(){
+  r('bouGrid', BOUSAI.map((b,i)=>`
+    <div class="bou-card rv" style="transition-delay:${i*.06}s">
+      <div class="bou-head"><span>${b.icon}</span>${b.t}</div>
+      <div class="bou-body">${b.b}</div>
+      <div class="bou-lang">
+        <div class="bou-lang-lbl">🌐 やさしい日本語 / English</div>
+        <div class="bou-ya">📖 ${b.ya}</div>
+        <div class="bou-en">🔤 ${b.en}</div>
+      </div>
+    </div>`).join(''));
+}
+function renderPrizes(){
+  r('prizeCards', PRIZES.map(p=>`
+    <div class="prize-card" id="prz${p.need}">
+      <div class="prize-icon">${p.icon}</div>
+      <div><div class="prize-cond">${p.need}エリア達成</div><div class="prize-name">${p.name}</div><div class="prize-desc">${p.desc}</div></div>
+      <div class="prize-lock">🔒</div>
+    </div>`).join(''));
+}
+
+/* ============================================================
+   STAMP RALLY
+============================================================ */
+const LS_S='wt26_stamps', LS_E='wt26_exch';
+function gs(){ try{return JSON.parse(localStorage.getItem(LS_S))||{};}catch{return{};} }
+function ss(d){ localStorage.setItem(LS_S,JSON.stringify(d)); }
+
+function renderStamps(){
+  const d=gs();
+  r('stGrid', SPOTS.map(s=>`
+    <div class="st-item ${d[s.id]?'got':''}" data-id="${s.id}" onclick="tapStamp('${s.id}')">
+      <div class="st-emoji">${s.emoji}</div>
+      <div class="st-name">${s.name}</div>
+    </div>`).join(''));
+  updateStampUI();
+}
+
+function tapStamp(id){
+  const d=gs();
+  if(d[id]) return;
+  d[id]=Date.now(); ss(d);
+  const sp=SPOTS.find(s=>s.id===id);
+  toast(`${sp.emoji} スタンプGET！`);
+  renderStamps();
+}
+
+function checkURLStamp(){
+  const p=new URLSearchParams(location.search);
+  const id=p.get('stamp');
+  if(id && SPOTS.find(s=>s.id===id)){
+    tapStamp(id);
+    history.replaceState({},'',location.pathname);
+    setTimeout(()=>document.getElementById('stamp').scrollIntoView({behavior:'smooth'}),400);
+  }
+}
+
+function updateStampUI(){
+  const d=gs(), n=Object.keys(d).length;
+  document.getElementById('stCount').textContent=n;
+  document.getElementById('stFill').style.width=(n/6*100)+'%';
+  document.getElementById('mile3').classList.toggle('on',n>=3);
+  document.getElementById('mile6').classList.toggle('on',n>=6);
+  ['prz3','prz6'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(!el) return;
+    const need=parseInt(id.replace('prz',''));
+    el.classList.toggle('on',n>=need);
+    el.querySelector('.prize-lock').textContent=n>=need?'🎉':'🔒';
+  });
+  const ach=document.getElementById('achBox');
+  if(n>=3){
+    ach.classList.add('show');
+    document.getElementById('achStar').textContent=n>=6?'🏆':'⭐';
+    document.getElementById('achTitle').textContent=n>=6?'全エリア制覇！おめでとう！':n+'エリア達成！';
+    document.getElementById('achSub').textContent='景品交換所でこの画面を見せてください';
+    if(localStorage.getItem(LS_E)==='1'){
+      const b=document.getElementById('btnExch');
+      b.classList.add('done'); b.textContent='✅ 景品交換済み';
+    }
+  } else { ach.classList.remove('show'); }
+}
+
+function showAch(){
+  const d=gs(), n=Object.keys(d).length;
+  const ov=document.createElement('div');
+  ov.style.cssText='position:fixed;inset:0;z-index:9999;background:rgba(13,4,32,.98);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:#fff8f0;text-align:center;padding:24px';
+  ov.innerHTML=`
+    <div style="font-size:72px;animation:spinStar 2s linear infinite">${n>=6?'🏆':'⭐'}</div>
+    <div style="font-family:'Cinzel',serif;font-size:26px;font-weight:700;background:linear-gradient(135deg,#ffd166,#f5a823);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">${n>=6?'全エリア制覇':''+n+'エリア達成'}</div>
+    <div style="font-size:13px;color:rgba(255,248,240,.6);line-height:1.7">みやざきインターナショナルフェスタ<br>ワールドテラス2026</div>
+    <div style="background:rgba(245,168,35,.1);border:2px solid rgba(245,168,35,.4);border-radius:20px;padding:18px 28px;margin:4px 0">
+      <div style="font-family:'Cinzel',serif;font-size:52px;font-weight:700;color:#ffd166">${n} / 6</div>
+      <div style="font-size:12px;color:rgba(255,248,240,.5)">スタンプ達成数</div>
+    </div>
+    <div style="font-size:11px;color:rgba(255,248,240,.35)">スタッフに確認いただいたら下を押してください</div>
+    <button onclick="this.parentElement.remove()" style="margin-top:8px;background:rgba(255,248,240,.08);color:#fff8f0;border:1px solid rgba(255,248,240,.15);border-radius:100px;padding:12px 32px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Cinzel',serif">閉じる</button>`;
+  document.body.appendChild(ov);
+}
+
+function markExch(){
+  localStorage.setItem(LS_E,'1');
+  const b=document.getElementById('btnExch');
+  b.classList.add('done'); b.textContent='✅ 景品交換済み';
+  toast('景品交換済みにしました');
+}
+
+function resetStamps(){
+  if(!confirm('スタンプをすべてリセットしますか？')) return;
+  localStorage.removeItem(LS_S); localStorage.removeItem(LS_E);
+  const b=document.getElementById('btnExch');
+  b.classList.remove('done'); b.textContent='景品交換済みにする';
+  renderStamps(); toast('スタンプをリセットしました');
+}
+
+/* ============================================================
+   COUNTER — localStorage ベース（本番はCountAPI等に差し替え推奨）
+============================================================ */
+const LC='wt26_cnt', LV='wt26_voted';
+function initCounter(){
+  const n=parseInt(localStorage.getItem(LC)||'0',10);
+  animNum(n, document.getElementById('ctrNum'));
+  if(localStorage.getItem(LV)==='1'){
+    const b=document.getElementById('ctrBtn');
+    b.textContent='✅ カウント済み！ありがとう！';
+    b.classList.add('done'); b.onclick=null;
+  }
+}
+function handleCount(){
+  if(localStorage.getItem(LV)==='1') return;
+  const n=parseInt(localStorage.getItem(LC)||'0',10)+1;
+  localStorage.setItem(LC,n); localStorage.setItem(LV,'1');
+  animNum(n, document.getElementById('ctrNum'));
+  const b=document.getElementById('ctrBtn');
+  b.textContent='✅ カウント済み！ありがとう！';
+  b.classList.add('done'); b.onclick=null;
+  toast('🎉 ようこそ！来場カウントしました');
+}
+function animNum(target, el){
+  const from=parseInt(el.textContent.replace(/\D/g,''))||0, steps=20, dur=600;
+  let i=0;
+  const t=setInterval(()=>{
+    i++; el.textContent=Math.round(from+(target-from)*i/steps).toLocaleString();
+    if(i>=steps){el.textContent=target.toLocaleString();clearInterval(t);}
+  },dur/steps);
+}
+
+/* ============================================================
+   NAV
+============================================================ */
+const ham=document.getElementById('navHam'), drw=document.getElementById('drawer');
+ham.addEventListener('click',()=>{
+  const o=ham.classList.toggle('open');
+  drw.classList.toggle('open',o);
+  document.body.style.overflow=o?'hidden':'';
+});
+document.getElementById('dClose').addEventListener('click',closeD);
+function closeD(){ham.classList.remove('open');drw.classList.remove('open');document.body.style.overflow='';}
+function gotoSection(sel){document.querySelector(sel)?.scrollIntoView({behavior:'smooth'});}
+
+/* ============================================================
+   TOAST
+============================================================ */
+function toast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2400);
+}
+
+/* ============================================================
+   SCROLL REVEAL
+============================================================ */
+function observeRv(){
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});
+  },{threshold:.1});
+  document.querySelectorAll('.rv:not(.in)').forEach(el=>obs.observe(el));
+}
+
+/* ============================================================
+   CANVAS — 夕焼け空 + 花火
+============================================================ */
+(function(){
+  const cvs=document.getElementById('sky');
+  const ctx=cvs.getContext('2d');
+  let W,H,tick=0,stars=[],fws=[],pts=[];
+  let lastFW=0;
+
+  function resize(){
+    W=cvs.width=window.innerWidth;
+    H=cvs.height=window.innerHeight;
+    buildStars();
+  }
+  function buildStars(){
+    stars=[];
+    for(let i=0;i<140;i++){
+      stars.push({x:Math.random()*W,y:Math.random()*H*.7,r:.3+Math.random()*1.3,
+        a:Math.random(),sp:.003+Math.random()*.007});
+    }
+  }
+
+  function drawSky(){
+    // 夕焼けが時間で少し変化
+    const p=.4+.4*Math.sin(tick*.0003);
+    const g=ctx.createLinearGradient(0,0,0,H);
+    g.addColorStop(0,   `hsl(${260+p*10},${55+p*10}%,${6+p*4}%)`);
+    g.addColorStop(.3,  `hsl(${290-p*20},${50+p*15}%,${10+p*8}%)`);
+    g.addColorStop(.55, `hsl(${340-p*30},${60+p*20}%,${15+p*18}%)`);
+    g.addColorStop(.75, `hsl(${20+p*10},${65}%,${20+p*20}%)`);
+    g.addColorStop(1,   `hsl(${30},${40}%,${8}%)`);
+    ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
+  }
+  function drawGlow(){
+    const p=.5+.5*Math.sin(tick*.00025);
+    const y=H*.62, r=W*.5;
+    const g=ctx.createRadialGradient(W*.5,y,0,W*.5,y,r);
+    g.addColorStop(0,`rgba(232,98,44,${.14+p*.1})`);
+    g.addColorStop(.5,`rgba(160,37,92,${.06+p*.06})`);
+    g.addColorStop(1,'transparent');
+    ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
+  }
+  function drawStars(){
+    stars.forEach(s=>{
+      s.a+=s.sp;
+      const al=.3+.7*Math.abs(Math.sin(s.a));
+      ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(255,248,240,${al})`;ctx.fill();
+    });
+  }
+
+  /* Firework */
+  class FW{
+    constructor(){
+      this.x=W*(.2+Math.random()*.6);this.y=H;
+      this.tx=W*(.15+Math.random()*.7);this.ty=H*(.08+Math.random()*.3);
+      const dx=this.tx-this.x,dy=this.ty-this.y,dist=Math.sqrt(dx*dx+dy*dy);
+      const spd=11+Math.random()*7;
+      this.vx=dx/dist*spd;this.vy=dy/dist*spd;
+      this.trail=[];this.hue=Math.random()*360;this.done=false;
+    }
+    update(){
+      this.trail.push({x:this.x,y:this.y});
+      if(this.trail.length>16)this.trail.shift();
+      this.x+=this.vx;this.y+=this.vy;
+      if(Math.abs(this.x-this.tx)<16&&Math.abs(this.y-this.ty)<16){
+        explode(this.x,this.y,this.hue);this.done=true;
+      }
+    }
+    draw(){
+      this.trail.forEach((p,i)=>{
+        const al=i/this.trail.length;
+        ctx.beginPath();ctx.arc(p.x,p.y,1.4*al,0,Math.PI*2);
+        ctx.fillStyle=`hsla(${this.hue},85%,68%,${al*.9})`;ctx.fill();
+      });
+    }
+  }
+  class Pt{
+    constructor(x,y,h){
+      const a=Math.random()*Math.PI*2,sp=1+Math.random()*5.5;
+      this.x=x;this.y=y;this.vx=Math.cos(a)*sp;this.vy=Math.sin(a)*sp;
+      this.al=1;this.h=h+(Math.random()-.5)*50;
+      this.r=.8+Math.random()*1.8;this.dec=.011+Math.random()*.016;this.g=.07;
+    }
+    update(){this.vy+=this.g;this.x+=this.vx;this.y+=this.vy;this.vx*=.97;this.vy*=.97;this.al-=this.dec;}
+    draw(){
+      ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
+      ctx.fillStyle=`hsla(${this.h},90%,68%,${Math.max(0,this.al)})`;ctx.fill();
+    }
+  }
+  function explode(x,y,h){
+    for(let i=0;i<90+Math.random()*50;i++) pts.push(new Pt(x,y,h));
+  }
+
+  function loop(t){
+    tick++;
+    ctx.clearRect(0,0,W,H);
+    drawSky();drawGlow();drawStars();
+    // auto fireworks
+    const iv=2400+Math.random()*2000;
+    if(t-lastFW>iv){
+      fws.push(new FW());
+      if(Math.random()>.5)fws.push(new FW());
+      lastFW=t;
+    }
+    fws=fws.filter(f=>!f.done);
+    fws.forEach(f=>{f.update();f.draw();});
+    pts=pts.filter(p=>p.al>0);
+    pts.forEach(p=>{p.update();p.draw();});
+    requestAnimationFrame(loop);
+  }
+  window.addEventListener('resize',resize);
+  resize();
+  requestAnimationFrame(loop);
+})();
+
+/* ============================================================
+   INIT
+============================================================ */
+document.addEventListener('DOMContentLoaded',()=>{
+  renderStage(); renderFood(); renderCulture();
+  renderSports(); renderBousai(); renderPrizes();
+  renderStamps(); initCounter(); checkURLStamp();
+  observeRv();
+  // re-observe after dynamic content
+  setTimeout(observeRv, 200);
+});
+</script>
+</body>
+</html>
