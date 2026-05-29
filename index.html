@@ -875,7 +875,16 @@ function adj(t,d){
 function doReg(){
   const reg={id:previewId,adults,children,lang,ts:Date.now()};
   localStorage.setItem(K.REG,JSON.stringify(reg));
-  function sendVisitorCount(adults, children, visitorId) {
+
+  sendVisitorCount(adults, children, previewId);
+
+  const c=parseInt(localStorage.getItem('wt26c')||'0',10)+(adults+children);
+  localStorage.setItem('wt26c',c);
+  hide('regOv');
+  showWlc(reg);
+}
+
+function sendVisitorCount(adults, children, visitorId) {
   const url = GAS_URL
     + '?action=add'
     + '&adults=' + encodeURIComponent(adults)
@@ -885,11 +894,6 @@ function doReg(){
 
   fetch(url, { method: 'GET', mode: 'no-cors' }).catch(function(e) {
     console.log(e);
-  });
-}
-  await fetch(url, {
-    method: 'GET',
-    mode: 'no-cors'
   });
 }
   const c=parseInt(localStorage.getItem('wt26c')||'0',10)+(adults+children);
