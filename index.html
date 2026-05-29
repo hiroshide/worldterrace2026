@@ -880,6 +880,7 @@ function doReg(){
 
   const c=parseInt(localStorage.getItem('wt26c')||'0',10)+(adults+children);
   localStorage.setItem('wt26c',c);
+
   hide('regOv');
   showWlc(reg);
 }
@@ -896,11 +897,7 @@ function sendVisitorCount(adults, children, visitorId) {
     console.log(e);
   });
 }
-  const c=parseInt(localStorage.getItem('wt26c')||'0',10)+(adults+children);
-  localStorage.setItem('wt26c',c);
-  hide('regOv');
-  showWlc(reg);
-}
+  
 function loadReg(reg){
   adults=reg.adults||1; children=reg.children||0;
   if(reg.lang){ lang=reg.lang; }
