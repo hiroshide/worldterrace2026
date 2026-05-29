@@ -875,6 +875,7 @@ function adj(t,d){
 function doReg(){
   const reg={id:previewId,adults,children,lang,ts:Date.now()};
   localStorage.setItem(K.REG,JSON.stringify(reg));
+  sendVisitorCount(adults, children, previewId);
   const c=parseInt(localStorage.getItem('wt26c')||'0',10)+(adults+children);
   localStorage.setItem('wt26c',c);
   hide('regOv');
@@ -1063,6 +1064,26 @@ document.addEventListener('DOMContentLoaded',()=>{
   // else: show lang overlay (default)
   checkURLSt();
 });
+  const GAS_URL = 'https://script.google.com/macros/s/AKfycbyYFSXE7huAoleAozY8or7XPwIhkzppe5a2Xl00N-nA9SRq5uvoGZv_CMb6_H_dLCvD0g/exec';
+
+async function sendVisitorCount(adults, children, visitorId) {
+  const total = adults + children;
+
+  await fetch(GAS_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      adults: adults,
+      children: children,
+      total: total,
+      visitorId: visitorId,
+      time: new Date().toISOString()
+    })
+  });
+}
 </script>
 </body>
 </html>
