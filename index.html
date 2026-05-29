@@ -880,10 +880,13 @@ function doReg(){
     + '?action=add'
     + '&adults=' + encodeURIComponent(adults)
     + '&children=' + encodeURIComponent(children)
-    + '&id=' + encodeURIComponent(visitorId);
+    + '&id=' + encodeURIComponent(visitorId)
     + '&t=' + Date.now();
-  new Image().src = url;
-  }
+
+  fetch(url, { method: 'GET', mode: 'no-cors' }).catch(function(e) {
+    console.log(e);
+  });
+}
   await fetch(url, {
     method: 'GET',
     mode: 'no-cors'
