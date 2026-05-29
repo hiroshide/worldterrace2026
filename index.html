@@ -1052,6 +1052,25 @@ function hide(id){document.getElementById(id).classList.add('hidden');}
    INIT
 ================================================== */
 document.addEventListener('DOMContentLoaded',()=>{
+  const params = new URLSearchParams(window.location.search);
+
+  if(params.get('reset') === '1'){
+
+    localStorage.removeItem('wt26r');
+
+    localStorage.removeItem('wt26s');
+
+    localStorage.removeItem('wt26e');
+
+    localStorage.removeItem('wt26l');
+
+    localStorage.removeItem('wt26c');
+
+    window.location.href = window.location.pathname;
+
+    return;
+
+  }
   const sl=localStorage.getItem(K.LG);
   const reg=localStorage.getItem(K.REG);
   if(sl) lang=sl;
