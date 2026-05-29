@@ -875,13 +875,15 @@ function adj(t,d){
 function doReg(){
   const reg={id:previewId,adults,children,lang,ts:Date.now()};
   localStorage.setItem(K.REG,JSON.stringify(reg));
-  async function sendVisitorCount(adults, children, visitorId) {
+  function sendVisitorCount(adults, children, visitorId) {
   const url = GAS_URL
     + '?action=add'
     + '&adults=' + encodeURIComponent(adults)
     + '&children=' + encodeURIComponent(children)
     + '&id=' + encodeURIComponent(visitorId);
-
+    + '&t=' + Date.now();
+  new Image().src = url;
+  }
   await fetch(url, {
     method: 'GET',
     mode: 'no-cors'
