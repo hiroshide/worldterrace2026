@@ -67,6 +67,9 @@ section::before{content:'';position:absolute;inset:0;z-index:-1;background:linea
 .rc-btn:active{background:rgba(245,168,35,.18)}
 .rc-num{flex:1;text-align:center;font-family:'Cinzel',serif;font-size:22px;font-weight:700;color:var(--gold)}
 .reg-notice{padding:12px 14px;border-radius:12px;background:rgba(245,168,35,.08);border:1px solid rgba(245,168,35,.2);font-size:12px;color:var(--gold);line-height:1.7;text-align:center;margin-bottom:4px}
+.reg-input{width:100%;padding:13px 14px;border-radius:10px;background:rgba(255,248,240,.05);border:1px solid var(--glassb);color:var(--t1);font-size:15px;font-family:inherit;margin-bottom:6px}
+.reg-input::placeholder{color:var(--t3)}
+.reg-input:focus{outline:none;border-color:rgba(245,168,35,.4);background:rgba(255,248,240,.08)}
 .reg-id{font-family:'Cinzel',serif;font-size:11px;color:var(--t3);text-align:center;letter-spacing:.08em}
 .btn-primary{width:100%;max-width:360px;padding:15px;border-radius:100px;background:linear-gradient(135deg,var(--orange),var(--crimson));color:var(--t1);font-family:'Cinzel',serif;font-size:13px;font-weight:700;letter-spacing:.08em;box-shadow:0 0 28px rgba(232,98,44,.4);transition:transform .15s}
 .btn-primary:active{transform:scale(.97)}
@@ -278,13 +281,10 @@ footer{position:relative;z-index:1;background:rgba(6,1,14,.96);border-top:1px so
 <div class="overlay" id="langOv">
   <picture><source srcset="images/logo.webp" type="image/webp"/><img class="ov-logo" src="images/logo.png" alt="World Terrace 2026"/></picture>
   <p class="ov-title cinzel">言語を選択 / Select Language</p>
-  <div class="lang-grid">
+  <div class="lang-grid" style="grid-template-columns:repeat(3,1fr);max-width:340px">
     <button class="lang-btn" onclick="pickLang('ja')"><span class="lang-flag">🇯🇵</span><span class="lang-name">日本語</span><span class="lang-nat">Japanese</span></button>
     <button class="lang-btn" onclick="pickLang('en')"><span class="lang-flag">🇺🇸</span><span class="lang-name">English</span><span class="lang-nat">English</span></button>
-    <button class="lang-btn" onclick="pickLang('zh')"><span class="lang-flag">🇨🇳</span><span class="lang-name">中文</span><span class="lang-nat">Chinese</span></button>
-    <button class="lang-btn" onclick="pickLang('ko')"><span class="lang-flag">🇰🇷</span><span class="lang-name">한국어</span><span class="lang-nat">Korean</span></button>
-    <button class="lang-btn" onclick="pickLang('tl')"><span class="lang-flag">🇵🇭</span><span class="lang-name">Filipino</span><span class="lang-nat">Tagalog</span></button>
-    <button class="lang-btn" onclick="pickLang('pt')"><span class="lang-flag">🇧🇷</span><span class="lang-name">Português</span><span class="lang-nat">Brazilian</span></button>
+    <button class="lang-btn" onclick="pickLang('easy')"><span class="lang-flag">🗣️</span><span class="lang-name">やさしい日本語</span><span class="lang-nat">Easy Japanese</span></button>
   </div>
 </div>
 
@@ -292,21 +292,25 @@ footer{position:relative;z-index:1;background:rgba(6,1,14,.96);border-top:1px so
 <div class="overlay hidden" id="regOv">
   <picture><source srcset="images/logo.webp" type="image/webp"/><img class="ov-logo" src="images/logo.png" alt="World Terrace 2026"/></picture>
   <p class="ov-title cinzel" data-i="reg_title">来場登録</p>
-  <p class="ov-sub" data-i="reg_sub">会場にご来場いただきありがとうございます！人数を入力して登録してください。</p>
+  <p class="ov-sub" data-i="reg_sub">会場にご来場いただきありがとうございます！情報を入力して登録してください。</p>
   <div class="reg-card">
-    <label class="reg-lbl" data-i="reg_adult">大人</label>
+    <label class="reg-lbl" data-i="reg_adult">大人（18歳以上）</label>
     <div class="reg-counter">
       <button class="rc-btn" onclick="adj('a',-1)">－</button>
       <div class="rc-num" id="numA">1</div>
       <button class="rc-btn" onclick="adj('a',1)">＋</button>
     </div>
-    <label class="reg-lbl" data-i="reg_child">子ども</label>
+    <label class="reg-lbl" data-i="reg_child">子ども（18歳未満）</label>
     <div class="reg-counter">
       <button class="rc-btn" onclick="adj('c',-1)">－</button>
       <div class="rc-num" id="numC">0</div>
       <button class="rc-btn" onclick="adj('c',1)">＋</button>
     </div>
-    <div class="reg-notice" data-i="reg_notice">🎯 スタンプラリー参加で景品ゲット！<br>各エリアのQRコードを集めよう！</div>
+    <label class="reg-lbl" data-i="reg_nation">国籍</label>
+    <input class="reg-input" id="inNation" type="text" data-i-ph="reg_nation_ph" placeholder="例：日本" autocomplete="off"/>
+    <label class="reg-lbl" data-i="reg_age" style="margin-top:14px">代表者の年齢</label>
+    <input class="reg-input" id="inAge" type="number" inputmode="numeric" min="0" max="120" data-i-ph="reg_age_ph" placeholder="例：35" autocomplete="off"/>
+    <div class="reg-notice" data-i="reg_notice" style="margin-top:14px">🎯 スタンプラリー参加で景品ゲット！<br>各エリアのQRコードを集めよう！</div>
     <div class="reg-id" id="regId" style="margin-top:10px"></div>
   </div>
   <button class="btn-primary" onclick="doReg()" data-i="reg_btn">✋ 来場しました！</button>
@@ -367,9 +371,11 @@ footer{position:relative;z-index:1;background:rgba(6,1,14,.96);border-top:1px so
 <!-- COUNTER -->
 <div id="counter" class="z1">
   <div class="ctr-lbl" data-i="ctr_lbl">👥 来場者カウンター</div>
-  <div class="ctr-num" id="ctrNum">0</div>
+  <div class="ctr-num" id="ctrNum">---</div>
   <div class="ctr-unit" data-i="ctr_unit">人が来場しました</div>
   <div class="ctr-myid" id="ctrMyId"></div>
+  <div id="ctrRank" style="margin-top:6px;font-family:'Cinzel',serif;font-size:13px;color:var(--gold);min-height:20px"></div>
+  <button onclick="fetchCount()" style="margin-top:10px;font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--t3);border-bottom:1px solid rgba(255,248,240,.12);padding-bottom:1px">↻ 更新</button>
 </div>
 <div class="rainbow z1"></div>
 
@@ -472,7 +478,14 @@ footer{position:relative;z-index:1;background:rgba(6,1,14,.96);border-top:1px so
   </div>
   <picture><source srcset="images/beer-menu.webp" type="image/webp"/><img class="beer-img rv d1" src="images/beer-menu.png" alt="世界のビールメニュー"/></picture>
   <p class="beer-note rv d2">お酒は20歳になってから。未成年者の飲酒は法律で禁止されています。<br>お車を運転される方へのアルコール類の提供は固くお断りいたします。</p>
+  <div class="wrap" style="margin:18px 0 10px">
+    <div class="sec-tag" style="margin-bottom:0">出店ブース</div>
+  </div>
   <div class="food-grid" id="foodGrid"></div>
+  <div class="wrap" style="margin:22px 0 10px">
+    <div class="sec-tag" style="margin-bottom:0">🚚 キッチンカー</div>
+  </div>
+  <div class="food-grid" id="foodTruckGrid"></div>
 </section>
 <div class="rainbow z1"></div>
 
@@ -506,6 +519,11 @@ footer{position:relative;z-index:1;background:rgba(6,1,14,.96);border-top:1px so
     <p class="sec-sub" data-i="bousai_sub">備えよう、いざというときのために</p>
   </div>
   <div class="bou-grid" id="bouGrid"></div>
+  <div class="wrap" style="margin:20px 0 10px">
+    <div class="sec-tag" style="margin-bottom:0">🎯 防災エリア スタンプ（3箇所）</div>
+  </div>
+  <div class="st-grid" id="bouStGrid" style="margin:0 16px 4px"></div>
+  <p class="st-note rv" style="margin:0 16px 0">※ 13:00〜16:00開催。各ブースのQRコードでスタンプGET！</p>
 </section>
 <div class="rainbow z1"></div>
 
@@ -514,15 +532,32 @@ footer{position:relative;z-index:1;background:rgba(6,1,14,.96);border-top:1px so
   <div class="wrap" style="margin-bottom:18px">
     <div class="sec-tag">STAMP RALLY</div>
     <h2 class="sec-title grad-text" data-i="stamp_title">🎯 スタンプラリー</h2>
-    <p class="sec-sub" data-i="stamp_sub">各エリアのQRコードを読んでスタンプGET！</p>
+    <p class="sec-sub" data-i="stamp_sub">スタンプラリーは2種類！各エリアのQRコードを読んでスタンプGET！</p>
+  </div>
+
+  <!-- 防災エリア内スタンプ -->
+  <div class="wrap" style="margin-bottom:10px">
+    <div class="sec-tag" style="margin-bottom:0">🧯 防災エリア スタンプ（3箇所）</div>
   </div>
   <div class="st-prog rv">
-    <div class="st-prog-row"><span data-i="stamp_prog">スタンプ進捗</span><span class="st-cnt"><span id="stN">0</span> / 6</span></div>
+    <div class="st-prog-row"><span>防災スタンプ進捗</span><span class="st-cnt"><span id="stNB">0</span> / 3</span></div>
+    <div class="st-bar"><div class="st-fill" id="stFillB" style="width:0%"></div></div>
+    <div class="st-miles"><div class="mile" id="mB3">🧯 防災エリア制覇</div></div>
+  </div>
+  <div class="st-grid" id="stGridB"></div>
+
+  <!-- 全体スタンプ -->
+  <div class="wrap" style="margin:24px 0 10px">
+    <div class="sec-tag" style="margin-bottom:0">🏆 全体スタンプ（5エリア）</div>
+  </div>
+  <div class="st-prog rv">
+    <div class="st-prog-row"><span data-i="stamp_prog">スタンプ進捗</span><span class="st-cnt"><span id="stN">0</span> / 5</span></div>
     <div class="st-bar"><div class="st-fill" id="stFill" style="width:0%"></div></div>
-    <div class="st-miles"><div class="mile" id="m3">🎁 3エリア達成</div><div class="mile" id="m6">🏆 全エリア達成</div></div>
+    <div class="st-miles"><div class="mile" id="m5">🏆 全エリア達成</div></div>
   </div>
   <div class="st-grid" id="stGrid"></div>
   <p class="st-note rv" data-i="stamp_note">※ 各エリア設置のQRコードで自動スタンプ<br>デモ：直接タップでスタンプ確認できます</p>
+
   <div class="ach-box" id="achBox">
     <span class="ach-star" id="achStar">⭐</span>
     <div class="ach-title" id="achTitle">達成！</div>
@@ -598,58 +633,75 @@ footer{position:relative;z-index:1;background:rgba(6,1,14,.96);border-top:1px so
    DATA（ここを編集して情報を差し替えてください）
 ================================================== */
 const STAGE=[
-  {t:'11:00',e:'11:20',name:'オープニングセレモニー',desc:'実行委員長挨拶・各国代表紹介・フラッグパレード',org:'実行委員会',hl:1},
-  {t:'11:30',e:'12:00',name:'宮崎民謡 & ダンス',desc:'宮崎の伝統的な民謡と盆踊りをご披露',org:'宮崎民謡保存会'},
-  {t:'12:15',e:'13:00',name:'K-POP & 韓国文化パフォーマンス',desc:'韓国の伝統舞踊からK-POPまで',org:'在宮崎韓国文化協会'},
-  {t:'13:15',e:'14:00',name:'サンバ × 和太鼓 コラボ',desc:'ブラジルのサンバと宮崎の和太鼓が奇跡のコラボ！',org:'宮崎サンバチーム・太鼓会',hl:1},
-  {t:'14:30',e:'15:15',name:'フィリピン伝統舞踊',desc:'色鮮やかな民族舞踊',org:'フィリピン友好協会宮崎'},
-  {t:'15:30',e:'16:15',name:'インド × アフリカンビート',desc:'ボリウッドダンスとアフリカの太鼓が融合',org:'宮崎インドコミュニティ・アフリカ文化協会'},
-  {t:'16:30',e:'17:20',name:'グランドフィナーレ 大合唱',desc:'全出演者・来場者参加型のワールドソング大合唱',org:'全出演団体',hl:1},
-  {t:'17:30',e:'18:00',name:'閉会式 & 打ち上げ花火 🎆',desc:'大淀川の夜空を彩る花火フィナーレ',org:'主催者',hl:1},
+  {t:'11:00',e:'11:20',name:'JC太鼓',desc:'迫力ある太鼓演奏でオープニングを盛り上げます',org:'宮崎青年会議所',hl:1},
+  {t:'11:20',e:'11:30',name:'開会セレモニー / 宮崎市長 開会挨拶',desc:'宮崎市長による開会のご挨拶',org:'宮崎市',hl:1},
+  {t:'11:30',e:'11:40',name:'ひょっとこ演舞',desc:'宮崎の伝統芸能「ひょっとこ踊り」をご披露',org:'（株）ひょっとこやろかい清和'},
+  {t:'11:40',e:'12:00',name:'MSG学生によるダンス',desc:'ネパール・インド・スリランカの留学生によるダンスパフォーマンス',org:'MSG（宮崎留学生グループ）'},
+  {t:'12:00',e:'12:30',name:'ベリーダンス',desc:'華やかなベリーダンスパフォーマンス',org:'ハレイムベリーダンスフィーバー'},
+  {t:'12:30',e:'13:00',name:'DJタイム & 各団体・飲食店・ブース紹介',desc:'DJプレイとともに出展団体・飲食店・ブースをご紹介',org:'DJibuki'},
+  {t:'13:00',e:'13:30',name:'武術太極拳',desc:'力強くも美しい武術太極拳のパフォーマンス',org:'HIMUKAカンフークラブ'},
+  {t:'13:30',e:'14:30',name:'ダンス & 歌',desc:'ダンスと歌のステージパフォーマンス',org:'Real Steppers Production'},
+  {t:'14:30',e:'16:00',name:'だるまさんがころんだ（賞品あり）',desc:'来場者参加型ゲーム！豪華賞品をかけて挑戦しよう',org:'実行委員会',hl:1},
+  {t:'16:00',e:'16:30',name:'フラダンス',desc:'優雅なフラダンスパフォーマンス',org:'フラダンスチーム'},
+  {t:'16:30',e:'17:00',name:'ハーモニカ演奏',desc:'心に響くハーモニカの音色',org:'inst891'},
+  {t:'17:00',e:'17:20',name:'フィナーレ 参加者インタビュー',desc:'来場者・出演者へのインタビューでフィナーレを盛り上げます',org:'実行委員会'},
+  {t:'17:20',e:'17:30',name:'DJタイム',desc:'フィナーレを彩るDJプレイ',org:'DJibuki'},
+  {t:'17:30',e:'17:30',name:'閉会',desc:'みやざきインターナショナルフェスタ ワールドテラス2026 閉会',org:'実行委員会',hl:1},
 ];
 const FOOD=[
-  {flag:'🇯🇵',country:'Japan',name:'宮崎チキン南蛮',menu:'チキン南蛮定食、冷や汁、地鶏炭火焼'},
-  {flag:'🇰🇷',country:'Korea',name:'韓国料理',menu:'チヂミ、トッポギ、プルコギ'},
-  {flag:'🇧🇷',country:'Brazil',name:'ブラジル料理',menu:'シュラスコ、フェイジョアーダ'},
-  {flag:'🇮🇳',country:'India',name:'インド料理',menu:'バターチキンカレー、ナン'},
-  {flag:'🇵🇭',country:'Philippines',name:'フィリピン料理',menu:'アドボ、ハロハロ'},
-  {flag:'🇹🇭',country:'Thailand',name:'タイ料理',menu:'パッタイ、トムヤムスープ'},
-  {flag:'🇲🇽',country:'Mexico',name:'メキシコ料理',menu:'タコス、グアカモレ'},
-  {flag:'🇮🇹',country:'Italy',name:'イタリア料理',menu:'ナポリピッツァ、ジェラート'},
-  {flag:'🇫🇷',country:'France',name:'フランス料理',menu:'クレープ、キッシュ'},
-  {flag:'🇻🇳',country:'Vietnam',name:'ベトナム料理',menu:'フォー、バインミー'},
+  {flag:'🇰🇷',country:'Korea',name:'ミレシジャン',menu:'韓国料理'},
+  {flag:'🇻🇳',country:'Vietnam',name:'ハンフククアン',menu:'ベトナム料理'},
+  {flag:'🇹🇷',country:'Turkey',name:'グリルハウス',menu:'トルコ料理'},
+  {flag:'🇱🇰',country:'Sri Lanka',name:'シンハラヤ',menu:'スリランカ料理'},
+  {flag:'🇹🇭',country:'Thailand',name:'未定',menu:'タイ料理'},
+  {flag:'🇺🇸',country:'USA',name:'未定',menu:'アメリカ料理'},
+  {flag:'🌍',country:'TBA',name:'未定',menu:'未定'},
+  {flag:'🌍',country:'TBA',name:'未定',menu:'未定'},
+  {flag:'🌍',country:'TBA',name:'未定',menu:'未定'},
+];
+const FOOD_TRUCK=[
+  {flag:'🇮🇳',country:'India',name:'ナマステカリカ',menu:'インド料理'},
+  {flag:'🌍',country:'TBA',name:'未定',menu:'未定'},
+  {flag:'🌍',country:'TBA',name:'未定',menu:'未定'},
+  {flag:'🌍',country:'TBA',name:'未定',menu:'未定'},
+  {flag:'🌍',country:'TBA',name:'未定',menu:'未定'},
+  {flag:'🌍',country:'TBA',name:'未定',menu:'未定'},
 ];
 const CULTURE=[
-  {icon:'👘',name:'民族衣装体験',desc:'世界10ヶ国以上の民族衣装を着て記念撮影！所要時間：約15分',org:'ワールドコスチュームクラブ宮崎'},
-  {icon:'🎭',name:'伝統遊び体験',desc:'各国の伝統的な遊びやゲームを体験。ケン玉・ユノ・コマなど',org:'国際交流おもちゃ箱'},
-  {icon:'🖌️',name:'アート体験ワークショップ',desc:'アフリカンアート・曼荼羅・墨絵など世界に一つの作品を！',org:'宮崎国際アートサークル'},
-  {icon:'🗣️',name:'多言語交流コーナー',desc:'外国人留学生・在住外国人と気軽に話せるフリートークコーナー',org:'宮崎県国際交流協会'},
-  {icon:'🍳',name:'世界の料理教室',desc:'韓国キンパ・インドチャパティなど毎時間テーマが変わります。定員8名・先着順',org:'ワールドキッチン宮崎'},
+  {icon:'🌍',name:'ジオゲッサー / 動物鳴き声クイズ',desc:'世界の風景を当てるジオゲッサーや、動物の鳴き声クイズで世界を学ぼう！',org:'宮崎市国際政策課・MHUB'},
+  {icon:'👗',name:'世界の民族衣装体験',desc:'世界各国の民族衣装を試着して記念撮影できます',org:'宮崎県国際交流協会'},
+  {icon:'🥟',name:'東南アジア風 餃子販売',desc:'東南アジアの材料を使ったオリジナル餃子を販売',org:'宮崎市国際交流協会'},
+  {icon:'🇰🇷',name:'韓国文化紹介 / チマチョゴリ試着',desc:'チマチョゴリの試着体験や、チマチョゴリ・絵本の販売を行います',org:'在日本大韓民国民団'},
+  {icon:'🎓',name:'学生による文化紹介（南アジア）',desc:'スリランカ・インド・ミャンマー・ネパール・キルギス・バングラデシュの留学生による文化紹介',org:'MSG（宮崎留学生グループ）'},
+  {icon:'🏫',name:'学生による文化紹介',desc:'宮崎国際大学の学生による各国文化の紹介',org:'宮崎国際大学'},
+  {icon:'🎨',name:'ひょっとこのお面塗り（持ち帰り可）',desc:'ひょっとこのお面に色を塗って、世界に一つだけのお面を持ち帰ろう！',org:'株式会社ひょっとこやろかい'},
 ];
 const SPORTS=[
-  {icon:'⚽',name:'テゲバジャーロ宮崎',type:'プロサッカー',desc:'J3リーグ所属。選手が直接ファンと交流！',exp:'ミニゲーム体験・フォトセッション・グッズ販売'},
-  {icon:'🏀',name:'宮崎シーガイアバスケットボールクラブ',type:'プロバスケ',desc:'3x3コートで来場者挑戦受付中！',exp:'3on3チャレンジ・フリースロー体験'},
-  {icon:'🥊',name:'宮崎格闘技連盟',type:'武道・格闘技',desc:'空手・柔道・剣道など宮崎の武道を紹介',exp:'空手型体験・防具試着'},
-  {icon:'🏐',name:'宮崎インターナショナルスポーツクラブ',type:'地域サークル',desc:'外国人と日本人が一緒に楽しむ多文化スポーツサークル',exp:'ビーチバレー・ウォーキングサッカー'},
-  {icon:'🏋️',name:'宮崎スポーツ推進委員会',type:'健康増進',desc:'誰でも楽しめる軽スポーツ体験',exp:'ニュースポーツ体験・健康チェック'},
+  {icon:'⚽',name:'フットサル ミニゲーム',type:'体験イベント',desc:'14:00〜17:00開催。誰でも参加できるミニゲームで盛り上がろう！',exp:'フットサルミニゲーム体験（14:00〜17:00）'},
+  {icon:'🏃',name:'地域スポーツサークル紹介',type:'サークル紹介',desc:'宮崎で活動する様々なスポーツサークルをご紹介します',exp:'サークル紹介・PRブース'},
 ];
 const BOUSAI=[
-  {icon:'🚒',t:'消防体験',b:'消火器の使い方を体験！訓練用消火器で実際に体験できます。',ya:'火（ひ）が出たら、消火器（しょうかき）を使います。',en:'Learn how to use a fire extinguisher. Hands-on experience available.'},
-  {icon:'🌍',t:'起震車による地震体験',b:'起震車に乗って実際の地震の揺れを体験。震度7まで体験可能。',ya:'じしんの ゆれを たいけんします。',en:'Experience earthquake shaking up to intensity 7.'},
-  {icon:'🍱',t:'防災食体験',b:'非常食（アルファ米・缶詰パン）の試食。備蓄食料の展示・配布も。',ya:'ひじょうしょく（たいさく の たべもの）を たべてみましょう。',en:'Try emergency survival food. Disaster food exhibits & distribution.'},
-  {icon:'🏠',t:'外国人のための防災情報',b:'宮崎県の災害リスク・避難場所・緊急連絡先を多言語で紹介。',ya:'やさしい にほんごと えいごで ひじょうじの ことを おしえます。',en:'Disaster info in easy Japanese & English. Evacuation shelters & emergency numbers.'},
+  {icon:'🧯',t:'消火訓練',b:'消火器の使い方を学ぼう！訓練用消火器で実際に体験できます。13:00〜16:00開催。',ya:'火（ひ）が出たら、消火器（しょうかき）を使います。体験（たいけん）できます。',en:'Learn how to use a fire extinguisher. Hands-on experience available from 13:00 to 16:00.'},
+  {icon:'🌍',t:'起震車による地震体験',b:'起震車に乗って実際の地震の揺れを体験。震度7まで体験可能です。13:00〜16:00開催。',ya:'じしんの ゆれを たいけんします。からだで かんじて まなびます。',en:'Experience earthquake shaking up to intensity 7. Available from 13:00 to 16:00.'},
+  {icon:'🍱',t:'防災食体験',b:'非常食（アルファ米・缶詰パン）の試食。備蓄食料の展示・配布も。13:00〜16:00開催。',ya:'ひじょうしょく（たいさく の たべもの）を たべてみましょう。',en:'Try emergency survival food. Disaster food exhibits & distribution from 13:00 to 16:00.'},
 ];
+/* スタンプラリー：防災エリア内サブスタンプ */
+const BOUSAI_SPOTS=[
+  {id:'bousai1',emoji:'🧯',name:'消火訓練'},
+  {id:'bousai2',emoji:'🌍',name:'地震体験'},
+  {id:'bousai3',emoji:'🍱',name:'防災食体験'},
+];
+/* スタンプラリー：全体5エリア */
 const SPOTS=[
   {id:'stage',emoji:'🎤',name:'ステージ'},
   {id:'food',emoji:'🍜',name:'飲食エリア'},
   {id:'culture',emoji:'🎨',name:'文化体験'},
   {id:'sports',emoji:'⚽',name:'スポーツ'},
   {id:'bousai',emoji:'🚒',name:'防災エリア'},
-  {id:'eco',emoji:'♻️',name:'エコSTA'},
 ];
 const PRIZES=[
-  {need:3,icon:'🎁',name:'3エリア達成賞',desc:'オリジナルステッカーセット＋エコバッグ'},
-  {need:6,icon:'🏆',name:'全エリア達成賞（特賞）',desc:'宮崎産フルーツ詰め合わせ or 来年招待券（抽選）'},
+  {need:3,icon:'🧯',name:'防災エリア制覇賞',desc:'防災エリア内3箇所（消火訓練・地震体験・防災食体験）すべて達成すると景品ゲット！',group:'bousai'},
+  {need:5,icon:'🏆',name:'全体制覇賞（特賞）',desc:'文化体験・飲食・ステージ・防災・スポーツの5エリアすべて達成すると特賞に挑戦！',group:'main'},
 ];
 const SPONSORS=[
   {rank:'gold',rlbl:'ゴールド',name:'（株）〇〇〇〇〇',desc:'メインスポンサー'},
@@ -665,8 +717,10 @@ const SPONSORS=[
 ================================================== */
 const T={
   ja:{
-    reg_title:'来場登録',reg_sub:'会場にご来場いただきありがとうございます！人数を入力して登録してください。',
-    reg_adult:'大人',reg_child:'子ども',
+    reg_title:'来場登録',reg_sub:'会場にご来場いただきありがとうございます！情報を入力して登録してください。',
+    reg_adult:'大人（18歳以上）',reg_child:'子ども（18歳未満）',
+    reg_nation:'国籍',reg_nation_ph:'例：日本',
+    reg_age:'代表者の年齢',reg_age_ph:'例：35',
     reg_notice:'🎯 スタンプラリー参加で景品ゲット！\n各エリアのQRコードを集めよう！',
     reg_btn:'✋ 来場しました！',
     wlc_title:'ようこそ！WORLD TERRACE 2026へ',
@@ -693,8 +747,10 @@ const T={
     nav_sponsors:'🤝 協賛',nav_access:'📍 アクセス',nav_contact:'📞 問い合わせ',lc:'JA'
   },
   en:{
-    reg_title:'Visitor Registration',reg_sub:'Welcome to the venue! Please enter the number of visitors.',
-    reg_adult:'Adults',reg_child:'Children',
+    reg_title:'Visitor Registration',reg_sub:'Welcome to the venue! Please enter your information to register.',
+    reg_adult:'Adults (18+)',reg_child:'Children (under 18)',
+    reg_nation:'Nationality',reg_nation_ph:'e.g. Japan',
+    reg_age:'Representative\'s Age',reg_age_ph:'e.g. 35',
     reg_notice:'🎯 Collect stamps to win prizes!\nScan QR codes at each area!',
     reg_btn:'✋ I have arrived!',
     wlc_title:'Welcome to WORLD TERRACE 2026!',
@@ -720,113 +776,35 @@ const T={
     nav_sports:'⚽ Sports',nav_bousai:'🚒 Disaster',nav_stamp:'🎯 Stamps',
     nav_sponsors:'🤝 Sponsors',nav_access:'📍 Access',nav_contact:'📞 Contact',lc:'EN'
   },
-  zh:{
-    reg_title:'来场登记',reg_sub:'欢迎来到会场！请输入来场人数。',
-    reg_adult:'大人',reg_child:'儿童',
-    reg_notice:'🎯 收集印章赢取奖品！\n扫描各区域的QR码！',
-    reg_btn:'✋ 我来了！',
-    wlc_title:'欢迎来到 WORLD TERRACE 2026！',
-    wlc_sub:'欢迎来到宫崎国际节！Beyond Exchange 超越交流',
-    wlc_stamp:'🎯 集齐印章赢大奖！\n走遍6个区域挑战特别奖！',
-    wlc_btn:'查看会场地图 🗺',
-    hero_theme:'Beyond Exchange 〜超越交流〜',hero_cta:'查看地图 🗺',
-    ctr_lbl:'👥 来场人数',ctr_unit:'人已到场',
-    map_title:'🗺 会场地图',map_sub:'点击区域跳转',
-    stage_title:'🎤 舞台区域',stage_sub:'表演时间表',
-    food_title:'🍜 美食区域',food_sub:'世界美食集结！',
-    culture_title:'🎨 文化体验',culture_sub:'体验世界各地文化',
-    sports_title:'⚽ 运动区域',sports_sub:'感受宫崎体育魅力！',
-    bousai_title:'🚒 防灾区域',bousai_sub:'防患于未然',
-    stamp_title:'🎯 集章活动',stamp_sub:'扫描QR码集章！',
-    stamp_prog:'集章进度',stamp_note:'※ 扫描各区域QR码自动盖章',
-    stamp_show:'🎁 在兑奖台出示',stamp_exch:'标记为已兑换',stamp_reset:'重置印章',
-    sponsors_title:'🤝 赞助商',sponsors_sub:'感谢对World Terrace 2026的支持',
-    access_title:'📍 交通',acc_walk:'步行',acc_bus:'班车（免费）',acc_car:'自驾',acc_air:'航班',
-    contact_title:'📞 联系',c_host:'主办方',c_cohost:'协办方',c_hours:'当日接待时间',
-    nav_map:'🗺 地图',nav_stage:'🎤 舞台',nav_food:'🍜 美食',nav_culture:'🎨 文化',
-    nav_sports:'⚽ 运动',nav_bousai:'🚒 防灾',nav_stamp:'🎯 集章',
-    nav_sponsors:'🤝 赞助',nav_access:'📍 交通',nav_contact:'📞 联系',lc:'中文'
-  },
-  ko:{
-    reg_title:'입장 등록',reg_sub:'행사장에 오신 것을 환영합니다! 인원수를 입력해 주세요.',
-    reg_adult:'어른',reg_child:'어린이',
-    reg_notice:'🎯 스탬프 랠리로 경품 획득!\n각 구역의 QR코드를 스캔하세요!',
-    reg_btn:'✋ 입장했습니다!',
-    wlc_title:'WORLD TERRACE 2026에 오신 것을 환영합니다!',
-    wlc_sub:'미야자키 국제 페스타에 오신 것을 환영합니다! Beyond Exchange',
-    wlc_stamp:'🎯 스탬프를 모아 경품 GET!\n6개 구역을 돌아 특별상에 도전하세요!',
-    wlc_btn:'회장 MAP 보기 🗺',
-    hero_theme:'Beyond Exchange 〜교류를 넘어서〜',hero_cta:'MAP 보기 🗺',
-    ctr_lbl:'👥 방문자 카운터',ctr_unit:'명이 입장했습니다',
-    map_title:'🗺 전체 MAP',map_sub:'구역을 탭하여 이동',
-    stage_title:'🎤 스테이지 구역',stage_sub:'퍼포먼스 타임스케줄',
-    food_title:'🍜 음식 구역',food_sub:'세계의 맛이 집결!',
-    culture_title:'🎨 문화체험',culture_sub:'세계 문화를 체험해보세요',
-    sports_title:'⚽ 스포츠 구역',sports_sub:'미야자키 스포츠를 체감하세요!',
-    bousai_title:'🚒 방재 구역',bousai_sub:'비상시를 대비하세요',
-    stamp_title:'🎯 스탬프 랠리',stamp_sub:'QR코드를 스캔해 스탬프 GET!',
-    stamp_prog:'스탬프 진행도',stamp_note:'※ 각 구역 QR코드 스캔으로 자동 스탬프',
-    stamp_show:'🎁 경품 교환소에서 보여주기',stamp_exch:'교환 완료',stamp_reset:'스탬프 초기화',
-    sponsors_title:'🤝 후원 기업·단체',sponsors_sub:'World Terrace 2026을 지원해 주셔서 감사합니다',
-    access_title:'📍 오시는 길',acc_walk:'도보',acc_bus:'셔틀버스（무료）',acc_car:'자가용',acc_air:'항공',
-    contact_title:'📞 문의',c_host:'주최',c_cohost:'공동주최',c_hours:'당일 접수',
-    nav_map:'🗺 MAP',nav_stage:'🎤 스테이지',nav_food:'🍜 음식',nav_culture:'🎨 문화',
-    nav_sports:'⚽ 스포츠',nav_bousai:'🚒 방재',nav_stamp:'🎯 스탬프',
-    nav_sponsors:'🤝 후원',nav_access:'📍 교통',nav_contact:'📞 문의',lc:'한국어'
-  },
-  tl:{
-    reg_title:'Pagpaparehistro',reg_sub:'Maligayang pagdating! Pakiusap ilagay ang bilang ng bisita.',
-    reg_adult:'Mga Matatanda',reg_child:'Mga Bata',
-    reg_notice:'🎯 Mangolekta ng stamps para manalo!\nI-scan ang QR codes sa bawat lugar!',
-    reg_btn:'✋ Dumating na ako!',
-    wlc_title:'Maligayang pagdating sa WORLD TERRACE 2026!',
-    wlc_sub:'Maligayang pagdating sa Miyazaki International Festa! Beyond Exchange',
-    wlc_stamp:'🎯 Mangolekta ng stamps para sa premyo!\nBisitahin ang lahat ng 6 na lugar!',
-    wlc_btn:'Tingnan ang Mapa 🗺',
-    hero_theme:'Beyond Exchange',hero_cta:'Tingnan ang Mapa 🗺',
-    ctr_lbl:'👥 Bilang ng Bisita',ctr_unit:'na bisita ang dumating',
-    map_title:'🗺 Mapa ng Venue',map_sub:'I-tap ang lugar para pumunta',
-    stage_title:'🎤 Stage Area',stage_sub:'Schedule ng Pagtatanghal',
-    food_title:'🍜 Food Area',food_sub:'Mga lasa ng mundo!',
-    culture_title:'🎨 Cultural Experience',culture_sub:'Maranasan ang mga kultura',
-    sports_title:'⚽ Sports Area',sports_sub:'Maranasan ang sports ng Miyazaki!',
-    bousai_title:'🚒 Disaster Prevention',bousai_sub:'Maging handa sa emerhensya',
-    stamp_title:'🎯 Stamp Rally',stamp_sub:'I-scan ang QR codes para sa stamps!',
-    stamp_prog:'Progreso ng Stamp',stamp_note:'※ I-scan ang QR code sa bawat lugar',
-    stamp_show:'🎁 Ipakita sa Prize Counter',stamp_exch:'Markahan bilang Napalitan',stamp_reset:'I-reset ang Stamps',
-    sponsors_title:'🤝 Mga Sponsor',sponsors_sub:'Salamat sa inyong suporta',
-    access_title:'📍 Paano Makarating',acc_walk:'Lakad',acc_bus:'Shuttle Bus（Libre）',acc_car:'Kotse',acc_air:'Eroplano',
-    contact_title:'📞 Makipag-ugnayan',c_host:'Organizer',c_cohost:'Co-organizer',c_hours:'Oras ng Pagtanggap',
-    nav_map:'🗺 Mapa',nav_stage:'🎤 Stage',nav_food:'🍜 Pagkain',nav_culture:'🎨 Kultura',
-    nav_sports:'⚽ Sports',nav_bousai:'🚒 Disaster',nav_stamp:'🎯 Stamps',
-    nav_sponsors:'🤝 Sponsors',nav_access:'📍 Paano',nav_contact:'📞 Contact',lc:'FIL'
-  },
-  pt:{
-    reg_title:'Registro de Entrada',reg_sub:'Bem-vindo ao evento! Insira o número de visitantes.',
-    reg_adult:'Adultos',reg_child:'Crianças',
-    reg_notice:'🎯 Colecione carimbos para ganhar prêmios!\nEscaneie os QR codes em cada área!',
-    reg_btn:'✋ Cheguei!',
-    wlc_title:'Bem-vindo ao WORLD TERRACE 2026!',
-    wlc_sub:'Bem-vindo ao Festival Internacional de Miyazaki! Beyond Exchange',
-    wlc_stamp:'🎯 Colete carimbos para ganhar prêmios!\nVisite todas as 6 áreas!',
-    wlc_btn:'Ver Mapa do Local 🗺',
-    hero_theme:'Beyond Exchange',hero_cta:'Ver Mapa 🗺',
-    ctr_lbl:'👥 Contador de Visitantes',ctr_unit:'visitantes chegaram',
-    map_title:'🗺 Mapa do Local',map_sub:'Toque em uma área para navegar',
-    stage_title:'🎤 Área do Palco',stage_sub:'Programação das Apresentações',
-    food_title:'🍜 Área de Comida',food_sub:'Sabores do mundo!',
-    culture_title:'🎨 Experiência Cultural',culture_sub:'Experiencie culturas do mundo',
-    sports_title:'⚽ Área de Esportes',sports_sub:'Experiencie os esportes de Miyazaki!',
-    bousai_title:'🚒 Prevenção de Desastres',bousai_sub:'Esteja preparado para emergências',
-    stamp_title:'🎯 Coletando Carimbos',stamp_sub:'Escaneie QR codes para coletar carimbos!',
-    stamp_prog:'Progresso dos Carimbos',stamp_note:'※ Escaneie o QR code em cada área',
-    stamp_show:'🎁 Mostrar no Balcão de Prêmios',stamp_exch:'Marcar como Trocado',stamp_reset:'Resetar Carimbos',
-    sponsors_title:'🤝 Patrocinadores',sponsors_sub:'Obrigado por apoiar o World Terrace 2026',
-    access_title:'📍 Como Chegar',acc_walk:'A Pé',acc_bus:'Ônibus Shuttle（Grátis）',acc_car:'De Carro',acc_air:'Aéreo',
-    contact_title:'📞 Contato',c_host:'Organizador',c_cohost:'Co-organizador',c_hours:'Horário de Atendimento',
-    nav_map:'🗺 Mapa',nav_stage:'🎤 Palco',nav_food:'🍜 Comida',nav_culture:'🎨 Cultura',
-    nav_sports:'⚽ Esportes',nav_bousai:'🚒 Desastres',nav_stamp:'🎯 Carimbos',
-    nav_sponsors:'🤝 Patrocinadores',nav_access:'📍 Acesso',nav_contact:'📞 Contato',lc:'PT'
+  easy:{
+    reg_title:'きょうの とうろく',reg_sub:'きてくれて ありがとうございます！じょうほうを いれて とうろくしてください。',
+    reg_adult:'おとな（18さい いじょう）',reg_child:'こども（18さい みまん）',
+    reg_nation:'くにの なまえ（こくせき）',reg_nation_ph:'れい：にほん',
+    reg_age:'だいひょうしゃの としの かず',reg_age_ph:'れい：35',
+    reg_notice:'🎯 スタンプを あつめて プレゼントを もらおう！\nいろいろな ばしょの QRコードを よみとってね！',
+    reg_btn:'✋ きました！',
+    wlc_title:'ようこそ！WORLD TERRACE 2026へ',
+    wlc_sub:'みやざきの おまつりに きてくれて ありがとう！Beyond Exchange 〜こえて つながろう〜',
+    wlc_stamp:'🎯 スタンプを あつめて プレゼントを もらおう！\n6つの ばしょを まわってね！',
+    wlc_btn:'ちずを みる 🗺',
+    hero_theme:'Beyond Exchange 〜こえて つながろう〜',hero_cta:'ちずを みる 🗺',
+    ctr_lbl:'👥 きた ひとの かず',ctr_unit:'にん きました',
+    map_title:'🗺 ぜんたいの ちず',map_sub:'ばしょを タップしてね',
+    stage_title:'🎤 ステージの ばしょ',stage_sub:'パフォーマンスの じかん',
+    food_title:'🍜 たべものの ばしょ',food_sub:'せかいの あじが あつまるよ！',
+    culture_title:'🎨 ぶんかたいけんの ばしょ',culture_sub:'せかいの ぶんかを たいけんしよう',
+    sports_title:'⚽ スポーツの ばしょ',sports_sub:'みやざきの スポーツを たいけんしよう',
+    bousai_title:'🚒 ぼうさいの ばしょ',bousai_sub:'なにかあった ときの ために じゅんびしよう',
+    stamp_title:'🎯 スタンプラリー',stamp_sub:'QRコードを よみとって スタンプを あつめよう！',
+    stamp_prog:'スタンプの すすみかた',stamp_note:'※ ばしょに ある QRコードで スタンプが もらえます\nおためし：タップしても スタンプが もらえます',
+    stamp_show:'🎁 プレゼントの ばしょで みせる',stamp_exch:'プレゼントを もらった',stamp_reset:'スタンプを はじめから にする',
+    sponsors_title:'🤝 たすけてくれた かいしゃ・だんたい',sponsors_sub:'ワールドテラス2026を たすけてくれて ありがとう',
+    access_title:'📍 いきかた',
+    acc_walk:'あるいて いく',acc_bus:'バス（むりょう）',acc_car:'くるまで いく',acc_air:'ひこうきで いく',
+    contact_title:'📞 れんらくさき',c_host:'しゅさい',c_cohost:'きょうさい',c_hours:'うけつけの じかん',
+    nav_map:'🗺 ちず',nav_stage:'🎤 ステージ',nav_food:'🍜 たべもの',nav_culture:'🎨 ぶんか',
+    nav_sports:'⚽ スポーツ',nav_bousai:'🚒 ぼうさい',nav_stamp:'🎯 スタンプ',
+    nav_sponsors:'🤝 たすけてくれた かいしゃ',nav_access:'📍 いきかた',nav_contact:'📞 れんらく',lc:'やさしい日本語'
   }
 };
 
@@ -854,7 +832,7 @@ function applyT(){
   });
   const nb=document.getElementById('navLang');
   if(nb) nb.textContent='🌐 '+(t.lc||lang.toUpperCase());
-  document.getElementById('htmlRoot').lang=({ja:'ja',en:'en',zh:'zh-CN',ko:'ko',tl:'tl',pt:'pt-BR'})[lang]||lang;
+  document.getElementById('htmlRoot').lang=({ja:'ja',en:'en',easy:'ja'})[lang]||'ja';
 }
 
 /* ==================================================
@@ -875,29 +853,11 @@ function adj(t,d){
 function doReg(){
   const reg={id:previewId,adults,children,lang,ts:Date.now()};
   localStorage.setItem(K.REG,JSON.stringify(reg));
-
-  sendVisitorCount(adults, children, previewId);
-
-  const c=parseInt(localStorage.getItem('wt26c')||'0',10)+(adults+children);
-  localStorage.setItem('wt26c',c);
-
   hide('regOv');
+  // GASにカウントを送信（非同期）
+  addCount(adults,children,previewId);
   showWlc(reg);
 }
-
-function sendVisitorCount(adults, children, visitorId) {
-  const url = GAS_URL
-    + '?action=add'
-    + '&adults=' + encodeURIComponent(adults)
-    + '&children=' + encodeURIComponent(children)
-    + '&id=' + encodeURIComponent(visitorId)
-    + '&t=' + Date.now();
-
-  fetch(url, { method: 'GET', mode: 'no-cors' }).catch(function(e) {
-    console.log(e);
-  });
-}
-  
 function loadReg(reg){
   adults=reg.adults||1; children=reg.children||0;
   if(reg.lang){ lang=reg.lang; }
@@ -927,6 +887,8 @@ function renderAll(){
   document.getElementById('stageTL').innerHTML=STAGE.map((s,i)=>`<div class="tl-item${s.hl?' hl':''} rv" style="transition-delay:${i*.05}s"><div class="tl-time">${s.t}<div class="tl-end">〜${s.e}</div></div><div><div class="tl-name">${s.name}</div><div class="tl-desc">${s.desc}</div><div class="tl-org">📌 ${s.org}</div></div></div>`).join('');
   // Food
   document.getElementById('foodGrid').innerHTML=FOOD.map((f,i)=>`<div class="food-card rv" style="transition-delay:${i*.04}s"><div class="food-flag">${f.flag}</div><div class="food-ctry">${f.country}</div><div class="food-name">${f.name}</div><div class="food-menu">${f.menu}</div></div>`).join('');
+  // Food Truck
+  document.getElementById('foodTruckGrid').innerHTML=FOOD_TRUCK.map((f,i)=>`<div class="food-card rv" style="transition-delay:${i*.04}s"><div class="food-flag">${f.flag}</div><div class="food-ctry">${f.country}</div><div class="food-name">${f.name}</div><div class="food-menu">${f.menu}</div></div>`).join('');
   // Culture
   document.getElementById('culGrid').innerHTML=CULTURE.map((c,i)=>`<div class="cul-card rv" style="transition-delay:${i*.06}s"><div class="cul-icon">${c.icon}</div><div><div class="cul-name">${c.name}</div><div class="cul-desc">${c.desc}</div><span class="cul-org">${c.org}</span></div></div>`).join('');
   // Sports
@@ -936,66 +898,147 @@ function renderAll(){
   // Sponsors
   document.getElementById('spList').innerHTML=SPONSORS.map(s=>`<div class="spon-card"><span class="spon-rank r-${s.rank}">${s.rlbl}</span><div><div class="spon-name">${s.name}</div>${s.desc?`<div class="spon-desc">${s.desc}</div>`:''}</div></div>`).join('');
   // Prizes
-  document.getElementById('prizeList').innerHTML=PRIZES.map(p=>`<div class="prize-card" id="prz${p.need}"><div class="prz-icon">${p.icon}</div><div><div class="prz-cond">${p.need}エリア達成</div><div class="prz-name">${p.name}</div><div class="prz-desc">${p.desc}</div></div><div class="prz-lock">🔒</div></div>`).join('');
+  document.getElementById('prizeList').innerHTML=PRIZES.map(p=>`<div class="prize-card" id="prz_${p.group}"><div class="prz-icon">${p.icon}</div><div><div class="prz-cond">${p.group==='bousai'?'防災3箇所達成':'5エリア達成'}</div><div class="prz-name">${p.name}</div><div class="prz-desc">${p.desc}</div></div><div class="prz-lock">🔒</div></div>`).join('');
   renderSt();
   setTimeout(observeRv,50);
 }
 
 /* ==================================================
-   COUNTER
+   COUNTER — Google Apps Script連携
+   GASをデプロイしたら下のURLを差し替えてください
 ================================================== */
+const GAS_URL = 'YOUR_GAS_URL_HERE'; // ← デプロイ後にここを書き換える
+
+async function fetchCount(){
+  if(!GAS_URL||GAS_URL==='YOUR_GAS_URL_HERE') return;
+  try{
+    const r=await fetch(GAS_URL+'?action=get',{cache:'no-store'});
+    const d=await r.json();
+    animN(d.count,document.getElementById('ctrNum'));
+    updateRank(d.count);
+  }catch(e){console.log('count fetch failed',e);}
+}
+
+async function addCount(adults,children,id){
+  if(!GAS_URL||GAS_URL==='YOUR_GAS_URL_HERE'){
+    // GAS未設定時はローカルカウント
+    const n=parseInt(localStorage.getItem('wt26c')||'0',10)+(adults+children);
+    localStorage.setItem('wt26c',n);
+    animN(n,document.getElementById('ctrNum'));
+    updateRank(n);
+    return;
+  }
+  try{
+    const url=GAS_URL+`?action=add&adults=${adults}&children=${children}&id=${encodeURIComponent(id)}`;
+    const r=await fetch(url,{cache:'no-store'});
+    const d=await r.json();
+    animN(d.count,document.getElementById('ctrNum'));
+    updateRank(d.count);
+    localStorage.setItem('wt26c',d.count);
+  }catch(e){
+    // フェイルセーフ: ローカル加算
+    const n=parseInt(localStorage.getItem('wt26c')||'0',10)+(adults+children);
+    localStorage.setItem('wt26c',n);
+    animN(n,document.getElementById('ctrNum'));
+  }
+}
+
+function updateRank(n){
+  const el=document.getElementById('ctrRank');
+  if(!el) return;
+  if(n>0) el.textContent='あなたは '+n.toLocaleString()+' 人目の来場者です！';
+}
+
 function initCtr(){
-  const n=parseInt(localStorage.getItem('wt26c')||'0',10);
-  animN(n,document.getElementById('ctrNum'));
   const reg=JSON.parse(localStorage.getItem(K.REG)||'{}');
   if(reg.id) document.getElementById('ctrMyId').textContent='あなたの来場ID: '+reg.id;
+  // GAS設定済みならサーバーから取得、未設定ならローカル値
+  if(GAS_URL&&GAS_URL!=='YOUR_GAS_URL_HERE'){
+    fetchCount();
+  } else {
+    const n=parseInt(localStorage.getItem('wt26c')||'0',10);
+    animN(n,document.getElementById('ctrNum'));
+    updateRank(n);
+  }
 }
 function animN(to,el){
-  const from=parseInt(el.textContent||'0')||0,steps=18,dur=600;
+  if(!el)return;
+  const from=parseInt((el.textContent||'0').replace(/[^0-9]/g,''))||0,steps=18,dur=600;
   let i=0;const t=setInterval(()=>{i++;el.textContent=Math.round(from+(to-from)*i/steps).toLocaleString();if(i>=steps){el.textContent=to.toLocaleString();clearInterval(t);}},dur/steps);
 }
 
 /* ==================================================
-   STAMPS
+   STAMPS — 防災エリア（3箇所）+ 全体（5エリア）の2グループ
 ================================================== */
 function gst(){try{return JSON.parse(localStorage.getItem(K.ST))||{};}catch{return{};}}
 function sst(d){localStorage.setItem(K.ST,JSON.stringify(d));}
+
 function renderSt(){
   const d=gst();
+  // 防災エリア内スタンプ（3箇所）
+  document.getElementById('stGridB').innerHTML=BOUSAI_SPOTS.map(s=>`<div class="st-item${d[s.id]?' got':''}" onclick="tapSt('${s.id}')"><div class="st-emoji">${s.emoji}</div><div class="st-name">${s.name}</div></div>`).join('');
+  // 防災エリアセクション内の表示用（複製）
+  const bouStEl=document.getElementById('bouStGrid');
+  if(bouStEl) bouStEl.innerHTML=BOUSAI_SPOTS.map(s=>`<div class="st-item${d[s.id]?' got':''}" onclick="tapSt('${s.id}')"><div class="st-emoji">${s.emoji}</div><div class="st-name">${s.name}</div></div>`).join('');
+  // 全体スタンプ（5エリア）
   document.getElementById('stGrid').innerHTML=SPOTS.map(s=>`<div class="st-item${d[s.id]?' got':''}" onclick="tapSt('${s.id}')"><div class="st-emoji">${s.emoji}</div><div class="st-name">${s.name}</div></div>`).join('');
   updSt();
 }
+
 function tapSt(id){
   const d=gst();if(d[id])return;
   d[id]=Date.now();sst(d);
-  toast((SPOTS.find(s=>s.id===id)?.emoji||'')+'スタンプGET！');
+  const allSpots=[...BOUSAI_SPOTS,...SPOTS];
+  toast((allSpots.find(s=>s.id===id)?.emoji||'')+'スタンプGET！');
   renderSt();
 }
+
 function updSt(){
-  const d=gst(),n=Object.keys(d).length;
-  document.getElementById('stN').textContent=n;
-  document.getElementById('stFill').style.width=(n/6*100)+'%';
-  document.getElementById('m3').classList.toggle('on',n>=3);
-  document.getElementById('m6').classList.toggle('on',n>=6);
-  ['prz3','prz6'].forEach(id=>{
-    const el=document.getElementById(id);if(!el)return;
-    const need=+id.replace('prz','');
-    el.classList.toggle('on',n>=need);
-    el.querySelector('.prz-lock').textContent=n>=need?'🎉':'🔒';
-  });
+  const d=gst();
+  const nB=BOUSAI_SPOTS.filter(s=>d[s.id]).length;
+  const nM=SPOTS.filter(s=>d[s.id]).length;
+
+  // 防災プログレス
+  document.getElementById('stNB').textContent=nB;
+  document.getElementById('stFillB').style.width=(nB/3*100)+'%';
+  document.getElementById('mB3').classList.toggle('on',nB>=3);
+
+  // 全体プログレス
+  document.getElementById('stN').textContent=nM;
+  document.getElementById('stFill').style.width=(nM/5*100)+'%';
+  document.getElementById('m5').classList.toggle('on',nM>=5);
+
+  // 景品カード
+  const przB=document.getElementById('prz_bousai');
+  if(przB){ przB.classList.toggle('on',nB>=3); przB.querySelector('.prz-lock').textContent=nB>=3?'🎉':'🔒'; }
+  const przM=document.getElementById('prz_main');
+  if(przM){ przM.classList.toggle('on',nM>=5); przM.querySelector('.prz-lock').textContent=nM>=5?'🎉':'🔒'; }
+
+  // 達成表示（いずれか達成していれば表示）
   const ab=document.getElementById('achBox');
-  if(n>=3){
+  if(nB>=3||nM>=5){
     ab.classList.add('show');
-    document.getElementById('achStar').textContent=n>=6?'🏆':'⭐';
-    document.getElementById('achTitle').textContent=n>=6?'全エリア制覇！おめでとう！':n+'エリア達成！';
+    if(nB>=3&&nM>=5){
+      document.getElementById('achStar').textContent='🏆';
+      document.getElementById('achTitle').textContent='防災エリア＆全体制覇！おめでとう！';
+    }else if(nM>=5){
+      document.getElementById('achStar').textContent='🏆';
+      document.getElementById('achTitle').textContent='全体5エリア達成！おめでとう！';
+    }else{
+      document.getElementById('achStar').textContent='🧯';
+      document.getElementById('achTitle').textContent='防災エリア制覇！おめでとう！';
+    }
     if(localStorage.getItem(K.EX)==='1'){const b=document.getElementById('btnExch');b.classList.add('done');b.textContent='✅ 景品交換済み';}
   }else{ ab.classList.remove('show'); }
 }
+
 function showAch(){
-  const d=gst(),n=Object.keys(d).length;
+  const d=gst();
+  const nB=BOUSAI_SPOTS.filter(s=>d[s.id]).length;
+  const nM=SPOTS.filter(s=>d[s.id]).length;
   const ov=document.createElement('div');
   ov.style.cssText='position:fixed;inset:0;z-index:9999;background:rgba(8,1,20,.98);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:#fff8f0;text-align:center;padding:24px';
-  ov.innerHTML=`<div style="font-size:64px;animation:spinStar 2s linear infinite">${n>=6?'🏆':'⭐'}</div><div style="font-family:'Cinzel',serif;font-size:24px;font-weight:700;background:linear-gradient(135deg,#ffd166,#f5a823);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">${n>=6?'全エリア制覇':''+n+'エリア達成'}</div><div style="font-size:12px;color:rgba(255,248,240,.55);line-height:1.7">みやざきインターナショナルフェスタ<br>ワールドテラス2026</div><div style="background:rgba(245,168,35,.1);border:2px solid rgba(245,168,35,.35);border-radius:18px;padding:16px 26px;margin:4px 0"><div style="font-family:'Cinzel',serif;font-size:48px;font-weight:700;color:#ffd166">${n} / 6</div><div style="font-size:12px;color:rgba(255,248,240,.45)">スタンプ達成数</div></div><div style="font-size:11px;color:rgba(255,248,240,.3)">スタッフに確認いただいたら下を押してください</div><button onclick="this.parentElement.remove()" style="margin-top:8px;background:rgba(255,248,240,.07);color:#fff8f0;border:1px solid rgba(255,248,240,.14);border-radius:100px;padding:11px 30px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Cinzel',serif">閉じる</button>`;
+  ov.innerHTML=`<div style="font-size:64px;animation:spinStar 2s linear infinite">${(nB>=3&&nM>=5)?'🏆':nM>=5?'🏆':'🧯'}</div><div style="font-family:'Cinzel',serif;font-size:22px;font-weight:700;background:linear-gradient(135deg,#ffd166,#f5a823);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">みやざきインターナショナルフェスタ</div><div style="font-size:12px;color:rgba(255,248,240,.55);line-height:1.7">ワールドテラス2026 スタンプラリー</div><div style="display:flex;gap:14px;margin:6px 0"><div style="background:rgba(245,168,35,.1);border:2px solid rgba(245,168,35,.35);border-radius:16px;padding:14px 20px"><div style="font-family:'Cinzel',serif;font-size:32px;font-weight:700;color:#ffd166">${nB} / 3</div><div style="font-size:10px;color:rgba(255,248,240,.45)">防災エリア</div></div><div style="background:rgba(245,168,35,.1);border:2px solid rgba(245,168,35,.35);border-radius:16px;padding:14px 20px"><div style="font-family:'Cinzel',serif;font-size:32px;font-weight:700;color:#ffd166">${nM} / 5</div><div style="font-size:10px;color:rgba(255,248,240,.45)">全体エリア</div></div></div><div style="font-size:11px;color:rgba(255,248,240,.3)">スタッフに確認いただいたら下を押してください</div><button onclick="this.parentElement.remove()" style="margin-top:8px;background:rgba(255,248,240,.07);color:#fff8f0;border:1px solid rgba(255,248,240,.14);border-radius:100px;padding:11px 30px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Cinzel',serif">閉じる</button>`;
   document.body.appendChild(ov);
 }
 function markExch(){
@@ -1009,9 +1052,22 @@ function resetSt(){
   const b=document.getElementById('btnExch');if(b){b.classList.remove('done');b.textContent=(T[lang]||T.ja).stamp_exch||'景品交換済みにする';}
   renderSt();toast('リセットしました');
 }
+function checkReset(){
+  if(new URLSearchParams(location.search).get('reset')==='1'){
+    ['wt26r','wt26s','wt26e','wt26l','wt26c'].forEach(k=>localStorage.removeItem(k));
+    history.replaceState({},'',location.pathname);
+    location.reload();
+  }
+}
+
 function checkURLSt(){
   const p=new URLSearchParams(location.search),id=p.get('stamp');
-  if(id&&SPOTS.find(s=>s.id===id)){tapSt(id);history.replaceState({},'',location.pathname);setTimeout(()=>document.getElementById('stamp').scrollIntoView({behavior:'smooth'}),400);}
+  const allSpots=[...BOUSAI_SPOTS,...SPOTS];
+  if(id&&allSpots.find(s=>s.id===id)){
+    tapSt(id);
+    history.replaceState({},'',location.pathname);
+    setTimeout(()=>document.getElementById('stamp').scrollIntoView({behavior:'smooth'}),400);
+  }
 }
 
 /* ==================================================
@@ -1069,25 +1125,7 @@ function hide(id){document.getElementById(id).classList.add('hidden');}
    INIT
 ================================================== */
 document.addEventListener('DOMContentLoaded',()=>{
-  const params = new URLSearchParams(window.location.search);
-
-  if(params.get('reset') === '1'){
-
-    localStorage.removeItem('wt26r');
-
-    localStorage.removeItem('wt26s');
-
-    localStorage.removeItem('wt26e');
-
-    localStorage.removeItem('wt26l');
-
-    localStorage.removeItem('wt26c');
-
-    window.location.href = window.location.pathname;
-
-    return;
-
-  }
+  checkReset();
   const sl=localStorage.getItem(K.LG);
   const reg=localStorage.getItem(K.REG);
   if(sl) lang=sl;
@@ -1100,26 +1138,8 @@ document.addEventListener('DOMContentLoaded',()=>{
   // else: show lang overlay (default)
   checkURLSt();
 });
-  const GAS_URL = 'https://script.google.com/macros/s/AKfycbyBoUGgLfWMNLKQ0xlcqzIPFOvGBMQS3r8gOJSt36twUQLlik0q9J35X-Tk0TEEiyZoJw/exec';
-
-async function sendVisitorCount(adults, children, visitorId) {
-  const total = adults + children;
-
-  await fetch(GAS_URL, {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      adults: adults,
-      children: children,
-      total: total,
-      visitorId: visitorId,
-      time: new Date().toISOString()
-    })
-  });
-}
 </script>
 </body>
 </html>
+
+これvercelのどこにぶち込んだらいい？
