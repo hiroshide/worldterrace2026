@@ -144,7 +144,7 @@ section::before{content:'';position:absolute;inset:0;z-index:-1;background:linea
 .beer-icon{font-size:40px;flex-shrink:0}
 .beer-title{font-family:'Cinzel',serif;font-size:15px;font-weight:600;color:var(--gold);margin-bottom:4px}
 .beer-sub{font-size:12px;color:var(--t2);line-height:1.6}
-.beer-img{width:440px !important;display:block;margin:0 auto 14px;}
+.beer-img{width:calc(100% - 32px);margin:0 16px 14px;border-radius:14px;border:1px solid var(--glassb);display:block;box-shadow:0 6px 24px rgba(0,0,0,.4);object-fit:contain}
 .beer-note{margin:0 16px;font-size:10px;color:var(--t3);line-height:1.7;text-align:center}
 .food-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:14px 16px 0}
 .food-card{padding:13px 12px;border-radius:14px;background:var(--glass);border:1px solid var(--glassb)}
@@ -387,66 +387,122 @@ footer{position:relative;z-index:1;background:rgba(6,1,14,.96);border-top:1px so
     <p class="sec-sub" data-i="map_sub">エリアをタップしてジャンプ</p>
   </div>
   <div class="map-wrap rv">
-    <svg viewBox="0 0 360 295" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block">
-      <defs>
-        <linearGradient id="skg" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#1a0533"/>
-          <stop offset="40%" stop-color="#5c1a8a"/>
-          <stop offset="75%" stop-color="#a0255c"/>
-          <stop offset="100%" stop-color="#e8622c"/>
-        </linearGradient>
-        <linearGradient id="rvg" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#4a90d9" stop-opacity=".9"/>
-          <stop offset="100%" stop-color="#2d6aad" stop-opacity=".7"/>
-        </linearGradient>
-      </defs>
-      <rect x="0" y="0" width="360" height="58" fill="url(#skg)"/>
-      <path d="M0,0 Q90,18 180,14 Q270,10 360,24 L360,60 Q270,46 180,50 Q90,54 0,40Z" fill="url(#rvg)" opacity=".85"/>
-      <text x="180" y="36" text-anchor="middle" fill="rgba(255,255,255,.7)" font-size="10" font-family="serif" font-weight="bold">大淀川</text>
-      <rect x="0" y="50" width="360" height="245" fill="#2a5c34" opacity=".45"/>
-      <rect x="167" y="50" width="26" height="245" fill="rgba(255,240,190,.1)"/>
-      <rect x="0" y="165" width="360" height="16" fill="rgba(255,240,190,.08)"/>
-      <!-- 入口 -->
-      <rect x="148" y="256" width="64" height="30" rx="7" fill="#1a0533"/>
-      <text x="180" y="275" text-anchor="middle" fill="#ffd166" font-size="11" font-family="serif" font-weight="bold">🚪 入口</text>
-      <!-- 本部 -->
-      <a href="#contact"><rect x="7" y="55" width="62" height="36" rx="8" fill="rgba(92,26,138,.85)"/><text x="38" y="70" text-anchor="middle" fill="#ffd166" font-size="9" font-weight="bold" font-family="serif">🏢 本部</text><text x="38" y="83" text-anchor="middle" fill="rgba(255,255,255,.6)" font-size="7" font-family="serif">HQ</text></a>
-      <!-- エコ -->
-      <circle cx="316" cy="70" r="22" fill="rgba(0,229,200,.18)" stroke="#00e5c8" stroke-width="1.5"/>
-      <text x="316" y="67" text-anchor="middle" fill="#00e5c8" font-size="12">♻️</text>
-      <text x="316" y="80" text-anchor="middle" fill="#00e5c8" font-size="7" font-family="serif">エコSTA</text>
-      <!-- ステージ -->
-      <a href="#stage"><rect x="84" y="56" width="188" height="70" rx="12" fill="rgba(201,58,42,.85)"/><text x="178" y="85" text-anchor="middle" fill="white" font-size="13" font-weight="bold" font-family="serif">🎤 ステージエリア</text><text x="178" y="101" text-anchor="middle" fill="rgba(255,255,255,.72)" font-size="9" font-family="serif">Stage Area</text></a>
-      <!-- 飲食 -->
-      <a href="#food"><rect x="7" y="100" width="82" height="72" rx="9" fill="rgba(232,98,44,.82)"/><text x="48" y="128" text-anchor="middle" fill="white" font-size="11" font-weight="bold" font-family="serif">🍜 飲食</text><text x="48" y="143" text-anchor="middle" fill="white" font-size="11" font-weight="bold" font-family="serif">エリア</text><text x="48" y="160" text-anchor="middle" fill="rgba(255,255,255,.62)" font-size="8" font-family="serif">Food</text></a>
-      <!-- 文化 -->
-      <a href="#culture"><rect x="271" y="100" width="82" height="72" rx="9" fill="rgba(92,26,138,.82)"/><text x="312" y="128" text-anchor="middle" fill="white" font-size="11" font-weight="bold" font-family="serif">🎨 文化</text><text x="312" y="143" text-anchor="middle" fill="white" font-size="11" font-weight="bold" font-family="serif">体験</text><text x="312" y="160" text-anchor="middle" fill="rgba(255,255,255,.62)" font-size="8" font-family="serif">Culture</text></a>
-      <!-- スポーツ -->
-      <a href="#sports"><rect x="7" y="180" width="82" height="66" rx="9" fill="rgba(0,180,140,.78)"/><text x="48" y="208" text-anchor="middle" fill="white" font-size="11" font-weight="bold" font-family="serif">⚽</text><text x="48" y="222" text-anchor="middle" fill="white" font-size="10" font-weight="bold" font-family="serif">スポーツ</text><text x="48" y="236" text-anchor="middle" fill="rgba(255,255,255,.62)" font-size="8" font-family="serif">Sports</text></a>
-      <!-- 防災 -->
-      <a href="#bousai"><rect x="271" y="180" width="82" height="66" rx="9" fill="rgba(200,140,0,.8)"/><text x="312" y="208" text-anchor="middle" fill="white" font-size="11" font-weight="bold" font-family="serif">🚒</text><text x="312" y="222" text-anchor="middle" fill="white" font-size="10" font-weight="bold" font-family="serif">防災</text><text x="312" y="236" text-anchor="middle" fill="rgba(255,255,255,.62)" font-size="8" font-family="serif">Disaster</text></a>
-      <!-- 花火観覧 -->
-      <ellipse cx="180" cy="208" rx="70" ry="38" fill="rgba(232,98,44,.07)" stroke="rgba(245,168,35,.45)" stroke-width="1.5" stroke-dasharray="6,4"/>
-      <text x="180" y="204" text-anchor="middle" fill="#ffd166" font-size="10" font-weight="bold" font-family="serif">🎆 花火観覧</text>
-      <text x="180" y="218" text-anchor="middle" fill="rgba(255,209,102,.68)" font-size="8" font-family="serif">Fireworks</text>
-      <!-- WC -->
-      <circle cx="340" cy="183" r="17" fill="rgba(17,138,178,.82)"/>
-      <text x="340" y="180" text-anchor="middle" fill="white" font-size="11">🚻</text>
-      <text x="340" y="194" text-anchor="middle" fill="rgba(255,255,255,.8)" font-size="7" font-family="serif">WC</text>
-      <!-- stars -->
-      <circle cx="28" cy="18" r="1.5" fill="#ffd166" opacity=".7"/>
-      <circle cx="100" cy="8" r="1" fill="white" opacity=".5"/>
-      <circle cx="252" cy="14" r="1.2" fill="#ffb997" opacity=".65"/>
-      <circle cx="336" cy="7" r="1" fill="white" opacity=".45"/>
+    <svg viewBox="0 0 360 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;background:#3a3a3a">
+      <!-- 背景（航空写真イメージ） -->
+      <rect x="0" y="0" width="360" height="400" fill="#46484a"/>
+      <rect x="0" y="0" width="360" height="34" fill="#5a5c5e"/>
+      <rect x="0" y="345" width="360" height="55" fill="#52544f"/>
+
+      <!-- 防災エリア（上段・車両4台＋発電機） -->
+      <a href="#bousai">
+        <rect x="92" y="44" width="220" height="86" rx="6" fill="rgba(140,170,200,.5)" stroke="rgba(245,168,35,.4)" stroke-width="1"/>
+        <text x="202" y="120" text-anchor="middle" fill="#ff5252" font-size="11" font-weight="bold" font-family="sans-serif">防災エリア</text>
+        <!-- 発電機アイコン -->
+        <rect x="195" y="40" width="14" height="10" fill="#e8622c" opacity=".8"/>
+        <text x="202" y="36" text-anchor="middle" fill="#fff" font-size="6" font-family="sans-serif">発電機</text>
+        <!-- 車両×4 -->
+        <rect x="100" y="62" width="22" height="30" rx="3" fill="#d9d9d9" stroke="#888" stroke-width="1"/>
+        <rect x="148" y="60" width="40" height="26" rx="3" fill="#d9d9d9" stroke="#888" stroke-width="1"/>
+        <rect x="225" y="62" width="22" height="30" rx="3" fill="#d9d9d9" stroke="#888" stroke-width="1"/>
+        <rect x="258" y="62" width="22" height="30" rx="3" fill="#d9d9d9" stroke="#888" stroke-width="1"/>
+        <text x="202" y="100" text-anchor="middle" fill="rgba(255,255,255,.6)" font-size="7" font-family="sans-serif">起震車・消防車 等</text>
+      </a>
+
+      <!-- スポーツ拠点エリア（右側・赤茶ブロック） -->
+      <a href="#sports">
+        <rect x="318" y="44" width="38" height="290" fill="rgba(180,90,60,.55)" stroke="rgba(0,229,200,.3)" stroke-width="1"/>
+        <text x="337" y="200" text-anchor="middle" fill="#ffb997" font-size="9" font-weight="bold" font-family="sans-serif" transform="rotate(90 337 200)">スポーツ拠点エリア</text>
+      </a>
+
+      <!-- サークル紹介・運営本部の縦列 -->
+      <rect x="288" y="134" width="26" height="200" fill="rgba(232,98,44,.25)" stroke="rgba(245,168,35,.4)" stroke-width="1"/>
+      <a href="#sponsors"><rect x="290" y="138" width="22" height="30" fill="rgba(232,98,44,.4)"/><text x="301" y="156" text-anchor="middle" fill="#fff" font-size="6" font-family="sans-serif">サークル</text></a>
+      <a href="#sponsors"><rect x="290" y="172" width="22" height="30" fill="rgba(232,98,44,.4)"/><text x="301" y="190" text-anchor="middle" fill="#fff" font-size="6" font-family="sans-serif">サークル</text></a>
+      <a href="#contact"><rect x="290" y="206" width="22" height="26" fill="rgba(232,98,44,.4)"/><text x="301" y="221" text-anchor="middle" fill="#fff" font-size="6" font-family="sans-serif">救護</text></a>
+      <a href="#contact"><rect x="290" y="236" width="22" height="30" fill="rgba(232,98,44,.4)"/><text x="301" y="254" text-anchor="middle" fill="#fff" font-size="6" font-family="sans-serif">運営本部</text></a>
+      <a href="#stamp"><rect x="290" y="270" width="22" height="30" fill="rgba(232,98,44,.4)"/><text x="301" y="288" text-anchor="middle" fill="#fff" font-size="6" font-family="sans-serif">抽選会</text></a>
+      <text x="301" y="128" text-anchor="middle" fill="rgba(255,255,255,.55)" font-size="6" font-family="sans-serif">運営本部等</text>
+
+      <!-- 文化体験エリア（中央） -->
+      <a href="#culture">
+        <rect x="170" y="134" width="116" height="36" fill="rgba(232,98,44,.55)" stroke="rgba(255,255,255,.2)" stroke-width="1"/>
+        <text x="228" y="138" text-anchor="middle" fill="#fff" font-size="6" font-family="sans-serif">発電機</text>
+        <rect x="170" y="174" width="116" height="120" fill="rgba(245,222,150,.45)" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
+        <text x="228" y="198" text-anchor="middle" fill="#c0392b" font-size="13" font-weight="bold" font-family="sans-serif">文化体験エリア</text>
+        <rect x="178" y="212" width="50" height="40" fill="rgba(120,170,80,.5)" stroke="#fff" stroke-width=".5"/>
+        <rect x="232" y="212" width="50" height="40" fill="rgba(120,170,80,.5)" stroke="#fff" stroke-width=".5"/>
+        <rect x="178" y="256" width="50" height="36" fill="rgba(120,170,80,.5)" stroke="#fff" stroke-width=".5"/>
+        <rect x="232" y="256" width="50" height="36" fill="rgba(120,170,80,.5)" stroke="#fff" stroke-width=".5"/>
+        <rect x="170" y="296" width="116" height="20" fill="rgba(232,98,44,.55)"/>
+        <text x="228" y="310" text-anchor="middle" fill="#fff" font-size="6" font-family="sans-serif">発電機</text>
+      </a>
+      <!-- ロンブルテント（文化体験の隣・小） -->
+      <a href="#culture">
+        <rect x="128" y="178" width="38" height="38" fill="rgba(150,200,100,.45)" stroke="#fff" stroke-width=".5"/>
+        <text x="147" y="200" text-anchor="middle" fill="#2d5a2d" font-size="6" font-family="sans-serif">ロンブル</text>
+        <rect x="128" y="220" width="38" height="38" fill="rgba(150,200,100,.45)" stroke="#fff" stroke-width=".5"/>
+        <text x="147" y="242" text-anchor="middle" fill="#2d5a2d" font-size="6" font-family="sans-serif">ロンブル</text>
+      </a>
+
+      <!-- STAGE（左） -->
+      <a href="#stage">
+        <rect x="38" y="222" width="64" height="46" fill="rgba(90,90,95,.7)" stroke="#ff5252" stroke-width="1.5"/>
+        <text x="70" y="248" text-anchor="middle" fill="#fff" font-size="9" font-weight="bold" font-family="sans-serif">STAGE</text>
+        <rect x="100" y="222" width="14" height="20" fill="rgba(232,98,44,.5)" stroke="#ff5252" stroke-width="1"/>
+        <text x="107" y="234" text-anchor="middle" fill="#fff" font-size="5" font-family="sans-serif">控室</text>
+        <rect x="100" y="244" width="14" height="24" fill="rgba(232,98,44,.5)" stroke="#ff5252" stroke-width="1"/>
+        <text x="107" y="258" text-anchor="middle" fill="#fff" font-size="5" font-family="sans-serif">着替</text>
+        <rect x="60" y="206" width="20" height="14" fill="rgba(232,98,44,.5)" stroke="#ff5252" stroke-width="1"/>
+        <text x="70" y="216" text-anchor="middle" fill="#fff" font-size="5" font-family="sans-serif">PA</text>
+        <text x="70" y="280" text-anchor="middle" fill="rgba(255,255,255,.55)" font-size="6" font-family="sans-serif">W7200×D5400</text>
+      </a>
+
+      <!-- ドリンクブース -->
+      <rect x="100" y="288" width="20" height="26" fill="rgba(91,200,235,.4)" stroke="#fff" stroke-width=".5"/>
+      <text x="110" y="304" text-anchor="middle" fill="#fff" font-size="5" font-family="sans-serif">ドリンク</text>
+      <rect x="100" y="318" width="20" height="26" fill="rgba(91,200,235,.4)" stroke="#fff" stroke-width=".5"/>
+      <text x="110" y="334" text-anchor="middle" fill="#fff" font-size="5" font-family="sans-serif">ドリンク</text>
+
+      <!-- エコステーション -->
+      <circle cx="84" cy="176" r="11" fill="rgba(0,229,200,.4)" stroke="#00e5c8" stroke-width="1"/>
+      <text x="84" y="174" text-anchor="middle" fill="#fff" font-size="8">♻️</text>
+      <text x="84" y="190" text-anchor="middle" fill="rgba(255,255,255,.6)" font-size="5" font-family="sans-serif">エコSTA</text>
+
+      <!-- トイレ・手洗い・喚煙所 -->
+      <rect x="42" y="116" width="16" height="14" fill="rgba(91,200,235,.4)" stroke="#fff" stroke-width=".5"/>
+      <text x="50" y="126" text-anchor="middle" fill="#fff" font-size="5" font-family="sans-serif">女性</text>
+      <rect x="62" y="116" width="16" height="14" fill="rgba(91,200,235,.4)" stroke="#fff" stroke-width=".5"/>
+      <text x="70" y="126" text-anchor="middle" fill="#fff" font-size="5" font-family="sans-serif">男性</text>
+      <text x="60" y="142" text-anchor="middle" fill="rgba(255,255,255,.55)" font-size="5" font-family="sans-serif">手洗</text>
+      <rect x="104" y="116" width="16" height="14" rx="2" fill="rgba(255,209,102,.5)" stroke="#fff" stroke-width=".5"/>
+      <text x="112" y="135" text-anchor="middle" fill="rgba(255,255,255,.55)" font-size="5" font-family="sans-serif">喚煙所</text>
+
+      <!-- 飲食ブース（下段・キッチンカー6台） -->
+      <a href="#food">
+        <rect x="0" y="345" width="360" height="55" fill="rgba(232,98,44,.18)"/>
+        <text x="60" y="395" fill="#ff7043" font-size="11" font-weight="bold" font-family="sans-serif">飲食ブース</text>
+        <rect x="120" y="352" width="32" height="22" rx="3" fill="#d9d9d9" stroke="#888" stroke-width="1"/>
+        <rect x="160" y="352" width="32" height="22" rx="3" fill="#d9d9d9" stroke="#888" stroke-width="1"/>
+        <rect x="200" y="352" width="32" height="22" rx="3" fill="#d9d9d9" stroke="#888" stroke-width="1"/>
+        <rect x="240" y="352" width="32" height="22" rx="3" fill="#d9d9d9" stroke="#888" stroke-width="1"/>
+        <rect x="280" y="352" width="32" height="22" rx="3" fill="#d9d9d9" stroke="#888" stroke-width="1"/>
+        <rect x="320" y="352" width="32" height="22" rx="3" fill="#d9d9d9" stroke="#888" stroke-width="1"/>
+        <text x="200" y="380" text-anchor="middle" fill="rgba(255,255,255,.55)" font-size="6" font-family="sans-serif">キッチンカー × 6</text>
+      </a>
+
+      <!-- ボート体験会 -->
+      <text x="330" y="397" text-anchor="middle" fill="rgba(255,255,255,.4)" font-size="6" font-family="sans-serif">ボート体験会</text>
     </svg>
   </div>
   <div class="map-legend rv d1">
-    <div class="leg" onclick="goto('#stage')"><div class="leg-dot" style="background:#c93a2a"></div><div><div class="leg-name">🎤 ステージ</div><div class="leg-en">Stage Area</div></div></div>
-    <div class="leg" onclick="goto('#food')"><div class="leg-dot" style="background:#e8622c"></div><div><div class="leg-name">🍜 飲食エリア</div><div class="leg-en">Food Area</div></div></div>
-    <div class="leg" onclick="goto('#culture')"><div class="leg-dot" style="background:#5c1a8a"></div><div><div class="leg-name">🎨 文化体験</div><div class="leg-en">Culture</div></div></div>
-    <div class="leg" onclick="goto('#sports')"><div class="leg-dot" style="background:#00b48c"></div><div><div class="leg-name">⚽ スポーツ</div><div class="leg-en">Sports</div></div></div>
-    <div class="leg" onclick="goto('#bousai')"><div class="leg-dot" style="background:#c88c00"></div><div><div class="leg-name">🚒 防災エリア</div><div class="leg-en">Disaster Prev.</div></div></div>
-    <div class="leg"><div class="leg-dot" style="background:#118ab2"></div><div><div class="leg-name">🚻 WC / ♻️ エコ</div><div class="leg-en">Facilities</div></div></div>
+    <div class="leg" onclick="goto('#stage')"><div class="leg-dot" style="background:#c93a2a"></div><div><div class="leg-name">🎤 STAGE</div><div class="leg-en">Stage Area</div></div></div>
+    <div class="leg" onclick="goto('#food')"><div class="leg-dot" style="background:#e8622c"></div><div><div class="leg-name">🍜 飲食ブース</div><div class="leg-en">Food Area</div></div></div>
+    <div class="leg" onclick="goto('#culture')"><div class="leg-dot" style="background:#dba23a"></div><div><div class="leg-name">🎨 文化体験エリア</div><div class="leg-en">Culture</div></div></div>
+    <div class="leg" onclick="goto('#sports')"><div class="leg-dot" style="background:#b45a3c"></div><div><div class="leg-name">⚽ スポーツ拠点</div><div class="leg-en">Sports</div></div></div>
+    <div class="leg" onclick="goto('#bousai')"><div class="leg-dot" style="background:#8caac8"></div><div><div class="leg-name">🚒 防災エリア</div><div class="leg-en">Disaster Prev.</div></div></div>
+    <div class="leg" onclick="goto('#contact')"><div class="leg-dot" style="background:#e8622c"></div><div><div class="leg-name">🏢 運営本部・救護</div><div class="leg-en">HQ / First Aid</div></div></div>
+    <div class="leg" onclick="goto('#stamp')"><div class="leg-dot" style="background:#ffd166"></div><div><div class="leg-name">🎟️ 抽選会</div><div class="leg-en">Lottery</div></div></div>
+    <div class="leg"><div class="leg-dot" style="background:#118ab2"></div><div><div class="leg-name">🚻 トイレ / ♻️ エコ</div><div class="leg-en">Facilities</div></div></div>
   </div>
 </section>
 <div class="rainbow z1"></div>
@@ -583,6 +639,22 @@ footer{position:relative;z-index:1;background:rgba(6,1,14,.96);border-top:1px so
 </section>
 <div class="rainbow z1"></div>
 
+<!-- ACCESS -->
+<section id="access" class="z1">
+  <div class="wrap" style="margin-bottom:18px">
+    <div class="sec-tag">ACCESS</div>
+    <h2 class="sec-title grad-text" data-i="access_title">📍 アクセス</h2>
+    <p class="sec-sub">大淀川河川広場</p>
+  </div>
+  <div class="acc-list">
+    <div class="acc-card rv"><div class="acc-icon">🚶</div><div><div class="acc-mode" data-i="acc_walk">徒歩</div><div class="acc-detail"><strong>JR宮崎駅</strong>より徒歩約<strong>12分</strong><br>橘通りを南下、大淀川河川敷へ</div></div></div>
+    <div class="acc-card rv d1"><div class="acc-icon">🚌</div><div><div class="acc-mode" data-i="acc_bus">シャトルバス（無料）</div><div class="acc-detail">宮崎駅バスターミナルより 10:30〜17:30<br>30分間隔・予約不要</div></div></div>
+    <div class="acc-card rv d2"><div class="acc-icon">🚗</div><div><div class="acc-mode" data-i="acc_car">お車</div><div class="acc-detail">宮崎ICより約<strong>15分</strong> / 臨時駐車場 500台（無料）<br>※混雑のため公共交通推奨</div></div></div>
+    <div class="acc-card rv d3"><div class="acc-icon">✈️</div><div><div class="acc-mode" data-i="acc_air">空路</div><div class="acc-detail">宮崎ブーゲンビリア空港より車で約<strong>20分</strong></div></div></div>
+  </div>
+  <a href="https://maps.google.com/?q=大淀川河川広場+宮崎市" target="_blank" class="map-btn rv">🗺 Google Mapsで開く</a>
+</section>
+<div class="rainbow z1"></div>
 
 <!-- CONTACT -->
 <section id="contact" class="z1">
@@ -601,15 +673,15 @@ footer{position:relative;z-index:1;background:rgba(6,1,14,.96);border-top:1px so
         <a href="https://www.facebook.com/profile.php?id=61590304564762" target="_blank" class="sns-btn">📘 Facebook</a>
       </div>
     </div></div>
-    <div class="con-row"><div class="con-icon">⏰</div><div><div class="con-lbl" data-i="c_hours">当日受付</div><div class="con-val">11:00 〜 17:30（本部テント）</div></div></div>
+    <div class="con-row"><div class="con-icon">⏰</div><div><div class="con-lbl" data-i="c_hours">当日受付</div><div class="con-val">10:30 〜 17:00（本部テント）</div></div></div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <picture><source srcset="images/logo.webp" type="image/webp"/><img class="ft-logo" src="images/logo.png" alt="World Terrace 2026"/></picture>
-  <div class="ft-org">主催：一般社団法人宮崎青年会議所 / 共催：宮崎市<br>2026年10月17日（土）11:00〜17:30 大淀川河川広場</div>
-  <div class="ft-copy">© 宮崎青年会議所グローバル共生委員会</div>
+  <div class="ft-org">主催：一般社団法人 宮崎青年会議所 / 共催：宮崎市<br>2026年10月17日（土）11:00〜18:00 大淀川河川広場</div>
+  <div class="ft-copy">© 2026 ワールドテラス2026実行委員会</div>
 </footer>
 
 <script>
@@ -814,6 +886,9 @@ function applyT(){
   document.querySelectorAll('[data-i]').forEach(el=>{
     const v=t[el.dataset.i]; if(v!==undefined) el.textContent=v;
   });
+  document.querySelectorAll('[data-i-ph]').forEach(el=>{
+    const v=t[el.dataset.iPh]; if(v!==undefined) el.placeholder=v;
+  });
   const nb=document.getElementById('navLang');
   if(nb) nb.textContent='🌐 '+(t.lc||lang.toUpperCase());
   document.getElementById('htmlRoot').lang=({ja:'ja',en:'en',easy:'ja'})[lang]||'ja';
@@ -830,20 +905,24 @@ function genId(){
 function adj(t,d){
   if(t==='a') adults=Math.max(0,adults+d);
   else children=Math.max(0,children+d);
-  if(adults===0&&children===0) adults=1;
+  if(adults===0&&children===0){
+    if(t==='a') children=1; else adults=1;
+  }
   document.getElementById('numA').textContent=adults;
   document.getElementById('numC').textContent=children;
 }
 function doReg(){
-  const reg={id:previewId,adults,children,lang,ts:Date.now()};
+  const nation=(document.getElementById('inNation').value||'').trim();
+  const age=(document.getElementById('inAge').value||'').trim();
+  const reg={id:previewId,adults,children,nation,age,lang,ts:Date.now()};
   localStorage.setItem(K.REG,JSON.stringify(reg));
   hide('regOv');
   // GASにカウントを送信（非同期）
-  addCount(adults,children,previewId);
+  addCount(adults,children,previewId,nation,age);
   showWlc(reg);
 }
 function loadReg(reg){
-  adults=reg.adults||1; children=reg.children||0;
+  adults=reg.adults!==undefined?reg.adults:1; children=reg.children||0;
   if(reg.lang){ lang=reg.lang; }
 }
 function showWlc(reg){
@@ -903,7 +982,7 @@ async function fetchCount(){
   }catch(e){console.log('count fetch failed',e);}
 }
 
-async function addCount(adults,children,id){
+async function addCount(adults,children,id,nation,age){
   if(!GAS_URL||GAS_URL==='YOUR_GAS_URL_HERE'){
     // GAS未設定時はローカルカウント
     const n=parseInt(localStorage.getItem('wt26c')||'0',10)+(adults+children);
@@ -913,7 +992,7 @@ async function addCount(adults,children,id){
     return;
   }
   try{
-    const url=GAS_URL+`?action=add&adults=${adults}&children=${children}&id=${encodeURIComponent(id)}`;
+    const url=GAS_URL+`?action=add&adults=${adults}&children=${children}&id=${encodeURIComponent(id)}&nation=${encodeURIComponent(nation||'')}&age=${encodeURIComponent(age||'')}`;
     const r=await fetch(url,{cache:'no-store'});
     const d=await r.json();
     animN(d.count,document.getElementById('ctrNum'));
@@ -1125,5 +1204,3 @@ document.addEventListener('DOMContentLoaded',()=>{
 </script>
 </body>
 </html>
-
-これvercelのどこにぶち込んだらいい？
