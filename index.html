@@ -224,6 +224,18 @@ section::before{content:'';position:absolute;inset:0;z-index:-1;background:linea
 .st-reset-wrap{text-align:center;margin:0 16px 4px}
 .btn-rst{font-size:11px;color:var(--t3);border-bottom:1px solid rgba(255,248,240,.12);padding-bottom:1px}
 
+/* 文化体験サブスタンプ：4列グリッド */
+.st-grid-sm{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:0 16px 12px}
+.st-item-sm{border-radius:12px;border:1.5px dashed rgba(255,248,240,.16);background:rgba(255,248,240,.03);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer;transition:all .3s;position:relative;overflow:hidden;padding:10px 4px}
+.st-item-sm.got{border-style:solid;border-color:var(--amber);background:rgba(245,168,35,.1)}
+.st-item-sm.got::after{content:'✓';position:absolute;top:3px;right:6px;font-size:10px;font-weight:900;color:var(--amber);font-family:'Cinzel',serif}
+.st-item-sm .st-emoji{font-size:20px}
+.st-item-sm .st-name{font-size:8px;color:var(--t2);text-align:center;line-height:1.3;padding:0 2px}
+.st-item-sm.got .st-name{color:var(--gold);font-weight:700}
+
+/* 先着バッジ */
+.capacity-badge{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:100px;background:rgba(230,57,70,.15);border:1px solid rgba(230,57,70,.35);font-size:12px;font-weight:700;color:#ff6b6b;margin:0 16px 16px;font-family:'Cinzel',serif;letter-spacing:.04em}
+
 /* === SPONSORS === */
 .sp-list{display:flex;flex-direction:column;gap:9px;margin:0 16px}
 .spon-card{padding:14px 16px;border-radius:14px;background:var(--glass);border:1px solid var(--glassb);display:flex;align-items:center;gap:12px}
@@ -478,58 +490,63 @@ footer{position:relative;z-index:1;background:rgba(6,1,14,.96);border-top:1px so
 
 <!-- STAMP -->
 <section id="stamp" class="z1">
-  <div class="wrap" style="margin-bottom:18px">
+  <div class="wrap" style="margin-bottom:16px">
     <div class="sec-tag">STAMP RALLY</div>
     <h2 class="sec-title grad-text" data-i="stamp_title">🎯 スタンプラリー</h2>
-    <p class="sec-sub" data-i="stamp_sub">スタンプラリーは2種類！各エリアのQRコードを読んでスタンプGET！</p>
+    <p class="sec-sub">5つ集めて景品をゲット！<br>各エリアのQRコードを読み込んでスタンプGET！</p>
   </div>
 
-  <!-- 防災エリア内スタンプ -->
-  <div class="wrap" style="margin-bottom:10px">
-    <div class="sec-tag" style="margin-bottom:0">🧯 防災エリア スタンプ（3箇所）</div>
+  <!-- 先着注意 -->
+  <div style="margin:0 16px 18px;padding:12px 16px;border-radius:14px;background:rgba(230,57,70,.1);border:1px solid rgba(230,57,70,.3)">
+    <div style="font-family:'Cinzel',serif;font-size:12px;font-weight:700;color:#ff6b6b;margin-bottom:4px">⚠️ 先着500名様限定</div>
+    <div style="font-size:12px;color:var(--t2);line-height:1.7">景品は数量限定です。なくなり次第終了となります。<br><em style="opacity:.75">Prizes limited to first 500 visitors.</em></div>
   </div>
+
+  <!-- 全体プログレス -->
   <div class="st-prog rv">
-    <div class="st-prog-row"><span>防災スタンプ進捗</span><span class="st-cnt"><span id="stNB">0</span> / 3</span></div>
-    <div class="st-bar"><div class="st-fill" id="stFillB" style="width:0%"></div></div>
-    <div class="st-miles"><div class="mile" id="mB3">🧯 防災エリア制覇</div></div>
+    <div class="st-prog-row">
+      <span style="font-weight:700">スタンプ合計</span>
+      <span class="st-cnt"><span id="stTotal">0</span> / 5</span>
+    </div>
+    <div class="st-bar"><div class="st-fill" id="stFillTotal" style="width:0%"></div></div>
+    <div class="st-miles"><div class="mile" id="mTotal">🎯 5つ達成で景品GET！</div></div>
   </div>
-  <div class="st-grid" id="stGridB"></div>
 
-  <div class="ach-box" id="achBoxB">
-    <span class="ach-star" id="achStarB">🧯</span>
-    <div class="ach-title" id="achTitleB">防災エリア制覇！おめでとう！</div>
-    <div class="ach-sub">景品交換所でこの画面を見せてください</div>
+  <!-- 文化体験（12ブース中3つ） -->
+  <div class="wrap" style="margin:18px 0 8px">
+    <div class="sec-tag" style="margin-bottom:2px">🎨 文化体験エリア（12ブース中3つ）</div>
+    <p style="font-size:11px;color:var(--t3);line-height:1.6">12ブースのQRコードから好きな3つを読み込もう<br>同じQRは1回のみ有効</p>
+  </div>
+  <div style="margin:0 16px 4px;padding:7px 14px;border-radius:10px;background:rgba(245,168,35,.08);border:1px solid rgba(245,168,35,.18);display:flex;align-items:center;justify-content:space-between">
+    <span style="font-size:12px;color:var(--t2)">文化体験スタンプ</span>
+    <span style="font-family:'Cinzel',serif;font-size:14px;font-weight:700;color:var(--gold)"><span id="stNC">0</span> / 3</span>
+  </div>
+  <div class="st-grid-sm" id="stGridC"></div>
+
+  <!-- ステージ・防災 -->
+  <div class="wrap" style="margin:16px 0 8px">
+    <div class="sec-tag" style="margin-bottom:2px">🎤 ステージ &amp; 🚒 防災エリア</div>
+    <p style="font-size:11px;color:var(--t3)">それぞれのQRコードを1つ読み込もう</p>
+  </div>
+  <div class="st-grid" id="stGridF" style="grid-template-columns:1fr 1fr;max-width:260px;margin:0 16px 12px"></div>
+
+  <p class="st-note rv">※ 各エリア設置のQRコードで自動スタンプ<br>デモ：タップでスタンプ確認もできます</p>
+
+  <!-- 達成ボックス（5つ揃ったら） -->
+  <div class="ach-box" id="achBox">
+    <span class="ach-star">🎯</span>
+    <div class="ach-title">スタンプ5つ達成！おめでとう！</div>
+    <div class="ach-sub">景品交換所でこの画面を見せてください<br><span style="font-size:10px;opacity:.6">先着500名様限定</span></div>
     <div class="ach-actions">
-      <button class="btn-ach" onclick="showAch('bousai')" data-i="stamp_show">🎁 景品交換所で見せる</button>
-      <button class="btn-exch" id="btnExchB" onclick="markExch('bousai')" data-i="stamp_exch">景品交換済みにする</button>
+      <button class="btn-ach" onclick="showAch()">🎁 景品交換所で見せる</button>
+      <button class="btn-exch" id="btnExch" onclick="markExch()">景品交換済みにする</button>
     </div>
   </div>
-  <div class="prize-list" id="prizeListB"></div>
+  <div class="prize-list" id="prizeList"></div>
 
-  <!-- 全体スタンプ -->
-  <div class="wrap" style="margin:24px 0 10px">
-    <div class="sec-tag" style="margin-bottom:0">🏆 全体スタンプ（5エリア）</div>
+  <div class="st-reset-wrap" style="margin-top:18px">
+    <button class="btn-rst" onclick="resetSt()" data-i="stamp_reset">スタンプをリセットする</button>
   </div>
-  <div class="st-prog rv">
-    <div class="st-prog-row"><span data-i="stamp_prog">スタンプ進捗</span><span class="st-cnt"><span id="stN">0</span> / 5</span></div>
-    <div class="st-bar"><div class="st-fill" id="stFill" style="width:0%"></div></div>
-    <div class="st-miles"><div class="mile" id="m5">🏆 全エリア達成</div></div>
-  </div>
-  <div class="st-grid" id="stGrid"></div>
-  <p class="st-note rv" data-i="stamp_note">※ 各エリア設置のQRコードで自動スタンプ<br>デモ：直接タップでスタンプ確認できます</p>
-
-  <div class="ach-box" id="achBoxM">
-    <span class="ach-star" id="achStarM">🏆</span>
-    <div class="ach-title" id="achTitleM">全体5エリア達成！おめでとう！</div>
-    <div class="ach-sub">景品交換所でこの画面を見せてください</div>
-    <div class="ach-actions">
-      <button class="btn-ach" onclick="showAch('main')" data-i="stamp_show">🎁 景品交換所で見せる</button>
-      <button class="btn-exch" id="btnExchM" onclick="markExch('main')" data-i="stamp_exch">景品交換済みにする</button>
-    </div>
-  </div>
-  <div class="prize-list" id="prizeListM"></div>
-
-  <div class="st-reset-wrap"><button class="btn-rst" onclick="resetSt()" data-i="stamp_reset">スタンプをリセットする</button></div>
 </section>
 <div class="rainbow z1"></div>
 
@@ -629,24 +646,38 @@ const BOUSAI=[
   {icon:'🌍',t:'起震車による地震体験',b:'起震車に乗って実際の地震の揺れを体験。震度7まで体験可能です。13:00〜16:00開催。',ya:'じしんの ゆれを たいけんします。からだで かんじて まなびます。',en:'Experience earthquake shaking up to intensity 7. Available from 13:00 to 16:00.'},
   {icon:'🍱',t:'防災食体験',b:'非常食（アルファ米・缶詰パン）の試食。備蓄食料の展示・配布も。13:00〜16:00開催。',ya:'ひじょうしょく（たいさく の たべもの）を たべてみましょう。',en:'Try emergency survival food. Disaster food exhibits & distribution from 13:00 to 16:00.'},
 ];
-/* スタンプラリー：防災エリア内サブスタンプ */
-const BOUSAI_SPOTS=[
-  {id:'bousai1',emoji:'🧯',name:'消火訓練'},
-  {id:'bousai2',emoji:'🌍',name:'地震体験'},
-  {id:'bousai3',emoji:'🍱',name:'防災食体験'},
+/* ============================================================
+   スタンプラリー データ
+   ① 文化体験：12エリア中3つ達成  ② ステージ：1つ  ③ 防災：3箇所すべて
+============================================================ */
+/* ==================================================
+   スタンプラリー データ
+   合計5スタンプで達成：文化体験3つ + ステージ1つ + 防災1つ
+   文化体験は12ブース中いずれか3つ（同QR1回のみ有効）
+================================================== */
+const CULTURE_SPOTS=[
+  {id:'c01',emoji:'🌍',name:'市国際\n政策課'},
+  {id:'c02',emoji:'👗',name:'県国際\n交流協会'},
+  {id:'c03',emoji:'🥟',name:'市国際\n交流協会'},
+  {id:'c04',emoji:'🇰🇷',name:'韓国\n民団'},
+  {id:'c05',emoji:'🎓',name:'MSG①\nSL/IN'},
+  {id:'c06',emoji:'🎓',name:'MSG②\nMY/NP'},
+  {id:'c07',emoji:'🎓',name:'MSG③\nKG/BD'},
+  {id:'c08',emoji:'🏫',name:'宮崎\n国際大学'},
+  {id:'c09',emoji:'🎨',name:'ひょっとこ\nやろかい'},
+  {id:'c10',emoji:'🌐',name:'文化体験\n⑩'},
+  {id:'c11',emoji:'🌐',name:'文化体験\n⑪'},
+  {id:'c12',emoji:'🌐',name:'文化体験\n⑫'},
 ];
-/* スタンプラリー：全体5エリア */
-const SPOTS=[
-  {id:'stage',emoji:'🎤',name:'ステージ'},
-  {id:'food',emoji:'🍜',name:'飲食エリア'},
-  {id:'culture',emoji:'🎨',name:'文化体験'},
-  {id:'sports',emoji:'⚽',name:'スポーツ'},
+/* 防災エリアは「1スタンプ」として統合 */
+const FIXED_SPOTS=[
+  {id:'stage', emoji:'🎤',name:'ステージ'},
   {id:'bousai',emoji:'🚒',name:'防災エリア'},
 ];
-const PRIZES=[
-  {need:3,icon:'🧯',name:'防災エリア制覇賞',desc:'防災エリア内3箇所（消火訓練・地震体験・防災食体験）すべて達成すると景品ゲット！',group:'bousai'},
-  {need:5,icon:'🏆',name:'全体制覇賞（特賞）',desc:'文化体験・飲食・ステージ・防災・スポーツの5エリアすべて達成すると特賞に挑戦！',group:'main'},
-];
+/* 全スポット（URL判定用） */
+const ALL_SPOTS=[...CULTURE_SPOTS,...FIXED_SPOTS];
+/* 景品（1つ） */
+const PRIZE={icon:'🎯',name:'スタンプラリー達成賞',desc:'先着500名様限定！景品交換所でこの画面を見せてください'};
 const SPONSORS=[
   {name:'（株）〇〇〇〇〇',desc:'メインスポンサー'},
   {name:'〇〇〇株式会社',desc:''},
@@ -759,7 +790,7 @@ const T={
 /* ==================================================
    STATE
 ================================================== */
-const K={REG:'wt26r',ST:'wt26s',EX_B:'wt26eb',EX_M:'wt26em',LG:'wt26l'};
+const K={REG:'wt26r',ST:'wt26s',EX:'wt26ex',LG:'wt26l'};
 let lang='ja', adults=1, children=0, previewId='';
 
 /* ==================================================
@@ -851,12 +882,10 @@ function renderAll(){
   // Bousai
   document.getElementById('bouGrid').innerHTML=BOUSAI.map((b,i)=>`<div class="bou-card rv" style="transition-delay:${i*.06}s"><div class="bou-head"><span>${b.icon}</span>${b.t}</div><div class="bou-body">${b.b}</div><div class="bou-lang"><div class="bou-lbl">🌐 やさしい日本語 / English</div><div class="bou-ya">📖 ${b.ya}</div><div class="bou-en">🔤 ${b.en}</div></div></div>`).join('');
   // Sponsors
-  document.getElementById('spList').innerHTML=SPONSORS.map(s=>`<div class="spon-card"><span class="spon-rank r-${s.rank}">${s.rlbl}</span><div><div class="spon-name">${s.name}</div>${s.desc?`<div class="spon-desc">${s.desc}</div>`:''}</div></div>`).join('');
-  // Prizes（防災・全体それぞれ独立）
-  PRIZES.forEach(p=>{
-    const target=p.group==='bousai'?'prizeListB':'prizeListM';
-    document.getElementById(target).innerHTML=`<div class="prize-card" id="prz_${p.group}"><div class="prz-icon">${p.icon}</div><div><div class="prz-cond">${p.group==='bousai'?'防災3箇所達成':'5エリア達成'}</div><div class="prz-name">${p.name}</div><div class="prz-desc">${p.desc}</div></div><div class="prz-lock">🔒</div></div>`;
-  });
+  document.getElementById('spList').innerHTML=SPONSORS.map(s=>`<div class="spon-card" style="padding:14px 16px;border-radius:14px;background:var(--glass);border:1px solid var(--glassb);display:flex;align-items:center;gap:12px"><div><div class="spon-name" style="font-size:13px;font-weight:700">${s.name}</div>${s.desc?`<div class="spon-desc" style="font-size:11px;color:var(--t3)">${s.desc}</div>`:''}</div></div>`).join('');
+  // 景品（1つ）
+  const pl=document.getElementById('prizeList');
+  if(pl) pl.innerHTML=`<div class="prize-card" id="prz_main"><div class="prz-icon">${PRIZE.icon}</div><div><div class="prz-cond">5スタンプ達成</div><div class="prz-name">${PRIZE.name}</div><div class="prz-desc">${PRIZE.desc}</div></div><div class="prz-lock">🔒</div></div>`;
   renderSt();
   setTimeout(observeRv,50);
 }
@@ -879,7 +908,6 @@ async function fetchCount(){
 
 async function addCount(adults,children,id,nation,age){
   if(!GAS_URL||GAS_URL==='YOUR_GAS_URL_HERE'){
-    // GAS未設定時はローカルカウント
     const n=parseInt(localStorage.getItem('wt26c')||'0',10)+(adults+children);
     localStorage.setItem('wt26c',n);
     animN(n,document.getElementById('ctrNum'));
@@ -894,7 +922,6 @@ async function addCount(adults,children,id,nation,age){
     updateRank(d.count);
     localStorage.setItem('wt26c',d.count);
   }catch(e){
-    // フェイルセーフ: ローカル加算
     const n=parseInt(localStorage.getItem('wt26c')||'0',10)+(adults+children);
     localStorage.setItem('wt26c',n);
     animN(n,document.getElementById('ctrNum'));
@@ -910,7 +937,6 @@ function updateRank(n){
 function initCtr(){
   const reg=JSON.parse(localStorage.getItem(K.REG)||'{}');
   if(reg.id) document.getElementById('ctrMyId').textContent='あなたの来場ID: '+reg.id;
-  // GAS設定済みならサーバーから取得、未設定ならローカル値
   if(GAS_URL&&GAS_URL!=='YOUR_GAS_URL_HERE'){
     fetchCount();
   } else {
@@ -926,93 +952,114 @@ function animN(to,el){
 }
 
 /* ==================================================
-   STAMPS — 防災エリア（3箇所）+ 全体（5エリア）の2グループ
+   STAMPS — 1本化スタンプラリー（合計5つで達成）
+   文化体験12ブース中3つ + ステージ1つ + 防災1つ = 5
+   同じQRは1回のみ有効（localStorage管理）
 ================================================== */
 function gst(){try{return JSON.parse(localStorage.getItem(K.ST))||{};}catch{return{};}}
 function sst(d){localStorage.setItem(K.ST,JSON.stringify(d));}
 
+function cultureCount(d){ return Math.min(CULTURE_SPOTS.filter(s=>d[s.id]).length,3); }
+function totalStamps(d){ return cultureCount(d)+(d['stage']?1:0)+(d['bousai']?1:0); }
+
 function renderSt(){
   const d=gst();
-  // 防災エリア内スタンプ（3箇所）
-  document.getElementById('stGridB').innerHTML=BOUSAI_SPOTS.map(s=>`<div class="st-item${d[s.id]?' got':''}" onclick="tapSt('${s.id}')"><div class="st-emoji">${s.emoji}</div><div class="st-name">${s.name}</div></div>`).join('');
-  // 全体スタンプ（5エリア）
-  document.getElementById('stGrid').innerHTML=SPOTS.map(s=>`<div class="st-item${d[s.id]?' got':''}" onclick="tapSt('${s.id}')"><div class="st-emoji">${s.emoji}</div><div class="st-name">${s.name}</div></div>`).join('');
+  // 文化体験グリッド（4列・12ブース）
+  document.getElementById('stGridC').innerHTML=CULTURE_SPOTS.map(s=>`
+    <div class="st-item-sm${d[s.id]?' got':''}" onclick="tapSt('${s.id}')">
+      <div class="st-emoji">${s.emoji}</div>
+      <div class="st-name">${s.name.replace(/\\n/g,'<br>')}</div>
+    </div>`).join('');
+  // ステージ・防災（固定2つ）
+  document.getElementById('stGridF').innerHTML=FIXED_SPOTS.map(s=>`
+    <div class="st-item${d[s.id]?' got':''}" onclick="tapSt('${s.id}')">
+      <div class="st-emoji">${s.emoji}</div>
+      <div class="st-name">${s.name}</div>
+    </div>`).join('');
   updSt();
 }
 
 function tapSt(id){
-  const d=gst();if(d[id])return;
-  d[id]=Date.now();sst(d);
-  const allSpots=[...BOUSAI_SPOTS,...SPOTS];
-  toast((allSpots.find(s=>s.id===id)?.emoji||'')+'スタンプGET！');
+  const d=gst();
+  if(d[id]){ toast('このスタンプはすでに押されています'); return; }
+  // 文化体験は3つまでカウント（それ以上は押せるが総数に加算しない）
+  d[id]=Date.now(); sst(d);
+  const sp=ALL_SPOTS.find(s=>s.id===id);
+  toast((sp?.emoji||'')+'スタンプGET！');
   renderSt();
 }
 
 function updSt(){
   const d=gst();
-  const nB=BOUSAI_SPOTS.filter(s=>d[s.id]).length;
-  const nM=SPOTS.filter(s=>d[s.id]).length;
+  const nC=cultureCount(d);
+  const total=totalStamps(d);
+  const done=total>=5;
 
-  // 防災プログレス
-  document.getElementById('stNB').textContent=nB;
-  document.getElementById('stFillB').style.width=(nB/3*100)+'%';
-  document.getElementById('mB3').classList.toggle('on',nB>=3);
+  // 文化体験カウント表示
+  document.getElementById('stNC').textContent=nC;
 
   // 全体プログレス
-  document.getElementById('stN').textContent=nM;
-  document.getElementById('stFill').style.width=(nM/5*100)+'%';
-  document.getElementById('m5').classList.toggle('on',nM>=5);
+  document.getElementById('stTotal').textContent=total;
+  document.getElementById('stFillTotal').style.width=(Math.min(total,5)/5*100)+'%';
+  document.getElementById('mTotal').classList.toggle('on',done);
+  if(done) document.getElementById('mTotal').textContent='🎉 達成！景品交換所へGO！';
 
-  // 景品カード（それぞれ独立）
-  const przB=document.getElementById('prz_bousai');
-  if(przB){ przB.classList.toggle('on',nB>=3); przB.querySelector('.prz-lock').textContent=nB>=3?'🎉':'🔒'; }
-  const przM=document.getElementById('prz_main');
-  if(przM){ przM.classList.toggle('on',nM>=5); przM.querySelector('.prz-lock').textContent=nM>=5?'🎉':'🔒'; }
+  // 景品カード
+  const prz=document.getElementById('prz_main');
+  if(prz){ prz.classList.toggle('on',done); prz.querySelector('.prz-lock').textContent=done?'🎉':'🔒'; }
 
-  // 防災エリアの達成表示（独立）
-  const abB=document.getElementById('achBoxB');
-  if(nB>=3){
-    abB.classList.add('show');
-    if(localStorage.getItem(K.EX_B)==='1'){const b=document.getElementById('btnExchB');b.classList.add('done');b.textContent='✅ 景品交換済み';}
-  }else{ abB.classList.remove('show'); }
-
-  // 全体エリアの達成表示（独立）
-  const abM=document.getElementById('achBoxM');
-  if(nM>=5){
-    abM.classList.add('show');
-    if(localStorage.getItem(K.EX_M)==='1'){const b=document.getElementById('btnExchM');b.classList.add('done');b.textContent='✅ 景品交換済み';}
-  }else{ abM.classList.remove('show'); }
+  // 達成ボックス
+  const ab=document.getElementById('achBox');
+  if(done){
+    ab.classList.add('show');
+    if(localStorage.getItem(K.EX)==='1'){
+      const b=document.getElementById('btnExch');
+      if(b){b.classList.add('done');b.textContent='✅ 景品交換済み';}
+    }
+  }else{ ab.classList.remove('show'); }
 }
 
-function showAch(group){
+function showAch(){
   const d=gst();
-  const n=group==='bousai'?BOUSAI_SPOTS.filter(s=>d[s.id]).length:SPOTS.filter(s=>d[s.id]).length;
-  const total=group==='bousai'?3:5;
-  const icon=group==='bousai'?'🧯':'🏆';
-  const label=group==='bousai'?'防災エリア':'全体エリア';
+  const total=totalStamps(d);
+  const nC=cultureCount(d);
   const ov=document.createElement('div');
-  ov.style.cssText='position:fixed;inset:0;z-index:9999;background:rgba(8,1,20,.98);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:#fff8f0;text-align:center;padding:24px';
-  ov.innerHTML=`<div style="font-size:64px;animation:spinStar 2s linear infinite">${icon}</div><div style="font-family:'Cinzel',serif;font-size:22px;font-weight:700;background:linear-gradient(135deg,#ffd166,#f5a823);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">みやざきインターナショナルフェスタ</div><div style="font-size:12px;color:rgba(255,248,240,.55);line-height:1.7">ワールドテラス2026 スタンプラリー — ${label}</div><div style="background:rgba(245,168,35,.1);border:2px solid rgba(245,168,35,.35);border-radius:16px;padding:14px 26px;margin:6px 0"><div style="font-family:'Cinzel',serif;font-size:40px;font-weight:700;color:#ffd166">${n} / ${total}</div><div style="font-size:10px;color:rgba(255,248,240,.45)">${label} スタンプ</div></div><div style="font-size:11px;color:rgba(255,248,240,.3)">スタッフに確認いただいたら下を押してください</div><button onclick="this.parentElement.remove()" style="margin-top:8px;background:rgba(255,248,240,.07);color:#fff8f0;border:1px solid rgba(255,248,240,.14);border-radius:100px;padding:11px 30px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Cinzel',serif">閉じる</button>`;
+  ov.style.cssText='position:fixed;inset:0;z-index:9999;background:rgba(8,1,20,.98);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:#fff8f0;text-align:center;padding:24px';
+  ov.innerHTML=`
+    <div style="font-size:60px;animation:spinStar 2s linear infinite">🎯</div>
+    <div style="font-family:'Cinzel',serif;font-size:18px;font-weight:700;background:linear-gradient(135deg,#ffd166,#f5a823);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">みやざきインターナショナルフェスタ</div>
+    <div style="font-size:11px;color:rgba(255,248,240,.45)">ワールドテラス2026 スタンプラリー</div>
+    <div style="background:rgba(245,168,35,.1);border:2px solid rgba(245,168,35,.35);border-radius:18px;padding:16px 32px;margin:4px 0;min-width:220px">
+      <div style="font-family:'Cinzel',serif;font-size:44px;font-weight:700;color:#ffd166;line-height:1">${total} / 5</div>
+      <div style="font-size:11px;color:rgba(255,248,240,.5);margin-top:4px">スタンプ達成数</div>
+      <div style="margin-top:10px;font-size:11px;color:rgba(255,248,240,.6);line-height:1.6">
+        🎨 文化体験 ${nC}/3　🎤 ステージ ${d['stage']?1:0}/1　🚒 防災 ${d['bousai']?1:0}/1
+      </div>
+    </div>
+    <div style="padding:8px 16px;border-radius:100px;background:rgba(230,57,70,.15);border:1px solid rgba(230,57,70,.3);font-size:11px;color:#ff9090">⚠️ 先着500名様限定</div>
+    <div style="font-size:11px;color:rgba(255,248,240,.3)">スタッフに確認いただいたら下を押してください</div>
+    <button onclick="this.parentElement.remove()" style="margin-top:6px;background:rgba(255,248,240,.07);color:#fff8f0;border:1px solid rgba(255,248,240,.14);border-radius:100px;padding:11px 30px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Cinzel',serif">閉じる</button>`;
   document.body.appendChild(ov);
 }
-function markExch(group){
-  const key=group==='bousai'?K.EX_B:K.EX_M;
-  const btnId=group==='bousai'?'btnExchB':'btnExchM';
-  localStorage.setItem(key,'1');
-  const b=document.getElementById(btnId);b.classList.add('done');b.textContent='✅ 景品交換済み';
+
+function markExch(){
+  localStorage.setItem(K.EX,'1');
+  const b=document.getElementById('btnExch');
+  if(b){b.classList.add('done');b.textContent='✅ 景品交換済み';}
   toast('景品交換済みにしました');
 }
+
 function resetSt(){
   if(!confirm('スタンプをすべてリセットしますか？'))return;
-  localStorage.removeItem(K.ST);localStorage.removeItem(K.EX_B);localStorage.removeItem(K.EX_M);
-  const exchTxt=(T[lang]||T.ja).stamp_exch||'景品交換済みにする';
-  const bB=document.getElementById('btnExchB');if(bB){bB.classList.remove('done');bB.textContent=exchTxt;}
-  const bM=document.getElementById('btnExchM');if(bM){bM.classList.remove('done');bM.textContent=exchTxt;}
+  [K.ST,K.EX].forEach(k=>localStorage.removeItem(k));
+  const b=document.getElementById('btnExch');
+  if(b){b.classList.remove('done');b.textContent=(T[lang]||T.ja).stamp_exch||'景品交換済みにする';}
   renderSt();toast('リセットしました');
 }
+
 function checkReset(){
   if(new URLSearchParams(location.search).get('reset')==='1'){
-    ['wt26r','wt26s','wt26eb','wt26em','wt26l','wt26c'].forEach(k=>localStorage.removeItem(k));
+    ['wt26r','wt26s','wt26ex','wt26l','wt26c'].forEach(k=>localStorage.removeItem(k));
     history.replaceState({},'',location.pathname);
     location.reload();
   }
@@ -1020,8 +1067,7 @@ function checkReset(){
 
 function checkURLSt(){
   const p=new URLSearchParams(location.search),id=p.get('stamp');
-  const allSpots=[...BOUSAI_SPOTS,...SPOTS];
-  if(id&&allSpots.find(s=>s.id===id)){
+  if(id&&ALL_SPOTS.find(s=>s.id===id)){
     tapSt(id);
     history.replaceState({},'',location.pathname);
     setTimeout(()=>document.getElementById('stamp').scrollIntoView({behavior:'smooth'}),400);
