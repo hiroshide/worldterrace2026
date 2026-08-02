@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="ja" id="htmlRoot">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"/>
+<title>ワールドテラス2026 | みやざきインターナショナルフェスタ</title>
+<meta name="description" content="みやざきインターナショナルフェスタ ワールドテラス2026 当日ウェブパンフレット。2026年10月17日(土) 大淀川河川広場"/>
+<meta name="theme-color" content="#1a0533"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+/* === BASE === */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0d0420;--bg2:#1a0533;
+  --amber:#f5a823;--gold:#ffd166;--peach:#ffb997;
+  --orange:#e8622c;--crimson:#c93a2a;--violet:#5c1a8a;
+  --mint:#00e5c8;--cyan:#5bc8eb;
+  --glass:rgba(255,248,240,.07);--glassb:rgba(255,248,240,.14);
+  --t1:#fff8f0;--t2:rgba(255,248,240,.65);--t3:rgba(255,248,240,.38);
+  --r:16px;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--t1);overflow-x:hidden;-webkit-tap-highlight-color:transparent}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-thumb{background:var(--amber)}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;border:none;background:none;font-family:inherit;color:inherit}
+
+/* === CANVAS === */
+#sky{position:fixed;inset:0;z-index:0;pointer-events:none;width:100%;height:100%}
+
+/* === UTIL === */
+.z1{position:relative;z-index:1}
+.wrap{max-width:520px;margin:0 auto;padding:0 16px}
+.rainbow{height:3px;background:linear-gradient(90deg,#e63946,#ff6b35,#ffd166,#06d6a0,#118ab2,#7b2fbe,#ff4d8b);position:relative;z-index:1}
+.cinzel{font-family:'Cinzel',serif}
+.grad-text{background:linear-gradient(135deg,var(--t1) 0%,var(--gold) 55%,var(--peach) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.card{background:var(--glass);border:1px solid var(--glassb);border-radius:var(--r);backdrop-filter:blur(12px)}
+.sec-tag{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.sec-tag::before{content:'';width:18px;height:1px;background:var(--amber)}
+.sec-title{font-family:'Cinzel',serif;font-size:clamp(20px,6vw,30px);font-weight:700;margin-bottom:6px}
+.sec-sub{font-size:13px;color:var(--t2);line-height:1.8}
+section{position:relative;z-index:1;padding:52px 0 44px}
+section::before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(to bottom,transparent,rgba(10,2,26,.6) 70%,rgba(10,2,26,.9));pointer-events:none}
+
+/* === OVERLAYS === */
+.overlay{position:fixed;inset:0;z-index:800;background:rgba(8,1,20,.97);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;gap:14px;overflow-y:auto;transition:opacity .3s}
+.overlay.hidden{display:none}
+.ov-logo{width:min(260px,72vw);height:auto;background:#fff;border-radius:16px;padding:10px 16px}
+.ov-title{font-family:'Cinzel',serif;font-size:19px;font-weight:700;text-align:center;background:linear-gradient(135deg,var(--gold),var(--peach));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.ov-sub{font-size:13px;color:var(--t2);text-align:center;line-height:1.7;max-width:300px}
+
+/* LANG */
+#langOv .lang-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;max-width:310px}
+.lang-btn{padding:13px 8px;border-radius:14px;background:var(--glass);border:1px solid var(--glassb);display:flex;flex-direction:column;align-items:center;gap:4px;transition:.2s}
+.lang-btn:active{background:rgba(245,168,35,.14);border-color:rgba(245,168,35,.4)}
+.lang-flag{font-size:26px}
+.lang-name{font-size:12px;font-weight:700}
+.lang-nat{font-size:10px;color:var(--t3)}
+
+/* REG */
+.reg-card{width:100%;max-width:360px;background:var(--glass);border:1px solid var(--glassb);border-radius:20px;padding:20px 18px;backdrop-filter:blur(16px)}
+.reg-lbl{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.08em;color:var(--amber);display:block;margin-bottom:7px}
+.reg-counter{display:flex;align-items:center;background:rgba(255,248,240,.05);border:1px solid var(--glassb);border-radius:10px;overflow:hidden;margin-bottom:14px}
+.rc-btn{width:46px;height:46px;font-size:20px;font-weight:700;background:rgba(255,248,240,.06);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.rc-btn:active{background:rgba(245,168,35,.18)}
+.rc-num{flex:1;text-align:center;font-family:'Cinzel',serif;font-size:22px;font-weight:700;color:var(--gold)}
+.reg-notice{padding:12px 14px;border-radius:12px;background:rgba(245,168,35,.08);border:1px solid rgba(245,168,35,.2);font-size:12px;color:var(--gold);line-height:1.7;text-align:center;margin-bottom:4px}
+.reg-input{width:100%;padding:13px 14px;border-radius:10px;background:rgba(255,248,240,.05);border:1px solid var(--glassb);color:var(--t1);font-size:15px;font-family:inherit;margin-bottom:6px}
+.reg-input::placeholder{color:var(--t3)}
+.reg-input:focus{outline:none;border-color:rgba(245,168,35,.4);background:rgba(255,248,240,.08)}
+.reg-id{font-family:'Cinzel',serif;font-size:11px;color:var(--t3);text-align:center;letter-spacing:.08em}
+.btn-primary{width:100%;max-width:360px;padding:15px;border-radius:100px;background:linear-gradient(135deg,var(--orange),var(--crimson));color:var(--t1);font-family:'Cinzel',serif;font-size:13px;font-weight:700;letter-spacing:.08em;box-shadow:0 0 28px rgba(232,98,44,.4);transition:transform .15s}
+.btn-primary:active{transform:scale(.97)}
+
+/* WELCOME */
+#wlcOv .wlc-emoji{font-size:60px;animation:pop .5s cubic-bezier(.34,1.56,.64,1) both}
+@keyframes pop{from{transform:scale(0) rotate(-20deg)}to{transform:scale(1)}}
+#wlcOv .wlc-id{font-family:'Cinzel',serif;font-size:11px;color:var(--t3);letter-spacing:.1em;background:rgba(255,248,240,.04);border:1px solid var(--glassb);padding:7px 18px;border-radius:100px}
+#wlcOv .wlc-stamp{padding:13px 16px;border-radius:12px;background:rgba(245,168,35,.1);border:1px solid rgba(245,168,35,.22);font-size:12px;color:var(--gold);line-height:1.7;text-align:center;max-width:300px}
+
+/* === NAV === */
+#nav{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(10,2,26,.85);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,248,240,.08);display:none}
+#nav.on{display:block}
+.nav-in{display:flex;align-items:center;justify-content:space-between;max-width:520px;margin:0 auto;padding:9px 16px}
+.nav-logo{height:32px;width:auto;filter:none}
+.nav-right{display:flex;align-items:center;gap:8px}
+.nav-lang{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.06em;padding:5px 9px;border-radius:100px;background:rgba(245,168,35,.1);border:1px solid rgba(245,168,35,.22);color:var(--amber)}
+.nav-ham{width:32px;height:32px;border-radius:50%;background:rgba(245,168,35,.12);border:1px solid rgba(245,168,35,.22);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.nav-ham span{display:block;width:14px;height:1.5px;background:var(--gold);border-radius:1px;transition:.3s}
+.nav-ham.open span:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
+.nav-ham.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nav-ham.open span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
+#drawer{position:fixed;inset:0;z-index:490;background:rgba(8,1,20,.97);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;opacity:0;pointer-events:none;transition:opacity .3s}
+#drawer.open{opacity:1;pointer-events:all}
+#drawer a{font-family:'Cinzel',serif;font-size:13px;font-weight:600;letter-spacing:.08em;color:var(--t1);padding:12px 36px;border-radius:8px;width:270px;text-align:center;border:1px solid transparent;transition:.2s}
+#drawer a:active{border-color:rgba(245,168,35,.3);color:var(--gold);background:rgba(245,168,35,.06)}
+.drawer-x{position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;background:rgba(255,248,240,.07);color:var(--t2);font-size:18px;display:flex;align-items:center;justify-content:center;border:1px solid var(--glassb)}
+
+/* === HERO === */
+#hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:72px 16px 52px;text-align:center}
+.hero-logo{width:min(280px,78vw);height:auto;filter:drop-shadow(0 4px 20px rgba(0,0,0,.6));animation:fadeUp .8s .1s both;border-radius:12px}
+.hero-flags{font-size:18px;letter-spacing:3px;margin:12px 0;animation:floatY 4s ease-in-out infinite}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.hero-theme{font-family:'Cinzel',serif;font-size:14px;font-style:italic;color:var(--peach);margin-bottom:18px;line-height:1.5;animation:fadeUp .9s .3s both}
+.hero-chips{display:flex;flex-direction:column;gap:7px;margin-bottom:26px;align-items:center;animation:fadeUp .9s .45s both}
+.chip{display:inline-flex;align-items:center;gap:7px;padding:7px 18px;border-radius:100px;background:rgba(255,248,240,.08);border:1px solid rgba(255,248,240,.14);font-size:13px}
+.hero-cta{display:inline-flex;align-items:center;gap:8px;padding:14px 30px;border-radius:100px;background:linear-gradient(135deg,var(--orange),var(--crimson));color:var(--t1);font-family:'Cinzel',serif;font-size:12px;font-weight:600;letter-spacing:.1em;box-shadow:0 0 32px rgba(232,98,44,.4);animation:fadeUp .9s .6s both;transition:transform .15s}
+.hero-cta:active{transform:scale(.97)}
+.hero-scroll{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:5px;font-family:'Cinzel',serif;font-size:8px;letter-spacing:.18em;color:var(--t3);animation:scrollBounce 2.5s ease-in-out infinite}
+.hero-scroll::after{content:'';display:block;width:1px;height:28px;background:linear-gradient(to bottom,var(--amber),transparent)}
+@keyframes scrollBounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-7px)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+
+/* === COUNTER === */
+#counter{padding:24px 16px;text-align:center;background:linear-gradient(135deg,rgba(26,5,51,.9),rgba(44,12,80,.85));border-top:1px solid rgba(245,168,35,.12);border-bottom:1px solid rgba(245,168,35,.12)}
+.ctr-lbl{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.2em;color:var(--amber);text-transform:uppercase;margin-bottom:8px}
+.ctr-num{font-family:'Cinzel',serif;font-size:48px;font-weight:700;background:linear-gradient(135deg,var(--gold),var(--peach));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.ctr-unit{font-size:12px;color:var(--t3);margin-bottom:4px}
+.ctr-myid{font-family:'Cinzel',serif;font-size:11px;color:var(--t3);letter-spacing:.08em}
+
+/* === MAP === */
+.map-wrap{margin:0 16px 16px;border-radius:18px;overflow:hidden;border:1px solid var(--glassb);box-shadow:0 8px 32px rgba(0,0,0,.4)}
+.map-legend{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 16px}
+.leg{display:flex;align-items:center;gap:8px;padding:9px 11px;border-radius:11px;background:var(--glass);border:1px solid var(--glassb);cursor:pointer}
+.leg:active{background:rgba(255,248,240,.12)}
+.leg-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.leg-name{font-size:11px;font-weight:700;line-height:1.2}
+.leg-en{font-family:'Cinzel',serif;font-size:9px;color:var(--t3);letter-spacing:.05em}
+
+/* === TIMELINE === */
+.tl{display:flex;flex-direction:column;gap:9px;margin:0 16px}
+.tl-item{display:flex;gap:12px;padding:14px;border-radius:14px;background:var(--glass);border:1px solid var(--glassb);border-left:3px solid var(--crimson)}
+.tl-item.hl{background:linear-gradient(135deg,rgba(232,98,44,.1),rgba(160,37,92,.07));border-left-color:var(--amber);border-color:rgba(245,168,35,.18)}
+.tl-time{flex-shrink:0;min-width:48px;font-family:'Cinzel',serif;font-size:12px;font-weight:600;color:var(--amber);line-height:1.4}
+.tl-end{font-size:10px;color:var(--t3);font-weight:400}
+.tl-name{font-size:14px;font-weight:700;margin-bottom:3px;line-height:1.3}
+.tl-desc{font-size:12px;color:var(--t2);line-height:1.6}
+.tl-org{margin-top:4px;font-size:11px;color:var(--cyan)}
+
+/* === FOOD === */
+.beer-hero{margin:0 16px 14px;padding:16px;border-radius:16px;background:linear-gradient(135deg,rgba(26,5,51,.85),rgba(60,14,100,.6));border:1px solid rgba(245,168,35,.18);display:flex;align-items:center;gap:14px}
+.beer-icon{font-size:40px;flex-shrink:0}
+.beer-title{font-family:'Cinzel',serif;font-size:15px;font-weight:600;color:var(--gold);margin-bottom:4px}
+.beer-sub{font-size:12px;color:var(--t2);line-height:1.6}
+.beer-img{width:calc(100% - 32px);margin:0 16px 14px;border-radius:14px;border:1px solid var(--glassb);display:block;box-shadow:0 6px 24px rgba(0,0,0,.4);object-fit:contain}
+.beer-note{margin:0 16px;font-size:10px;color:var(--t3);line-height:1.7;text-align:center}
+.food-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:14px 16px 0}
+.food-card{padding:13px 12px;border-radius:14px;background:var(--glass);border:1px solid var(--glassb)}
+.food-flag{font-size:24px;margin-bottom:6px}
+.food-ctry{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.08em;color:var(--amber);text-transform:uppercase;margin-bottom:2px}
+.food-name{font-size:13px;font-weight:700;margin-bottom:2px}
+.food-menu{font-size:11px;color:var(--t2);line-height:1.55}
+.food-link{display:inline-flex;align-items:center;gap:4px;margin-top:7px;padding:4px 10px;border-radius:100px;background:rgba(245,168,35,.12);border:1px solid rgba(245,168,35,.25);font-size:10px;color:var(--amber);font-family:'Cinzel',serif;letter-spacing:.04em;text-decoration:none;transition:.2s}
+.food-link:active{background:rgba(245,168,35,.22)}
+
+/* === CULTURE === */
+.cul-grid{display:flex;flex-direction:column;gap:9px;margin:0 16px}
+.cul-card{display:flex;gap:12px;padding:16px;border-radius:14px;background:var(--glass);border:1px solid var(--glassb);border-top:3px solid var(--violet)}
+.cul-icon{font-size:34px;flex-shrink:0}
+.cul-name{font-size:14px;font-weight:700;margin-bottom:3px}
+.cul-desc{font-size:12px;color:var(--t2);line-height:1.65;margin-bottom:6px}
+.cul-org{font-size:10px;font-weight:700;color:var(--cyan);background:rgba(91,200,235,.1);border:1px solid rgba(91,200,235,.18);display:inline-block;padding:2px 9px;border-radius:100px;font-family:'Cinzel',serif;letter-spacing:.05em}
+
+/* === SPORTS === */
+.sp-grid{display:flex;flex-direction:column;gap:9px;margin:0 16px}
+.sp-card{padding:16px;border-radius:14px;background:var(--glass);border:1px solid var(--glassb);border-left:3px solid var(--mint)}
+.sp-head{display:flex;align-items:center;gap:10px;margin-bottom:9px}
+.sp-icon{font-size:30px}
+.sp-name{font-size:14px;font-weight:700;line-height:1.3}
+.sp-badge{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.06em;color:var(--mint);background:rgba(0,229,200,.09);border:1px solid rgba(0,229,200,.18);padding:2px 7px;border-radius:100px;display:inline-block;margin-top:2px}
+.sp-desc{font-size:12px;color:var(--t2);line-height:1.65;margin-bottom:7px}
+.sp-exp{font-size:12px;font-weight:600;color:var(--mint);background:rgba(0,229,200,.06);border-radius:9px;padding:7px 11px;border-left:2px solid rgba(0,229,200,.35)}
+
+/* === BOUSAI === */
+.bou-grid{display:flex;flex-direction:column;gap:9px;margin:0 16px}
+.bou-card{padding:16px;border-radius:14px;background:var(--glass);border:1px solid var(--glassb);border-top:3px solid var(--amber)}
+.bou-head{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:700;margin-bottom:7px}
+.bou-body{font-size:12px;color:var(--t2);line-height:1.75;margin-bottom:9px}
+.bou-lang{background:rgba(0,229,200,.04);border:1px solid rgba(0,229,200,.14);border-radius:11px;padding:11px}
+.bou-lbl{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.1em;color:var(--mint);text-transform:uppercase;margin-bottom:6px}
+.bou-ya{font-size:12px;line-height:1.75;margin-bottom:5px}
+.bou-en{font-size:12px;color:var(--t2);line-height:1.65;font-style:italic}
+
+/* === STAMP === */
+#stamp{background:linear-gradient(160deg,rgba(13,4,32,.97) 0%,rgba(26,5,51,.98) 100%)}
+.st-prog{margin:0 16px 18px;padding:16px;border-radius:14px;background:var(--glass);border:1px solid var(--glassb)}
+.st-prog-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px;font-size:13px;font-weight:700}
+.st-cnt{font-family:'Cinzel',serif;font-size:20px;font-weight:700;color:var(--gold)}
+.st-bar{height:6px;background:rgba(255,248,240,.08);border-radius:3px;overflow:hidden;margin-bottom:9px}
+.st-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--amber),var(--orange));transition:width .6s cubic-bezier(.4,0,.2,1)}
+.st-miles{display:flex;gap:7px}
+.mile{flex:1;text-align:center;padding:6px 3px;border-radius:9px;font-size:11px;color:var(--t3);border:1px solid rgba(255,248,240,.08);line-height:1.3}
+.mile.on{background:rgba(245,168,35,.1);border-color:rgba(245,168,35,.28);color:var(--gold);font-weight:700}
+.st-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:0 16px 12px}
+.st-item{aspect-ratio:1;border-radius:13px;border:1.5px dashed rgba(255,248,240,.16);background:rgba(255,248,240,.03);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;transition:all .3s;position:relative;overflow:hidden}
+.st-item.got{border-style:solid;border-color:var(--amber);background:rgba(245,168,35,.1)}
+.st-item.got::after{content:'✓';position:absolute;top:4px;right:7px;font-size:11px;font-weight:900;color:var(--amber);font-family:'Cinzel',serif}
+.st-emoji{font-size:26px}
+.st-name{font-size:9px;color:var(--t2);text-align:center;line-height:1.3;padding:0 2px}
+.st-item.got .st-name{color:var(--gold);font-weight:700}
+.st-note{text-align:center;margin:0 16px 16px;font-size:11px;color:var(--t3);line-height:1.6}
+.prize-list{display:flex;flex-direction:column;gap:9px;margin:0 16px 18px}
+.prize-card{display:flex;align-items:center;gap:12px;padding:14px;border-radius:14px;background:var(--glass);border:1px solid var(--glassb);transition:.3s}
+.prize-card.on{background:linear-gradient(135deg,rgba(245,168,35,.1),rgba(232,98,44,.07));border-color:rgba(245,168,35,.22)}
+.prz-icon{font-size:30px;flex-shrink:0;transition:.3s}
+.prize-card:not(.on) .prz-icon{filter:grayscale(1);opacity:.3}
+.prz-cond{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.08em;color:var(--t3);text-transform:uppercase;margin-bottom:2px}
+.prize-card.on .prz-cond{color:var(--amber)}
+.prz-name{font-size:13px;font-weight:700;margin-bottom:1px}
+.prz-desc{font-size:11px;color:var(--t2)}
+.prz-lock{margin-left:auto;flex-shrink:0;font-size:18px;transition:.3s}
+.prize-card:not(.on) .prz-lock{opacity:.2}
+.ach-box{margin:0 16px 16px;padding:22px;border-radius:18px;background:linear-gradient(135deg,rgba(245,168,35,.1),rgba(232,98,44,.09));border:1px solid rgba(245,168,35,.28);text-align:center;display:none}
+.ach-box.show{display:block}
+.ach-star{font-size:50px;margin-bottom:7px;animation:spinStar 3s linear infinite;display:block}
+@keyframes spinStar{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.ach-title{font-family:'Cinzel',serif;font-size:19px;font-weight:700;color:var(--gold);margin-bottom:5px}
+.ach-sub{font-size:12px;color:var(--t2);line-height:1.65;margin-bottom:16px}
+.ach-actions{display:flex;flex-direction:column;gap:8px}
+.btn-ach{padding:13px;border-radius:100px;background:linear-gradient(135deg,var(--amber),var(--orange));color:var(--t1);font-family:'Cinzel',serif;font-size:13px;font-weight:700;letter-spacing:.06em;box-shadow:0 4px 18px rgba(232,98,44,.35);transition:transform .15s}
+.btn-ach:active{transform:scale(.97)}
+.btn-exch{padding:11px;border-radius:100px;background:rgba(255,248,240,.05);color:var(--t3);font-size:12px;font-weight:600;border:1px solid rgba(255,248,240,.08)}
+.btn-exch.done{background:rgba(0,229,200,.09);color:var(--mint);border-color:rgba(0,229,200,.22)}
+.st-reset-wrap{text-align:center;margin:0 16px 4px}
+.btn-rst{font-size:11px;color:var(--t3);border-bottom:1px solid rgba(255,248,240,.12);padding-bottom:1px}
+
+/* 文化体験サブスタンプ：4列グリッド */
+.st-grid-sm{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:0 16px 12px}
+.st-item-sm{border-radius:12px;border:1.5px dashed rgba(255,248,240,.16);background:rgba(255,248,240,.03);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer;transition:all .3s;position:relative;overflow:hidden;padding:10px 4px}
+.st-item-sm.got{border-style:solid;border-color:var(--amber);background:rgba(245,168,35,.1)}
+.st-item-sm.got::after{content:'✓';position:absolute;top:3px;right:6px;font-size:10px;font-weight:900;color:var(--amber);font-family:'Cinzel',serif}
+.st-item-sm .st-emoji{font-size:20px}
+.st-item-sm .st-name{font-size:8px;color:var(--t2);text-align:center;line-height:1.3;padding:0 2px}
+.st-item-sm.got .st-name{color:var(--gold);font-weight:700}
+
+/* 先着バッジ */
+.capacity-badge{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:100px;background:rgba(230,57,70,.15);border:1px solid rgba(230,57,70,.35);font-size:12px;font-weight:700;color:#ff6b6b;margin:0 16px 16px;font-family:'Cinzel',serif;letter-spacing:.04em}
+
+/* === SPONSORS === */
+.sp-list{display:flex;flex-direction:column;gap:9px;margin:0 16px}
+.spon-card{padding:14px 16px;border-radius:14px;background:var(--glass);border:1px solid var(--glassb);display:flex;align-items:center;gap:12px}
+.spon-rank{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:100px;flex-shrink:0}
+.r-gold{background:rgba(255,209,102,.12);border:1px solid rgba(255,209,102,.28);color:#ffd166}
+.r-silver{background:rgba(200,200,220,.08);border:1px solid rgba(200,200,220,.2);color:#c8c8dc}
+.r-bronze{background:rgba(205,127,50,.09);border:1px solid rgba(205,127,50,.2);color:#cd7f32}
+.r-support{background:rgba(91,200,235,.09);border:1px solid rgba(91,200,235,.2);color:var(--cyan)}
+.spon-name{font-size:13px;font-weight:700}
+.spon-desc{font-size:11px;color:var(--t3);margin-top:1px}
+
+/* === ACCESS === */
+.acc-list{display:flex;flex-direction:column;gap:9px;margin:0 16px}
+.acc-card{display:flex;gap:12px;align-items:flex-start;padding:15px;border-radius:14px;background:var(--glass);border:1px solid var(--glassb)}
+.acc-icon{font-size:24px;flex-shrink:0;margin-top:1px}
+.acc-mode{font-size:13px;font-weight:700;margin-bottom:3px;color:var(--peach)}
+.acc-detail{font-size:12px;color:var(--t2);line-height:1.75}
+.acc-detail strong{color:var(--t1)}
+.map-btn{display:flex;align-items:center;justify-content:center;gap:8px;margin:16px 16px 0;padding:13px;border-radius:100px;background:linear-gradient(135deg,rgba(91,200,235,.18),rgba(17,138,178,.18));border:1px solid rgba(91,200,235,.28);color:var(--cyan);font-family:'Cinzel',serif;font-size:12px;font-weight:600;letter-spacing:.07em}
+
+/* === CONTACT === */
+.con-card{margin:0 16px;border-radius:18px;background:var(--glass);border:1px solid var(--glassb);overflow:hidden}
+.con-row{display:flex;align-items:flex-start;gap:11px;padding:14px 16px;border-bottom:1px solid rgba(255,248,240,.06)}
+.con-row:last-child{border-bottom:none}
+.con-icon{font-size:18px;flex-shrink:0;margin-top:1px}
+.con-lbl{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.1em;color:var(--amber);text-transform:uppercase;margin-bottom:2px}
+.con-val{font-size:13px;font-weight:600}
+.con-val a{color:var(--cyan)}
+.sns-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:3px}
+.sns-btn{display:flex;align-items:center;gap:5px;padding:7px 12px;border-radius:100px;font-size:12px;font-weight:700;border:1px solid var(--glassb);background:var(--glass);transition:.2s}
+.sns-btn:active{background:rgba(255,248,240,.12)}
+
+/* === FOOTER === */
+footer{position:relative;z-index:1;background:rgba(6,1,14,.96);border-top:1px solid rgba(255,248,240,.06);padding:28px 16px;text-align:center}
+.ft-logo{width:min(180px,50vw);height:auto;margin:0 auto 10px;border-radius:8px}
+.ft-org{font-size:11px;color:var(--t3);line-height:1.85;margin-bottom:10px}
+.ft-copy{font-size:10px;color:var(--t3);letter-spacing:.04em}
+
+/* === TOAST === */
+#toast{position:fixed;bottom:64px;left:50%;transform:translateX(-50%) translateY(14px);padding:10px 22px;border-radius:100px;background:rgba(20,5,44,.97);border:1px solid rgba(245,168,35,.22);color:var(--t1);font-size:13px;font-weight:700;box-shadow:0 4px 20px rgba(0,0,0,.4);opacity:0;transition:.3s;pointer-events:none;z-index:8000;white-space:nowrap}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* === REVEAL === */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease}
+.rv.in{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+</style>
+</head>
+<body>
+
+<canvas id="sky"></canvas>
+<div id="toast"></div>
+
+<!-- LANG OVERLAY -->
+<div class="overlay" id="langOv">
+  <picture><source srcset="images/logo.webp" type="image/webp"/><img class="ov-logo" src="images/logo.png" alt="World Terrace 2026"/></picture>
+  <p class="ov-title cinzel">言語を選択 / Select Language</p>
+  <div class="lang-grid" style="grid-template-columns:repeat(3,1fr);max-width:340px">
+    <button class="lang-btn" onclick="pickLang('ja')"><span class="lang-flag">🇯🇵</span><span class="lang-name">日本語</span><span class="lang-nat">Japanese</span></button>
+    <button class="lang-btn" onclick="pickLang('en')"><span class="lang-flag">🇺🇸</span><span class="lang-name">English</span><span class="lang-nat">English</span></button>
+    <button class="lang-btn" onclick="pickLang('easy')"><span class="lang-flag">🗣️</span><span class="lang-name">やさしい日本語</span><span class="lang-nat">Easy Japanese</span></button>
+  </div>
+</div>
+
+<!-- REGISTRATION OVERLAY -->
+<div class="overlay hidden" id="regOv">
+  <picture><source srcset="images/logo.webp" type="image/webp"/><img class="ov-logo" src="images/logo.png" alt="World Terrace 2026"/></picture>
+  <p class="ov-title cinzel" data-i="reg_title">来場登録</p>
+  <p class="ov-sub" data-i="reg_sub">会場にご来場いただきありがとうございます！情報を入力して登録してください。</p>
+  <div class="reg-card">
+    <label class="reg-lbl" data-i="reg_adult">大人（18歳以上）</label>
+    <div class="reg-counter">
+      <button class="rc-btn" onclick="adj('a',-1)">－</button>
+      <div class="rc-num" id="numA">1</div>
+      <button class="rc-btn" onclick="adj('a',1)">＋</button>
+    </div>
+    <label class="reg-lbl" data-i="reg_child">子ども（18歳未満）</label>
+    <div class="reg-counter">
+      <button class="rc-btn" onclick="adj('c',-1)">－</button>
+      <div class="rc-num" id="numC">0</div>
+      <button class="rc-btn" onclick="adj('c',1)">＋</button>
+    </div>
+    <label class="reg-lbl" data-i="reg_nation">国籍</label>
+    <input class="reg-input" id="inNation" type="text" data-i-ph="reg_nation_ph" placeholder="例：日本" autocomplete="off"/>
+    <label class="reg-lbl" data-i="reg_age" style="margin-top:14px">代表者の年齢</label>
+    <input class="reg-input" id="inAge" type="number" inputmode="numeric" min="0" max="120" data-i-ph="reg_age_ph" placeholder="例：35" autocomplete="off"/>
+    <div class="reg-notice" data-i="reg_notice" style="margin-top:14px">🎯 スタンプラリー参加で景品ゲット！<br>各エリアのQRコードを集めよう！</div>
+    <div class="reg-id" id="regId" style="margin-top:10px"></div>
+  </div>
+  <button class="btn-primary" onclick="doReg()" data-i="reg_btn">✋ 来場しました！</button>
+</div>
+
+<!-- WELCOME OVERLAY -->
+<div class="overlay hidden" id="wlcOv">
+  <picture><source srcset="images/logo.webp" type="image/webp"/><img class="ov-logo" src="images/logo.png" alt="World Terrace 2026"/></picture>
+  <span class="wlc-emoji">🎆</span>
+  <p class="ov-title cinzel" data-i="wlc_title">ようこそ！WORLD TERRACE 2026へ</p>
+  <div class="wlc-id cinzel" id="wlcId"></div>
+  <p class="ov-sub" data-i="wlc_sub">みやざきインターナショナルフェスタへようこそ！Beyond Exchange 〜交流を超えよう〜</p>
+  <div class="wlc-stamp" data-i="wlc_stamp">🎯 スタンプラリー参加で景品ゲット！<br>6エリアを回って特賞に挑戦しよう！</div>
+  <button class="btn-primary" onclick="closeWlc()" data-i="wlc_btn">会場MAPを見る 🗺</button>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-in">
+    <picture><source srcset="images/logo.webp" type="image/webp"/><img class="nav-logo" src="images/logo.png" alt="World Terrace 2026"/></picture>
+    <div class="nav-right">
+      <button class="nav-lang" id="navLang" onclick="document.getElementById('langOv').classList.remove('hidden')">🌐 JA</button>
+      <button class="nav-ham" id="navHam"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div id="drawer">
+  <button class="drawer-x" id="dClose">✕</button>
+  <a href="#hero"     onclick="closeD()">🏠 TOP</a>
+  <a href="#mapSec"   onclick="closeD()" data-i="nav_map">🗺 全体MAP</a>
+  <a href="#stage"    onclick="closeD()" data-i="nav_stage">🎤 ステージ</a>
+  <a href="#food"     onclick="closeD()" data-i="nav_food">🍜 飲食</a>
+  <a href="#culture"  onclick="closeD()" data-i="nav_culture">🎨 文化体験</a>
+  <a href="#sports"   onclick="closeD()" data-i="nav_sports">⚽ スポーツ</a>
+  <a href="#bousai"   onclick="closeD()" data-i="nav_bousai">🚒 防災</a>
+  <a href="#stamp"    onclick="closeD()" data-i="nav_stamp">🎯 スタンプラリー</a>
+  <a href="#sponsors" onclick="closeD()" data-i="nav_sponsors">🤝 協賛</a>
+  <a href="#contact"  onclick="closeD()" data-i="nav_contact">📞 問い合わせ</a>
+</div>
+
+<!-- HERO -->
+<section id="hero" class="z1">
+  <div class="wrap" style="display:flex;flex-direction:column;align-items:center;text-align:center">
+    <picture><source srcset="images/logo.webp" type="image/webp"/><img class="hero-logo" src="images/logo.png" alt="World Terrace 2026"/></picture>
+    <div class="hero-flags">🇯🇵🇰🇷🇹🇼🇨🇳🇺🇸🇫🇷🇮🇹🇪🇸🇮🇳🇳🇵🇻🇳🇮🇩🇹🇭🇸🇬🇲🇲🇰🇪🇨🇦🇵🇭🇧🇩🇰🇭🇲🇾🇱🇦🇲🇳🇵🇰🇺🇦🇺🇿🇵🇪🇲🇽🇯🇲🇬🇧🇦🇺🇳🇿</div>
+    <p class="hero-theme" data-i="hero_theme">Beyond Exchange〜交流を超えよう〜</p>
+    <div class="hero-chips">
+      <span class="chip">📅 2026年10月17日（土）</span>
+      <span class="chip">⏰ 11:00 〜 17:30</span>
+      <span class="chip">📍 大淀川河川広場</span>
+    </div>
+    <a href="#mapSec" class="hero-cta" data-i="hero_cta">会場MAPを見る 🗺</a>
+  </div>
+  <div class="hero-scroll">SCROLL</div>
+</section>
+
+<!-- COUNTER -->
+<div id="counter" class="z1">
+  <div class="ctr-lbl" data-i="ctr_lbl">👥 来場者カウンター</div>
+  <div class="ctr-num" id="ctrNum">---</div>
+  <div class="ctr-unit" data-i="ctr_unit">人が来場しました</div>
+  <div class="ctr-myid" id="ctrMyId"></div>
+  <div id="ctrRank" style="margin-top:6px;font-family:'Cinzel',serif;font-size:13px;color:var(--gold);min-height:20px"></div>
+  <button onclick="fetchCount()" style="margin-top:10px;font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--t3);border-bottom:1px solid rgba(255,248,240,.12);padding-bottom:1px">↻ 更新</button>
+</div>
+<div class="rainbow z1"></div>
+
+<!-- MAP -->
+<section id="mapSec" class="z1">
+  <div class="wrap" style="margin-bottom:18px">
+    <div class="sec-tag">MAP</div>
+    <h2 class="sec-title grad-text" data-i="map_title">🗺 全体MAP</h2>
+    <p class="sec-sub" data-i="map_sub">エリアをタップしてジャンプ</p>
+  </div>
+  <div class="map-wrap rv">
+    <picture>
+      <source srcset="images/venue-map.webp" type="image/webp"/>
+      <img src="images/venue-map.png" alt="会場マップ" style="width:100%;display:block"/>
+    </picture>
+  </div>
+  <div class="map-legend rv d1">
+    <div class="leg" onclick="goto('#stage')"><div class="leg-dot" style="background:#f7a4c4"></div><div><div class="leg-name">🎤 ステージエリア</div><div class="leg-en">Stage Area</div></div></div>
+    <div class="leg" onclick="goto('#food')"><div class="leg-dot" style="background:#f5a623"></div><div><div class="leg-name">🍜 飲食エリア</div><div class="leg-en">Food Area</div></div></div>
+    <div class="leg" onclick="goto('#culture')"><div class="leg-dot" style="background:#f0d878"></div><div><div class="leg-name">🎨 文化体験エリア</div><div class="leg-en">Culture</div></div></div>
+    <div class="leg" onclick="goto('#sports')"><div class="leg-dot" style="background:#e88a8a"></div><div><div class="leg-name">⚽ スポーツエリア</div><div class="leg-en">Sports</div></div></div>
+    <div class="leg" onclick="goto('#bousai')"><div class="leg-dot" style="background:#9cc3e0"></div><div><div class="leg-name">🚒 防災エリア</div><div class="leg-en">Disaster Prev.</div></div></div>
+    <div class="leg" onclick="goto('#sponsors')"><div class="leg-dot" style="background:#a8c98a"></div><div><div class="leg-name">🏢 協賛企業</div><div class="leg-en">HQ / Circles</div></div></div>
+    <div class="leg" onclick="goto('#stamp')"><div class="leg-dot" style="background:#c9a8e0"></div><div><div class="leg-name">🎁 スタンプラリー</div><div class="leg-en">Prize Counter</div></div></div>
+  </div>
+</section>
+<div class="rainbow z1"></div>
+
+<!-- STAGE -->
+<section id="stage" class="z1">
+  <div class="wrap" style="margin-bottom:18px">
+    <div class="sec-tag">STAGE</div>
+    <h2 class="sec-title grad-text" data-i="stage_title">🎤 ステージエリア</h2>
+    <p class="sec-sub" data-i="stage_sub">パフォーマンス タイムスケジュール</p>
+  </div>
+  <div class="tl" id="stageTL"></div>
+</section>
+<div class="rainbow z1"></div>
+
+<!-- FOOD -->
+<section id="food" class="z1">
+  <div class="wrap" style="margin-bottom:18px">
+    <div class="sec-tag">FOOD</div>
+    <h2 class="sec-title grad-text" data-i="food_title">🍜 飲食エリア</h2>
+    <p class="sec-sub" data-i="food_sub">世界の味が大淀川に集結！</p>
+  </div>
+  <div id="beerSection">
+    <div class="beer-hero rv">
+      <div class="beer-icon">🍺</div>
+      <div>
+        <div class="beer-title">世界のビール販売</div>
+        <div class="beer-sub">ヨーロッパ・アジア・アメリカ・アフリカ・オセアニア<br>各国クラフトビール 15種類以上 ¥800〜</div>
+      </div>
+    </div>
+    <picture><source srcset="images/beer-menu.webp" type="image/webp"/><img class="beer-img rv d1" src="images/beer-menu.png" alt="世界のビールメニュー"/></picture>
+    <p class="beer-note rv d2">お酒は20歳になってから。未成年者の飲酒は法律で禁止されています。<br>お車を運転される方へのアルコール類の提供は固くお断りいたします。</p>
+  </div>
+  <div class="wrap" style="margin:18px 0 10px">
+    <div class="sec-tag" style="margin-bottom:0">出店ブース</div>
+  </div>
+  <div class="food-grid" id="foodGrid"></div>
+  <div class="wrap" style="margin:22px 0 10px">
+    <div class="sec-tag" style="margin-bottom:0">🚚 キッチンカー</div>
+  </div>
+  <div class="food-grid" id="foodTruckGrid"></div>
+</section>
+<div class="rainbow z1"></div>
+
+<!-- CULTURE -->
+<section id="culture" class="z1">
+  <div class="wrap" style="margin-bottom:18px">
+    <div class="sec-tag">CULTURE</div>
+    <h2 class="sec-title grad-text" data-i="culture_title">🎨 文化体験エリア</h2>
+    <p class="sec-sub" data-i="culture_sub">世界の文化を体験しよう</p>
+  </div>
+  <div class="cul-grid" id="culGrid"></div>
+</section>
+<div class="rainbow z1"></div>
+
+<!-- SPORTS -->
+<section id="sports" class="z1">
+  <div class="wrap" style="margin-bottom:18px">
+    <div class="sec-tag">SPORTS</div>
+    <h2 class="sec-title grad-text" data-i="sports_title">⚽ スポーツエリア</h2>
+    <p class="sec-sub" data-i="sports_sub">宮崎のスポーツを体感しよう</p>
+  </div>
+  <div class="sp-grid" id="spGrid"></div>
+</section>
+<div class="rainbow z1"></div>
+
+<!-- BOUSAI -->
+<section id="bousai" class="z1">
+  <div class="wrap" style="margin-bottom:18px">
+    <div class="sec-tag">DISASTER PREVENTION</div>
+    <h2 class="sec-title grad-text" data-i="bousai_title">🚒 防災エリア</h2>
+    <p class="sec-sub" data-i="bousai_sub">備えよう、いざというときのために</p>
+  </div>
+  <div class="bou-grid" id="bouGrid"></div>
+  <a href="#stamp" class="map-btn rv" style="margin-top:18px">🎯 スタンプを集める（防災エリア）</a>
+</section>
+<div class="rainbow z1"></div>
+
+<!-- STAMP -->
+<section id="stamp" class="z1">
+  <div class="wrap" style="margin-bottom:16px">
+    <div class="sec-tag">STAMP RALLY</div>
+    <h2 class="sec-title grad-text" data-i="stamp_title">🎯 スタンプラリー</h2>
+    <p class="sec-sub">5つ集めて景品をゲット！<br>各エリアのQRコードを読み込んでスタンプGET！</p>
+  </div>
+
+  <!-- 先着注意 -->
+  <div style="margin:0 16px 18px;padding:12px 16px;border-radius:14px;background:rgba(230,57,70,.1);border:1px solid rgba(230,57,70,.3)">
+    <div style="font-family:'Cinzel',serif;font-size:12px;font-weight:700;color:#ff6b6b;margin-bottom:4px">⚠️ 先着500名様限定</div>
+    <div style="font-size:12px;color:var(--t2);line-height:1.7">景品は数量限定です。なくなり次第終了となります。<br><em style="opacity:.75">Prizes limited to first 500 visitors.</em></div>
+  </div>
+
+  <!-- 全体プログレス -->
+  <div class="st-prog rv">
+    <div class="st-prog-row">
+      <span style="font-weight:700">スタンプ合計</span>
+      <span class="st-cnt"><span id="stTotal">0</span> / 5</span>
+    </div>
+    <div class="st-bar"><div class="st-fill" id="stFillTotal" style="width:0%"></div></div>
+    <div class="st-miles"><div class="mile" id="mTotal">🎯 5つ達成で景品GET！</div></div>
+  </div>
+
+  <!-- 文化体験（12ブース中3つ） -->
+  <div class="wrap" style="margin:18px 0 8px">
+    <div class="sec-tag" style="margin-bottom:2px">🎨 文化体験エリア（12ブース中3つ）</div>
+    <p style="font-size:11px;color:var(--t3);line-height:1.6">12ブースのQRコードから好きな3つを読み込もう<br>同じQRは1回のみ有効</p>
+  </div>
+  <div style="margin:0 16px 4px;padding:7px 14px;border-radius:10px;background:rgba(245,168,35,.08);border:1px solid rgba(245,168,35,.18);display:flex;align-items:center;justify-content:space-between">
+    <span style="font-size:12px;color:var(--t2)">文化体験スタンプ</span>
+    <span style="font-family:'Cinzel',serif;font-size:14px;font-weight:700;color:var(--gold)"><span id="stNC">0</span> / 3</span>
+  </div>
+  <div class="st-grid-sm" id="stGridC"></div>
+
+  <!-- ステージ・防災 -->
+  <div class="wrap" style="margin:16px 0 8px">
+    <div class="sec-tag" style="margin-bottom:2px">🎤 ステージ &amp; 🚒 防災エリア</div>
+    <p style="font-size:11px;color:var(--t3)">それぞれのQRコードを1つ読み込もう</p>
+  </div>
+  <div class="st-grid" id="stGridF" style="grid-template-columns:1fr 1fr;max-width:260px;margin:0 16px 12px"></div>
+
+  <p class="st-note rv">※ 各エリア設置のQRコードで自動スタンプ<br>デモ：タップでスタンプ確認もできます</p>
+
+  <!-- 達成ボックス（5つ揃ったら） -->
+  <div class="ach-box" id="achBox">
+    <span class="ach-star">🎯</span>
+    <div class="ach-title">スタンプ5つ達成！おめでとう！</div>
+    <div class="ach-sub">景品交換所でこの画面を見せてください<br><span style="font-size:10px;opacity:.6">先着500名様限定</span></div>
+    <div class="ach-actions">
+      <button class="btn-ach" onclick="showAch()">🎁 景品交換所で見せる</button>
+      <button class="btn-exch" id="btnExch" onclick="markExch()">景品交換済みにする</button>
+    </div>
+  </div>
+  <div class="prize-list" id="prizeList"></div>
+
+  <div class="st-reset-wrap" style="margin-top:18px">
+    <button class="btn-rst" onclick="resetSt()" data-i="stamp_reset">スタンプをリセットする</button>
+  </div>
+</section>
+<div class="rainbow z1"></div>
+
+<!-- SPONSORS -->
+<section id="sponsors" class="z1">
+  <div class="wrap" style="margin-bottom:18px">
+    <div class="sec-tag">SPONSORS</div>
+    <h2 class="sec-title grad-text" data-i="sponsors_title">🤝 協賛企業・団体</h2>
+    <p class="sec-sub" data-i="sponsors_sub">ワールドテラス2026をご支援いただいております</p>
+  </div>
+  <div class="sp-list" id="spList"></div>
+</section>
+<div class="rainbow z1"></div>
+
+<!-- CONTACT -->
+<section id="contact" class="z1">
+  <div class="wrap" style="margin-bottom:18px">
+    <div class="sec-tag">CONTACT</div>
+    <h2 class="sec-title grad-text" data-i="contact_title">📞 問い合わせ</h2>
+  </div>
+  <div class="con-card rv">
+    <div class="con-row"><div class="con-icon">🏛️</div><div><div class="con-lbl" data-i="c_host">主催</div><div class="con-val">一般社団法人 宮崎青年会議所</div></div></div>
+    <div class="con-row"><div class="con-icon">🤝</div><div><div class="con-lbl" data-i="c_cohost">共催</div><div class="con-val">宮崎市</div></div></div>
+    <div class="con-row"><div class="con-icon">✉️</div><div><div class="con-lbl">Email</div><div class="con-val"><a href="mailto:worldterrace.miyazaki@gmail.com">worldterrace.miyazaki@gmail.com</a></div></div></div>
+    <div class="con-row"><div class="con-icon">📱</div><div><div class="con-lbl">SNS</div>
+      <div class="sns-row">
+        <a href="https://www.tiktok.com/@worldterrace?_r=1&_t=ZS-96evnyW8Hz8" target="_blank" class="sns-btn">🎵 TikTok</a>
+        <a href="https://www.instagram.com/jcimiyazaki?igsh=dDRpc2dkb2F4Nnpo" target="_blank" class="sns-btn">📸 Instagram</a>
+        <a href="https://www.facebook.com/share/1D8485Npi4/?mibextid=wwXIfr" target="_blank" class="sns-btn">📘 Facebook</a>
+      </div>
+    </div></div>
+    <div class="con-row"><div class="con-icon">⏰</div><div><div class="con-lbl" data-i="c_hours">当日受付</div><div class="con-val">11:00 〜 17:00（本部テント）</div></div></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <picture><source srcset="images/logo.webp" type="image/webp"/><img class="ft-logo" src="images/logo.png" alt="World Terrace 2026"/></picture>
+  <div class="ft-org">主催：一般社団法人宮崎青年会議所 / 共催：宮崎市<br>2026年10月17日（土）11:00〜17:30 大淀川河川広場</div>
+  <div class="ft-copy">© ワールドテラス2026</div>
+</footer>
+
+<script>
+/* ==================================================
+   DATA（ここを編集して情報を差し替えてください）
+================================================== */
+const STAGE=[
+  {t:'11:00',e:'11:10',name:'開会セレモニー / 高校生による書道パフォーマンス',desc:'迫力ある太鼓演奏でオープニングを盛り上げます',org:'宮崎学園高等学校',hl:1},
+  {t:'11:10',e:'11:30',name:'宮崎青年会議所理事長　挨拶',desc:'宮崎青年会議所理事長によるご挨拶',org:'宮崎市青年会議所第75代理事長　山﨑　隆太郎',hl:1},
+  {t:'11:15',e:'11:40',name:'宮崎市長 開会挨拶',desc:'宮崎市長による開会のご挨拶',org:'宮崎市長　清山　知憲氏'},
+  {t:'11:30',e:'12:30',name:'ベリーダンス',desc:'華やかなベリーダンスパフォーマンス',org:'ハレイムベリーダンスフィーバー'},
+  {t:'11:50',e:'12:10',name:'MSGの学生ダンス',desc:'MSGの学生による国際色溢れるダンスパフォーマンス',org:'MSG学生'},
+  {t:'12:10',e:'12:30',name:'武術太極拳',desc:'力強くも美しい武術太極拳のパフォーマンス',org:'HIMUKAカンフークラブ'},
+  {t:'12:50',e:'14:05',name:'ひょっとこ振り付け講座',desc:'ひょっとこの振り付けを学んでみんなで踊りましょう',org:'株式会社ひょっとこやろかい清和',hl:1},
+  {t:'13:50',e:'16:30',name:'ひょっとこ踊り',desc:'ひょっとこパフォーマンス',org:'株式会社ひょっとこやろかい清和'},
+  {t:'14:40',e:'17:30',name:'BEYONDトーク',desc:'トークセッションを行います',org:'宮崎市、宮崎青年会議所、在住外国人、外国人留学生'},
+  {t:'15:00',e:'15:20',name:'DJタイム',desc:'DJプレイ',org:'DJibuki'},
+  {t:'15:30',e:'16:00',name:'ハーモニカ演奏',desc:'心に響くハーモニカの音色',org:'inst891'},
+  {t:'16:00',e:'16:30',name:'フラダンス',desc:'優雅なフラダンスパフォーマンス',org:'ビューティフルフラ'},
+  {t:'16:30',e:'17:00',name:'DJタイム',desc:'DJプレイ',org:'DJibuki'},
+  {t:'17:00',e:'17:20',name:'閉会セレモニー/ JC太鼓',desc:'みやざきインターナショナルフェスタ ワールドテラス2026 閉会',org:'宮崎青年会議所太鼓同好会',hl:1},
+];
+const FOOD=[
+  {flag:'🇰🇷',country:'Korea',   name:'ミレシジャン',          menu:'韓国料理',         url:''},
+  {flag:'🇻🇳',country:'Vietnam', name:'ハンフククアン',         menu:'ベトナム料理',      url:''},
+  {flag:'🇹🇷',country:'Turkey',  name:'グリルハウス',           menu:'トルコ料理',        url:''},
+  {flag:'🇱🇰',country:'Sri Lanka',name:'シンハラヤ',           menu:'スリランカ料理',    url:''},
+  {flag:'🇸🇬',country:'Singapore',name:'ラクサ',              menu:'シンガポール',      url:''},
+  {flag:'🇮🇳',country:'India',   name:'ナマステカリカ',         menu:'インド料理',        url:''},
+  {flag:'🌍',country:'TBA',      name:'未定',                 menu:'未定',             url:''},
+  {flag:'🌍',country:'TBA',      name:'未定',                 menu:'未定',             url:''},
+  {flag:'🇺🇸',country:'USA',     name:'未定',                 menu:'未定',             url:''},
+];
+const FOOD_TRUCK=[
+  {flag:'🇲🇽',country:'Mexico',  name:"Mr.Perez's kitchen", menu:'メキシコ料理',      url:''},
+  {flag:'🇮🇩',country:'Indonesia',name:'kedaiF9',           menu:'インドネシア料理',  url:''},
+  {flag:'🇹🇭',country:'Thailand', name:'ハロハロ',            menu:'タイ料理',          url:''},
+  {flag:'🇯🇲',country:'Jamaica',  name:'Lukes Jerk Chicken', menu:'ジャマイカ',        url:''},
+  {flag:'🇺🇸',country:'USA',      name:'NATECH',             menu:'アメリカ',          url:''},
+  {flag:'🇫🇷',country:'France',   name:'モルポルテ',          menu:'フランス',          url:''},
+];
+const CULTURE=[
+  {icon:'🌍',name:'ジオゲッサー / 動物鳴き声クイズ',desc:'世界の風景を当てるジオゲッサーや、動物の鳴き声クイズで世界を学ぼう！',org:'宮崎市国際政策課・MHUB'},
+  {icon:'👗',name:'世界の民族衣装体験',desc:'世界各国の民族衣装を体験しよう！',org:'宮崎県国際交流協会'},
+  {icon:'🥟',name:'東南アジア風 餃子販売',desc:'東南アジアの材料を使ったオリジナル餃子を販売',org:'宮崎市国際交流協会'},
+  {icon:'🇰🇷',name:'韓国文化紹介 / チマチョゴリ試着',desc:'チマチョゴリの試着体験や、チマチョゴリ・絵本の販売を行います',org:'在日本大韓民国民団'},
+  {icon:'🎓',name:'学生による文化紹介（南アジア）',desc:'スリランカ・インドの留学生による文化紹介',org:'MSG学生'},
+  {icon:'🎓',name:'学生による文化紹介（南アジア）',desc:'ミャンマー・ネパールの留学生による文化紹介',org:'MSG学生'},
+  {icon:'🎓',name:'学生による文化紹介（南アジア）',desc:'キルギス・バングラデシュの留学生による文化紹介',org:'MSG学生'},
+  {icon:'🎨',name:'ひょっとこのお面塗り（持ち帰り可）',desc:'ひょっとこのお面に色を塗って、世界に一つだけのお面を持ち帰ろう！※数量限定',org:'株式会社ひょっとこやろかい清和'},
+  {icon:'♟️',name:'世界各国の遊び体験',desc:'世界各国の遊びを体験しよう！',org:'アソビ万博'},
+  {icon:'🪑',name:'外国人留学生と語るコーナー',desc:'高校生留学生と語ろう！日本語でも英語でも可',org:'清武町国際交流協会'},
+  {icon:'🥄',name:'ガラポン・雑貨販売',desc:'ハズレなしのガラポンと海外雑貨の販売',org:'清武町国際交流協会'},
+];
+const SPORTS=[
+  {icon:'⚽',name:'フットサル ミニゲーム',type:'体験イベント',desc:'14:00〜17:00開催。誰でも参加できるミニゲームで盛り上がろう！',exp:'フットサルミニゲーム体験（14:00〜17:00）'},
+  {icon:'🏃',name:'地域スポーツサークル紹介',type:'サークル紹介',desc:'宮崎で活動する様々なスポーツサークルをご紹介します',exp:'サークル紹介・PRブース'},
+];
+const BOUSAI=[
+  {icon:'🧯',t:'消火訓練',b:'消火器の使い方を学ぼう！訓練用水消火器で実際に体験できます。13:00〜16:00開催。',ya:'火（ひ）が出たら、消火器（しょうかき）を使います。体験（たいけん）できます。',en:'Learn how to use a fire extinguisher. Hands-on experience available from 13:00 to 16:00.'},
+  {icon:'🌍',t:'起震車による地震体験',b:'起震車に乗って実際の地震の揺れを体験。震度7まで体験可能です。13:00〜16:00開催。',ya:'じしんの ゆれを たいけんします。からだで かんじて まなびます。',en:'Experience earthquake shaking up to intensity 7. Available from 13:00 to 16:00.'},
+  {icon:'🍱',t:'防災食体験',b:'非常食（五目ご飯・サバイバルパン）の試食。備蓄食料の展示・配布も。13:00〜16:00開催。',ya:'ひじょうしょくをたべてみましょう。',en:'Try emergency survival food. Disaster food exhibits & distribution from 13:00 to 16:00.'},
+];
+/* ============================================================
+   スタンプラリー データ
+   ① 文化体験：12エリア中3つ達成  ② ステージ：1つ  ③ 防災：3箇所すべて
+============================================================ */
+/* ==================================================
+   スタンプラリー データ
+   合計5スタンプで達成：文化体験3つ + ステージ1つ + 防災1つ
+   文化体験は12ブース中いずれか3つ（同QR1回のみ有効）
+================================================== */
+const CULTURE_SPOTS=[
+  {id:'c01',emoji:'🌍',name:'市国際政策課'},
+  {id:'c02',emoji:'👗',name:'県国際交流協会'},
+  {id:'c03',emoji:'🥟',name:'市国際交流協会'},
+  {id:'c04',emoji:'🇰🇷',name:'韓国民団'},
+  {id:'c05',emoji:'🎓',name:'MSG①\nSL/IN'},
+  {id:'c06',emoji:'🎓',name:'MSG②\nMY/NP'},
+  {id:'c07',emoji:'🎓',name:'MSG③\nKG/BD'},
+  {id:'c09',emoji:'🎨',name:'ひょっとこやろかい'},
+  {id:'c10',emoji:'🌐',name:'清武町国際交流協会'},
+  {id:'c11',emoji:'🌐',name:'アソビ万博'},
+];
+/* 防災エリアは「1スタンプ」として統合 */
+const FIXED_SPOTS=[
+  {id:'stage', emoji:'🎤',name:'ステージ'},
+  {id:'bousai',emoji:'🚒',name:'防災エリア'},
+];
+/* 全スポット（URL判定用） */
+const ALL_SPOTS=[...CULTURE_SPOTS,...FIXED_SPOTS];
+/* 景品（1つ） */
+const PRIZE={icon:'🎯',name:'スタンプラリー達成賞',desc:'先着500名様限定！景品交換所でこの画面を見せてください'};
+const SPONSORS=[
+  {name:'（株）〇〇〇〇〇',desc:'メインスポンサー'},
+  {name:'MSG宮崎総合学院',desc:''},
+  {name:'〇〇〇〇商工会議所',desc:''},
+  {name:'〇〇〇〇株式会社',desc:''},
+  {name:'株式会社〇〇〇',desc:''},
+  {name:'おおおお',desc:''},
+  {name:'ええええ',desc:''},
+  {name:'うううう',desc:''},
+  {name:'いいいい',desc:''},
+  {name:'ああああ',desc:''},
+];
+
+/* ==================================================
+   I18N
+================================================== */
+const T={
+  ja:{
+    reg_title:'来場登録',reg_sub:'会場にご来場いただきありがとうございます！情報を入力して登録してください。',
+    reg_adult:'大人（18歳以上）',reg_child:'子ども（18歳未満）',
+    reg_nation:'国籍',reg_nation_ph:'例：日本',
+    reg_age:'代表者の年齢',reg_age_ph:'例：35',
+    reg_notice:'🎯 スタンプラリー参加で景品ゲット！\n各エリアのQRコードを集めよう！',
+    reg_btn:'✋ 来場しました！',
+    wlc_title:'ようこそ！WORLD TERRACE 2026へ',
+    wlc_sub:'みやざきインターナショナルフェスタへようこそ！Beyond Exchange 〜交流を超えよう〜',
+    wlc_stamp:'🎯 スタンプラリー参加で景品ゲット！\n6エリアを回って特賞に挑戦しよう！',
+    wlc_btn:'会場MAPを見る 🗺',
+    hero_theme:'Beyond Exchange 〜交流を超えよう〜',hero_cta:'会場MAPを見る 🗺',
+    ctr_lbl:'👥 来場者カウンター',ctr_unit:'人が来場しました',
+    map_title:'🗺 全体MAP',map_sub:'エリアをタップしてジャンプ',
+    stage_title:'🎤 ステージエリア',stage_sub:'パフォーマンス タイムスケジュール',
+    food_title:'🍜 飲食エリア',food_sub:'世界の味が大淀川に集結！',
+    culture_title:'🎨 文化体験エリア',culture_sub:'世界の文化を体験しよう',
+    sports_title:'⚽ スポーツエリア',sports_sub:'宮崎のスポーツを体感しよう',
+    bousai_title:'🚒 防災エリア',bousai_sub:'備えよう、いざというときのために',
+    stamp_title:'🎯 スタンプラリー',stamp_sub:'各エリアのQRコードを読んでスタンプGET！',
+    stamp_prog:'スタンプ進捗',stamp_note:'※ 各エリア設置のQRコードで自動スタンプ\nデモ：直接タップでスタンプ確認できます',
+    stamp_show:'🎁 景品交換所で見せる',stamp_exch:'景品交換済みにする',stamp_reset:'スタンプをリセットする',
+    sponsors_title:'🤝 協賛企業・団体',sponsors_sub:'ワールドテラス2026をご支援いただいております',
+    access_title:'📍 アクセス',
+    acc_walk:'徒歩 / On foot',acc_car:'お車 / By Car',
+    contact_title:'📞 問い合わせ',c_host:'主催',c_cohost:'共催',c_hours:'当日受付',
+    nav_map:'🗺 全体MAP',nav_stage:'🎤 ステージ',nav_food:'🍜 飲食',nav_culture:'🎨 文化体験',
+    nav_sports:'⚽ スポーツ',nav_bousai:'🚒 防災',nav_stamp:'🎯 スタンプラリー',
+    nav_sponsors:'🤝 協賛',nav_access:'📍 アクセス',nav_contact:'📞 問い合わせ',lc:'JA'
+  },
+  en:{
+    reg_title:'Visitor Registration',reg_sub:'Welcome to the venue! Please enter your information to register.',
+    reg_adult:'Adults (18+)',reg_child:'Children (under 18)',
+    reg_nation:'Nationality',reg_nation_ph:'e.g. Japan',
+    reg_age:'Representative\'s Age',reg_age_ph:'e.g. 35',
+    reg_notice:'🎯 Collect stamps to win prizes!\nScan QR codes at each area!',
+    reg_btn:'✋ I have arrived!',
+    wlc_title:'Welcome to WORLD TERRACE 2026!',
+    wlc_sub:'Welcome to Miyazaki International Festa! Beyond Exchange',
+    wlc_stamp:'🎯 Collect stamps & win prizes!\nVisit all 6 areas for the grand prize!',
+    wlc_btn:'View Venue MAP 🗺',
+    hero_theme:'Beyond Exchange',hero_cta:'View MAP 🗺',
+    ctr_lbl:'👥 Visitor Counter',ctr_unit:'visitors have arrived',
+    map_title:'🗺 Venue MAP',map_sub:'Tap an area to jump',
+    stage_title:'🎤 Stage Area',stage_sub:'Performance Schedule',
+    food_title:'🍜 Food Area',food_sub:'World flavors along the Oyodo River!',
+    culture_title:'🎨 Culture Experience',culture_sub:'Experience world cultures',
+    sports_title:'⚽ Sports Area',sports_sub:'Experience Miyazaki sports!',
+    bousai_title:'🚒 Disaster Prevention',bousai_sub:'Be prepared for emergencies',
+    stamp_title:'🎯 Stamp Rally',stamp_sub:'Scan QR codes to collect stamps!',
+    stamp_prog:'Stamp Progress',stamp_note:'※ Scan QR code at each area for automatic stamp',
+    stamp_show:'🎁 Show at Prize Counter',stamp_exch:'Mark as Exchanged',stamp_reset:'Reset Stamps',
+    sponsors_title:'🤝 Sponsors',sponsors_sub:'Thank you for supporting World Terrace 2026',
+    access_title:'📍 Access',
+    acc_walk:'Walking',acc_bus:'Shuttle Bus (Free)',acc_car:'By Car',acc_air:'By Air',
+    contact_title:'📞 Contact',c_host:'Organizer',c_cohost:'Co-organizer',c_hours:'On-site Hours',
+    nav_map:'🗺 MAP',nav_stage:'🎤 Stage',nav_food:'🍜 Food',nav_culture:'🎨 Culture',
+    nav_sports:'⚽ Sports',nav_bousai:'🚒 Disaster',nav_stamp:'🎯 Stamps',
+    nav_sponsors:'🤝 Sponsors',nav_access:'📍 Access',nav_contact:'📞 Contact',lc:'EN'
+  },
+  easy:{
+    reg_title:'きょうの とうろく',reg_sub:'きてくれて ありがとうございます！じょうほうを いれて とうろくしてください。',
+    reg_adult:'おとな（18さい いじょう）',reg_child:'こども（18さい みまん）',
+    reg_nation:'くにの なまえ（こくせき）',reg_nation_ph:'れい：にほん',
+    reg_age:'だいひょうしゃの としの かず',reg_age_ph:'れい：35',
+    reg_notice:'🎯 スタンプを あつめて プレゼントを もらおう！\nいろいろな ばしょの QRコードを よみとってね！',
+    reg_btn:'✋ きました！',
+    wlc_title:'ようこそ！WORLD TERRACE 2026へ',
+    wlc_sub:'みやざきの おまつりに きてくれて ありがとう！Beyond Exchange 〜こえて つながろう〜',
+    wlc_stamp:'🎯 スタンプを あつめて プレゼントを もらおう！\n6つの ばしょを まわってね！',
+    wlc_btn:'ちずを みる 🗺',
+    hero_theme:'Beyond Exchange 〜こえて つながろう〜',hero_cta:'ちずを みる 🗺',
+    ctr_lbl:'👥 きた ひとの かず',ctr_unit:'にん きました',
+    map_title:'🗺 ぜんたいの ちず',map_sub:'ばしょを タップしてね',
+    stage_title:'🎤 ステージの ばしょ',stage_sub:'パフォーマンスの じかん',
+    food_title:'🍜 たべものの ばしょ',food_sub:'せかいの あじが あつまるよ！',
+    culture_title:'🎨 ぶんかたいけんの ばしょ',culture_sub:'せかいの ぶんかを たいけんしよう',
+    sports_title:'⚽ スポーツの ばしょ',sports_sub:'みやざきの スポーツを たいけんしよう',
+    bousai_title:'🚒 ぼうさいの ばしょ',bousai_sub:'なにかあった ときの ために じゅんびしよう',
+    stamp_title:'🎯 スタンプラリー',stamp_sub:'QRコードを よみとって スタンプを あつめよう！',
+    stamp_prog:'スタンプの すすみかた',stamp_note:'※ ばしょに ある QRコードで スタンプが もらえます\nおためし：タップしても スタンプが もらえます',
+    stamp_show:'🎁 プレゼントの ばしょで みせる',stamp_exch:'プレゼントを もらった',stamp_reset:'スタンプを はじめから にする',
+    sponsors_title:'🤝 たすけてくれた かいしゃ・だんたい',sponsors_sub:'ワールドテラス2026を たすけてくれて ありがとう',
+    access_title:'📍 いきかた',
+    acc_walk:'あるいて いく',acc_bus:'バス（むりょう）',acc_car:'くるまで いく',acc_air:'ひこうきで いく',
+    contact_title:'📞 れんらくさき',c_host:'しゅさい',c_cohost:'きょうさい',c_hours:'うけつけの じかん',
+    nav_map:'🗺 ちず',nav_stage:'🎤 ステージ',nav_food:'🍜 たべもの',nav_culture:'🎨 ぶんか',
+    nav_sports:'⚽ スポーツ',nav_bousai:'🚒 ぼうさい',nav_stamp:'🎯 スタンプ',
+    nav_sponsors:'🤝 たすけてくれた かいしゃ',nav_access:'📍 いきかた',nav_contact:'📞 れんらく',lc:'やさしい日本語'
+  }
+};
+
+/* ==================================================
+   STATE
+================================================== */
+const K={REG:'wt26r',ST:'wt26s',EX:'wt26ex',LG:'wt26l'};
+let lang='ja', adults=1, children=0, previewId='';
+
+/* ==================================================
+   LANGUAGE
+================================================== */
+function pickLang(l){
+  lang=l; localStorage.setItem(K.LG,l);
+  hide('langOv');
+  applyT();
+  const reg=localStorage.getItem(K.REG);
+  if(reg){ loadReg(JSON.parse(reg)); showMain(); }
+  else { show('regOv'); genId(); }
+}
+function applyT(){
+  const t=T[lang]||T.ja;
+  document.querySelectorAll('[data-i]').forEach(el=>{
+    const v=t[el.dataset.i]; if(v!==undefined) el.textContent=v;
+  });
+  document.querySelectorAll('[data-i-ph]').forEach(el=>{
+    const v=t[el.dataset.iPh]; if(v!==undefined) el.placeholder=v;
+  });
+  const nb=document.getElementById('navLang');
+  if(nb) nb.textContent='🌐 '+(t.lc||lang.toUpperCase());
+  document.getElementById('htmlRoot').lang=({ja:'ja',en:'en',easy:'ja'})[lang]||'ja';
+}
+
+/* ==================================================
+   REGISTRATION
+================================================== */
+function genId(){
+  previewId='WT-'+Date.now().toString(36).toUpperCase().slice(-5)+'-'+Math.random().toString(36).toUpperCase().slice(2,5);
+  const el=document.getElementById('regId');
+  if(el) el.textContent='来場ID: '+previewId;
+}
+function adj(t,d){
+  if(t==='a') adults=Math.max(0,adults+d);
+  else children=Math.max(0,children+d);
+  if(adults===0&&children===0){
+    if(t==='a') children=1; else adults=1;
+  }
+  document.getElementById('numA').textContent=adults;
+  document.getElementById('numC').textContent=children;
+}
+function doReg(){
+  const nation=(document.getElementById('inNation').value||'').trim();
+  const age=(document.getElementById('inAge').value||'').trim();
+  const reg={id:previewId,adults,children,nation,age,lang,ts:Date.now()};
+  localStorage.setItem(K.REG,JSON.stringify(reg));
+  hide('regOv');
+  addCount(adults,children,previewId,nation,age);
+  showWlc(reg);
+}
+function loadReg(reg){
+  adults=reg.adults!==undefined?reg.adults:1; children=reg.children||0;
+  if(reg.lang){ lang=reg.lang; }
+}
+function applyBeerVisibility(){
+  const reg=JSON.parse(localStorage.getItem(K.REG)||'{}');
+  const age=parseInt(reg.age||'99',10);
+  const el=document.getElementById('beerSection');
+  if(!el) return;
+  if(!isNaN(age)&&age<20){
+    el.style.display='none';
+  } else {
+    el.style.display='';
+  }
+}
+function showWlc(reg){
+  document.getElementById('wlcId').textContent='来場ID: '+reg.id+' | 大人 '+reg.adults+' 子ども '+reg.children;
+  show('wlcOv');
+  applyT();
+  for(let i=0;i<8;i++) setTimeout(()=>launchFW&&launchFW(),i*300+100);
+}
+function closeWlc(){
+  hide('wlcOv');
+  showMain();
+}
+function showMain(){
+  document.getElementById('nav').classList.add('on');
+  hide('langOv'); hide('regOv'); hide('wlcOv');
+  initCtr(); renderAll();
+  applyBeerVisibility();
+  setTimeout(observeRv,100);
+}
+
+/* ==================================================
+   RENDER
+================================================== */
+function renderAll(){
+  // Stage
+  document.getElementById('stageTL').innerHTML=STAGE.map((s,i)=>`<div class="tl-item${s.hl?' hl':''} rv" style="transition-delay:${i*.05}s"><div class="tl-time">${s.t}<div class="tl-end">〜${s.e}</div></div><div><div class="tl-name">${s.name}</div><div class="tl-desc">${s.desc}</div><div class="tl-org">📌 ${s.org}</div></div></div>`).join('');
+  // Food
+  document.getElementById('foodGrid').innerHTML=FOOD.map((f,i)=>`<div class="food-card rv" style="transition-delay:${i*.04}s"><div class="food-flag">${f.flag}</div><div class="food-ctry">${f.country}</div><div class="food-name">${f.name}</div><div class="food-menu">${f.menu}</div>${f.url?`<a href="${f.url}" target="_blank" rel="noopener" class="food-link">🔗 詳細を見る</a>`:''}</div>`).join('');
+  // Food Truck
+  document.getElementById('foodTruckGrid').innerHTML=FOOD_TRUCK.map((f,i)=>`<div class="food-card rv" style="transition-delay:${i*.04}s"><div class="food-flag">${f.flag}</div><div class="food-ctry">${f.country}</div><div class="food-name">${f.name}</div><div class="food-menu">${f.menu}</div>${f.url?`<a href="${f.url}" target="_blank" rel="noopener" class="food-link">🔗 詳細を見る</a>`:''}</div>`).join('');
+  // Culture
+  document.getElementById('culGrid').innerHTML=CULTURE.map((c,i)=>`<div class="cul-card rv" style="transition-delay:${i*.06}s"><div class="cul-icon">${c.icon}</div><div><div class="cul-name">${c.name}</div><div class="cul-desc">${c.desc}</div><span class="cul-org">${c.org}</span></div></div>`).join('');
+  // Sports
+  document.getElementById('spGrid').innerHTML=SPORTS.map((s,i)=>`<div class="sp-card rv" style="transition-delay:${i*.05}s"><div class="sp-head"><div class="sp-icon">${s.icon}</div><div><div class="sp-name">${s.name}</div><span class="sp-badge">${s.type}</span></div></div><div class="sp-desc">${s.desc}</div><div class="sp-exp">${s.exp}</div></div>`).join('');
+  // Bousai
+  document.getElementById('bouGrid').innerHTML=BOUSAI.map((b,i)=>`<div class="bou-card rv" style="transition-delay:${i*.06}s"><div class="bou-head"><span>${b.icon}</span>${b.t}</div><div class="bou-body">${b.b}</div><div class="bou-lang"><div class="bou-lbl">🌐 やさしい日本語 / English</div><div class="bou-ya">📖 ${b.ya}</div><div class="bou-en">🔤 ${b.en}</div></div></div>`).join('');
+  // Sponsors
+  document.getElementById('spList').innerHTML=SPONSORS.map(s=>`<div class="spon-card" style="padding:14px 16px;border-radius:14px;background:var(--glass);border:1px solid var(--glassb);display:flex;align-items:center;gap:12px"><div><div class="spon-name" style="font-size:13px;font-weight:700">${s.name}</div>${s.desc?`<div class="spon-desc" style="font-size:11px;color:var(--t3)">${s.desc}</div>`:''}</div></div>`).join('');
+  // 景品（1つ）
+  const pl=document.getElementById('prizeList');
+  if(pl) pl.innerHTML=`<div class="prize-card" id="prz_main"><div class="prz-icon">${PRIZE.icon}</div><div><div class="prz-cond">5スタンプ達成</div><div class="prz-name">${PRIZE.name}</div><div class="prz-desc">${PRIZE.desc}</div></div><div class="prz-lock">🔒</div></div>`;
+  renderSt();
+  setTimeout(observeRv,50);
+}
+
+/* ==================================================
+   COUNTER — Google Apps Script連携
+   GASをデプロイしたら下のURLを差し替えてください
+================================================== */
+const GAS_URL = 'YOUR_GAS_URL_HERE'; // ← デプロイ後にここを書き換える
+
+async function fetchCount(){
+  if(!GAS_URL||GAS_URL==='YOUR_GAS_URL_HERE') return;
+  try{
+    const r=await fetch(GAS_URL+'?action=get',{cache:'no-store'});
+    const d=await r.json();
+    animN(d.count,document.getElementById('ctrNum'));
+    updateRank(d.count);
+  }catch(e){console.log('count fetch failed',e);}
+}
+
+async function addCount(adults,children,id,nation,age){
+  if(!GAS_URL||GAS_URL==='YOUR_GAS_URL_HERE'){
+    const n=parseInt(localStorage.getItem('wt26c')||'0',10)+(adults+children);
+    localStorage.setItem('wt26c',n);
+    animN(n,document.getElementById('ctrNum'));
+    updateRank(n);
+    return;
+  }
+  try{
+    const url=GAS_URL+`?action=add&adults=${adults}&children=${children}&id=${encodeURIComponent(id)}&nation=${encodeURIComponent(nation||'')}&age=${encodeURIComponent(age||'')}`;
+    const r=await fetch(url,{cache:'no-store'});
+    const d=await r.json();
+    animN(d.count,document.getElementById('ctrNum'));
+    updateRank(d.count);
+    localStorage.setItem('wt26c',d.count);
+  }catch(e){
+    const n=parseInt(localStorage.getItem('wt26c')||'0',10)+(adults+children);
+    localStorage.setItem('wt26c',n);
+    animN(n,document.getElementById('ctrNum'));
+  }
+}
+
+function updateRank(n){
+  const el=document.getElementById('ctrRank');
+  if(!el) return;
+  if(n>0) el.textContent='あなたは '+n.toLocaleString()+' 人目の来場者です！';
+}
+
+function initCtr(){
+  const reg=JSON.parse(localStorage.getItem(K.REG)||'{}');
+  if(reg.id) document.getElementById('ctrMyId').textContent='あなたの来場ID: '+reg.id;
+  if(GAS_URL&&GAS_URL!=='YOUR_GAS_URL_HERE'){
+    fetchCount();
+  } else {
+    const n=parseInt(localStorage.getItem('wt26c')||'0',10);
+    animN(n,document.getElementById('ctrNum'));
+    updateRank(n);
+  }
+}
+function animN(to,el){
+  if(!el)return;
+  const from=parseInt((el.textContent||'0').replace(/[^0-9]/g,''))||0,steps=18,dur=600;
+  let i=0;const t=setInterval(()=>{i++;el.textContent=Math.round(from+(to-from)*i/steps).toLocaleString();if(i>=steps){el.textContent=to.toLocaleString();clearInterval(t);}},dur/steps);
+}
+
+/* ==================================================
+   STAMPS — 1本化スタンプラリー（合計5つで達成）
+   文化体験12ブース中3つ + ステージ1つ + 防災1つ = 5
+   同じQRは1回のみ有効（localStorage管理）
+================================================== */
+function gst(){try{return JSON.parse(localStorage.getItem(K.ST))||{};}catch{return{};}}
+function sst(d){localStorage.setItem(K.ST,JSON.stringify(d));}
+
+function cultureCount(d){ return Math.min(CULTURE_SPOTS.filter(s=>d[s.id]).length,3); }
+function totalStamps(d){ return cultureCount(d)+(d['stage']?1:0)+(d['bousai']?1:0); }
+
+function renderSt(){
+  const d=gst();
+  // 文化体験グリッド（4列・12ブース）
+  document.getElementById('stGridC').innerHTML=CULTURE_SPOTS.map(s=>`
+    <div class="st-item-sm${d[s.id]?' got':''}" onclick="tapSt('${s.id}')">
+      <div class="st-emoji">${s.emoji}</div>
+      <div class="st-name">${s.name.replace(/\\n/g,'<br>')}</div>
+    </div>`).join('');
+  // ステージ・防災（固定2つ）
+  document.getElementById('stGridF').innerHTML=FIXED_SPOTS.map(s=>`
+    <div class="st-item${d[s.id]?' got':''}" onclick="tapSt('${s.id}')">
+      <div class="st-emoji">${s.emoji}</div>
+      <div class="st-name">${s.name}</div>
+    </div>`).join('');
+  updSt();
+}
+
+function tapSt(id){
+  const d=gst();
+  if(d[id]){ toast('このスタンプはすでに押されています'); return; }
+  // 文化体験は3つまでカウント（それ以上は押せるが総数に加算しない）
+  d[id]=Date.now(); sst(d);
+  const sp=ALL_SPOTS.find(s=>s.id===id);
+  toast((sp?.emoji||'')+'スタンプGET！');
+  renderSt();
+}
+
+function updSt(){
+  const d=gst();
+  const nC=cultureCount(d);
+  const total=totalStamps(d);
+  const done=total>=5;
+
+  // 文化体験カウント表示
+  document.getElementById('stNC').textContent=nC;
+
+  // 全体プログレス
+  document.getElementById('stTotal').textContent=total;
+  document.getElementById('stFillTotal').style.width=(Math.min(total,5)/5*100)+'%';
+  document.getElementById('mTotal').classList.toggle('on',done);
+  if(done) document.getElementById('mTotal').textContent='🎉 達成！景品交換所へGO！';
+
+  // 景品カード
+  const prz=document.getElementById('prz_main');
+  if(prz){ prz.classList.toggle('on',done); prz.querySelector('.prz-lock').textContent=done?'🎉':'🔒'; }
+
+  // 達成ボックス
+  const ab=document.getElementById('achBox');
+  if(done){
+    ab.classList.add('show');
+    if(localStorage.getItem(K.EX)==='1'){
+      const b=document.getElementById('btnExch');
+      if(b){b.classList.add('done');b.textContent='✅ 景品交換済み';}
+    }
+  }else{ ab.classList.remove('show'); }
+}
+
+function showAch(){
+  const d=gst();
+  const total=totalStamps(d);
+  const nC=cultureCount(d);
+  const ov=document.createElement('div');
+  ov.style.cssText='position:fixed;inset:0;z-index:9999;background:rgba(8,1,20,.98);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:#fff8f0;text-align:center;padding:24px';
+  ov.innerHTML=`
+    <div style="font-size:60px;animation:spinStar 2s linear infinite">🎯</div>
+    <div style="font-family:'Cinzel',serif;font-size:18px;font-weight:700;background:linear-gradient(135deg,#ffd166,#f5a823);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">みやざきインターナショナルフェスタ</div>
+    <div style="font-size:11px;color:rgba(255,248,240,.45)">ワールドテラス2026 スタンプラリー</div>
+    <div style="background:rgba(245,168,35,.1);border:2px solid rgba(245,168,35,.35);border-radius:18px;padding:16px 32px;margin:4px 0;min-width:220px">
+      <div style="font-family:'Cinzel',serif;font-size:44px;font-weight:700;color:#ffd166;line-height:1">${total} / 5</div>
+      <div style="font-size:11px;color:rgba(255,248,240,.5);margin-top:4px">スタンプ達成数</div>
+      <div style="margin-top:10px;font-size:11px;color:rgba(255,248,240,.6);line-height:1.6">
+        🎨 文化体験 ${nC}/3　🎤 ステージ ${d['stage']?1:0}/1　🚒 防災 ${d['bousai']?1:0}/1
+      </div>
+    </div>
+    <div style="padding:8px 16px;border-radius:100px;background:rgba(230,57,70,.15);border:1px solid rgba(230,57,70,.3);font-size:11px;color:#ff9090">⚠️ 先着500名様限定</div>
+    <div style="font-size:11px;color:rgba(255,248,240,.3)">スタッフに確認いただいたら下を押してください</div>
+    <button onclick="this.parentElement.remove()" style="margin-top:6px;background:rgba(255,248,240,.07);color:#fff8f0;border:1px solid rgba(255,248,240,.14);border-radius:100px;padding:11px 30px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Cinzel',serif">閉じる</button>`;
+  document.body.appendChild(ov);
+}
+
+function markExch(){
+  localStorage.setItem(K.EX,'1');
+  const b=document.getElementById('btnExch');
+  if(b){b.classList.add('done');b.textContent='✅ 景品交換済み';}
+  toast('景品交換済みにしました');
+}
+
+function resetSt(){
+  if(!confirm('スタンプをすべてリセットしますか？'))return;
+  [K.ST,K.EX].forEach(k=>localStorage.removeItem(k));
+  const b=document.getElementById('btnExch');
+  if(b){b.classList.remove('done');b.textContent=(T[lang]||T.ja).stamp_exch||'景品交換済みにする';}
+  renderSt();toast('リセットしました');
+}
+
+function checkReset(){
+  if(new URLSearchParams(location.search).get('reset')==='1'){
+    ['wt26r','wt26s','wt26ex','wt26l','wt26c'].forEach(k=>localStorage.removeItem(k));
+    history.replaceState({},'',location.pathname);
+    location.reload();
+  }
+}
+
+function checkURLSt(){
+  const p=new URLSearchParams(location.search),id=p.get('stamp');
+  if(id&&ALL_SPOTS.find(s=>s.id===id)){
+    tapSt(id);
+    history.replaceState({},'',location.pathname);
+    setTimeout(()=>document.getElementById('stamp').scrollIntoView({behavior:'smooth'}),400);
+  }
+}
+
+/* ==================================================
+   NAV / DRAWER
+================================================== */
+const navHam=document.getElementById('navHam'),drw=document.getElementById('drawer');
+navHam.addEventListener('click',()=>{const o=navHam.classList.toggle('open');drw.classList.toggle('open',o);document.body.style.overflow=o?'hidden':'';});
+document.getElementById('dClose').addEventListener('click',closeD);
+function closeD(){navHam.classList.remove('open');drw.classList.remove('open');document.body.style.overflow='';}
+function goto(sel){document.querySelector(sel)?.scrollIntoView({behavior:'smooth'});}
+
+/* ==================================================
+   TOAST
+================================================== */
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2400);}
+
+/* ==================================================
+   REVEAL
+================================================== */
+function observeRv(){
+  const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});},{threshold:.1});
+  document.querySelectorAll('.rv:not(.in)').forEach(el=>obs.observe(el));
+}
+
+/* ==================================================
+   CANVAS — sky + fireworks (lightweight)
+================================================== */
+(function(){
+  const cv=document.getElementById('sky'),ctx=cv.getContext('2d');
+  let W,H,tick=0,stars=[],fws=[],pts=[],lastFW=0;
+  function resize(){W=cv.width=innerWidth;H=cv.height=innerHeight;stars=[];for(let i=0;i<120;i++)stars.push({x:Math.random()*W,y:Math.random()*H*.7,r:.3+Math.random()*1.2,a:Math.random(),sp:.003+Math.random()*.006});}
+  function drawSky(){const p=.4+.4*Math.sin(tick*.0003);const g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,`hsl(${260+p*10},${55+p*10}%,${6+p*4}%)`);g.addColorStop(.35,`hsl(${285-p*20},${50+p*14}%,${10+p*8}%)`);g.addColorStop(.6,`hsl(${335-p*25},${58+p*18}%,${15+p*16}%)`);g.addColorStop(.8,`hsl(${22+p*8},65%,${18+p*18}%)`);g.addColorStop(1,'hsl(28,35%,7%)');ctx.fillStyle=g;ctx.fillRect(0,0,W,H);}
+  function drawGlow(){const p=.5+.5*Math.sin(tick*.00025);const g=ctx.createRadialGradient(W*.5,H*.62,0,W*.5,H*.62,W*.48);g.addColorStop(0,`rgba(228,96,42,${.13+p*.09})`);g.addColorStop(.5,`rgba(155,34,88,${.05+p*.05})`);g.addColorStop(1,'transparent');ctx.fillStyle=g;ctx.fillRect(0,0,W,H);}
+  function drawStars(){stars.forEach(s=>{s.a+=s.sp;const al=.28+.72*Math.abs(Math.sin(s.a));ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle=`rgba(255,248,240,${al})`;ctx.fill();});}
+  class FW{constructor(){this.x=W*(.2+Math.random()*.6);this.y=H;this.tx=W*(.15+Math.random()*.7);this.ty=H*(.08+Math.random()*.3);const dx=this.tx-this.x,dy=this.ty-this.y,d=Math.sqrt(dx*dx+dy*dy),sp=10+Math.random()*7;this.vx=dx/d*sp;this.vy=dy/d*sp;this.trail=[];this.hue=Math.random()*360;this.done=0;}
+    update(){this.trail.push({x:this.x,y:this.y});if(this.trail.length>14)this.trail.shift();this.x+=this.vx;this.y+=this.vy;if(Math.abs(this.x-this.tx)<15&&Math.abs(this.y-this.ty)<15){burst(this.x,this.y,this.hue);this.done=1;}}
+    draw(){this.trail.forEach((p,i)=>{const al=i/this.trail.length;ctx.beginPath();ctx.arc(p.x,p.y,1.3*al,0,Math.PI*2);ctx.fillStyle=`hsla(${this.hue},85%,68%,${al*.85})`;ctx.fill();});}}
+  class Pt{constructor(x,y,h){const a=Math.random()*Math.PI*2,sp=1+Math.random()*5;this.x=x;this.y=y;this.vx=Math.cos(a)*sp;this.vy=Math.sin(a)*sp;this.al=1;this.h=h+(Math.random()-.5)*45;this.r=.7+Math.random()*1.6;this.dec=.012+Math.random()*.015;this.g=.065;}
+    update(){this.vy+=this.g;this.x+=this.vx;this.y+=this.vy;this.vx*=.97;this.vy*=.97;this.al-=this.dec;}
+    draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fillStyle=`hsla(${this.h},90%,68%,${Math.max(0,this.al)})`;ctx.fill();}}
+  function burst(x,y,h){for(let i=0;i<80+Math.random()*40;i++)pts.push(new Pt(x,y,h));}
+  function launchFW(){fws.push(new FW());if(Math.random()>.5)fws.push(new FW());}
+  window.launchFW=launchFW;
+  function loop(t){tick++;ctx.clearRect(0,0,W,H);drawSky();drawGlow();drawStars();if(t-lastFW>2400+Math.random()*1800){launchFW();lastFW=t;}fws=fws.filter(f=>!f.done);fws.forEach(f=>{f.update();f.draw();});pts=pts.filter(p=>p.al>0);pts.forEach(p=>{p.update();p.draw();});requestAnimationFrame(loop);}
+  window.addEventListener('resize',resize);resize();requestAnimationFrame(loop);
+})();
+
+/* ==================================================
+   HELPERS
+================================================== */
+function show(id){document.getElementById(id).classList.remove('hidden');}
+function hide(id){document.getElementById(id).classList.add('hidden');}
+
+/* ==================================================
+   INIT
+================================================== */
+document.addEventListener('DOMContentLoaded',()=>{
+  checkReset();
+  const sl=localStorage.getItem(K.LG);
+  const reg=localStorage.getItem(K.REG);
+  if(sl) lang=sl;
+  applyT();
+  if(sl&&reg){
+    loadReg(JSON.parse(reg));
+    hide('langOv');
+    showMain();
+  }
+  // else: show lang overlay (default)
+  checkURLSt();
+});
+</script>
+</body>
+</html>
