@@ -598,12 +598,13 @@ footer{position:relative;z-index:1;background:rgba(6,1,14,.96);border-top:1px so
    DATA（ここを編集して情報を差し替えてください）
 ================================================== */
 const STAGE=[
-  {t:'11:00',e:'11:10',name:'開会セレモニー / 高校生による書道パフォーマンス',desc:'迫力ある太鼓演奏でオープニングを盛り上げます',org:'宮崎学園高等学校',hl:1},
-  {t:'11:10',e:'11:30',name:'宮崎青年会議所理事長　挨拶',desc:'宮崎青年会議所理事長によるご挨拶',org:'宮崎市青年会議所第75代理事長　山﨑　隆太郎',hl:1},
-  {t:'11:15',e:'11:40',name:'宮崎市長 開会挨拶',desc:'宮崎市長による開会のご挨拶',org:'宮崎市長　清山　知憲氏'},
-  {t:'11:30',e:'12:30',name:'ベリーダンス',desc:'華やかなベリーダンスパフォーマンス',org:'ハレイムベリーダンスフィーバー'},
+  {t:'11:00',e:'11:20',name:'開会セレモニー / 高校生による書道パフォーマンス',desc:'迫力ある太鼓演奏でオープニングを盛り上げます',org:'宮崎学園高等学校',hl:1},
+  {t:'11:20',e:'11:23',name:'宮崎青年会議所理事長　挨拶',desc:'宮崎青年会議所理事長によるご挨拶',org:'宮崎市青年会議所第75代理事長　山﨑　隆太郎',hl:1},
+  {t:'11:23',e:'11:28',name:'宮崎市長 開会挨拶',desc:'宮崎市長による開会のご挨拶',org:'宮崎市長　清山　知憲氏'},
+  {t:'11:30',e:'11:50',name:'ベリーダンス',desc:'華やかなベリーダンスパフォーマンス',org:'ハレイムベリーダンスフィーバー'},
   {t:'11:50',e:'12:10',name:'MSGの学生ダンス',desc:'MSGの学生による国際色溢れるダンスパフォーマンス',org:'MSG学生'},
   {t:'12:10',e:'12:30',name:'武術太極拳',desc:'力強くも美しい武術太極拳のパフォーマンス',org:'HIMUKAカンフークラブ'},
+  {t:'12:50',e:'14:05',name:'ダンスパフォーマンス',desc:'スクール全クラス（年中〜30代）の生徒によるダンスパフォーマンス',org:'Real Steppers Production',hl:1},
   {t:'12:50',e:'14:05',name:'ひょっとこ振り付け講座',desc:'ひょっとこの振り付けを学んでみんなで踊りましょう',org:'株式会社ひょっとこやろかい清和',hl:1},
   {t:'13:50',e:'16:30',name:'ひょっとこ踊り',desc:'ひょっとこパフォーマンス',org:'株式会社ひょっとこやろかい清和'},
   {t:'14:40',e:'17:30',name:'BEYONDトーク',desc:'トークセッションを行います',org:'宮崎市、宮崎青年会議所、在住外国人、外国人留学生'},
@@ -614,23 +615,23 @@ const STAGE=[
   {t:'17:00',e:'17:20',name:'閉会セレモニー/ JC太鼓',desc:'みやざきインターナショナルフェスタ ワールドテラス2026 閉会',org:'宮崎青年会議所太鼓同好会',hl:1},
 ];
 const FOOD=[
-  {flag:'🇰🇷',country:'Korea',   name:'ミレシジャン',          menu:'韓国料理',         url:''},
-  {flag:'🇻🇳',country:'Vietnam', name:'ハンフククアン',         menu:'ベトナム料理',      url:''},
-  {flag:'🇹🇷',country:'Turkey',  name:'グリルハウス',           menu:'トルコ料理',        url:''},
-  {flag:'🇱🇰',country:'Sri Lanka',name:'シンハラ屋',           menu:'スリランカ料理',    url:''},
-  {flag:'🇸🇬',country:'Singapore',name:'ラクサ',              menu:'シンガポール',      url:''},
-  {flag:'🇮🇳',country:'India',   name:'ナマステカリカ',         menu:'インド料理',        url:''},
+  {flag:'🇰🇷',country:'Korea',   name:'ミレシジャン',          menu:'韓国料理',         url:'https://www.instagram.com/mileshijan_honten/'},
+  {flag:'🇻🇳',country:'Vietnam', name:'ハンフククアン',         menu:'ベトナム料理',      url:'https://www.instagram.com/hanh_phuc_quan_/'},
+  {flag:'🇹🇷',country:'Turkey',  name:'グリルハウス',           menu:'トルコ料理',        url:'https://www.instagram.com/grill_house2023/'},
+  {flag:'🇱🇰',country:'Sri Lanka',name:'シンハラ屋',           menu:'スリランカ料理',    url:'https://www.instagram.com/sinhalaya_miyazaki/'},
+  {flag:'🇸🇬',country:'Singapore',name:'ラクサ',              menu:'シンガポール',      url:'https://www.instagram.com/miyazakilaksa/'},
+  {flag:'🇮🇳',country:'India',   name:'ナマステカリカ',         menu:'インド料理',        url:'https://www.instagram.com/namastekalika/'},
   {flag:'🌍',country:'TBA',      name:'未定',                 menu:'未定',             url:''},
   {flag:'🌍',country:'TBA',      name:'未定',                 menu:'未定',             url:''},
   {flag:'🇺🇸',country:'USA',     name:'未定',                 menu:'未定',             url:''},
 ];
 const FOOD_TRUCK=[
-  {flag:'🇲🇽',country:'Mexico',  name:"Mr.Perez's kitchen", menu:'メキシコ料理',      url:''},
-  {flag:'🇮🇩',country:'Indonesia',name:'kedaiF9',           menu:'インドネシア料理',  url:''},
-  {flag:'🇹🇭',country:'Thailand', name:'ハロハロ',            menu:'タイ料理',          url:''},
-  {flag:'🇯🇲',country:'Jamaica',  name:'Lukes Jerk Chicken', menu:'ジャマイカ',        url:''},
-  {flag:'🇺🇸',country:'USA',      name:'NATECH',             menu:'アメリカ',          url:''},
-  {flag:'🇫🇷',country:'France',   name:'モルポルテ',          menu:'フランス',          url:''},
+  {flag:'🇲🇽',country:'Mexico',  name:"Mr.Perez's kitchen", menu:'メキシコ料理',      url:'https://www.instagram.com/mr.perezskitchen_mexican/'},
+  {flag:'🇮🇩',country:'Indonesia',name:'kedaiF9',           menu:'インドネシア料理',  url:'https://www.instagram.com/kedai.f9/'},
+  {flag:'🇹🇭',country:'Thailand', name:'ハロハロ',            menu:'タイ料理',          url:'https://www.instagram.com/halohalo_miyazaki_new/?hl=ja'},
+  {flag:'🇯🇲',country:'Jamaica',  name:'Lukes Jerk Chicken', menu:'ジャマイカ',        url:'https://www.instagram.com/lukes_jerk_chicken_/'},
+  {flag:'🇺🇸',country:'USA',      name:'NATECH',             menu:'アメリカ',          url:'https://www.instagram.com/natech_2022/'},
+  {flag:'🇫🇷',country:'France',   name:'ビストロモンポルト',    menu:'フランス',          url:'https://www.instagram.com/bistrot_mont_porte/'},
 ];
 const CULTURE=[
   {icon:'🌍',name:'ジオゲッサー / 動物鳴き声クイズ',desc:'世界の風景を当てるジオゲッサーや、動物の鳴き声クイズで世界を学ぼう！',org:'宮崎市国際政策課・MHUB'},
@@ -889,7 +890,7 @@ function renderAll(){
   // Stage
   document.getElementById('stageTL').innerHTML=STAGE.map((s,i)=>`<div class="tl-item${s.hl?' hl':''} rv" style="transition-delay:${i*.05}s"><div class="tl-time">${s.t}<div class="tl-end">〜${s.e}</div></div><div><div class="tl-name">${s.name}</div><div class="tl-desc">${s.desc}</div><div class="tl-org">📌 ${s.org}</div></div></div>`).join('');
   // Food
-  document.getElementById('foodGrid').innerHTML=FOOD.map((f,i)=>`<div class="food-card rv" style="transition-delay:${i*.04}s"><div class="food-flag">${f.flag}</div><div class="food-ctry">${f.country}</div><div class="food-name">${f.name}</div><div class="food-menu">${f.menu}</div>${f.url?`<a href="${f.url}" target="_blank" rel="noopener" class="food-link">🔗 詳細を見る</a>`:''}</div>`).join('');
+  document.getElementById('foodGrid').innerHTML=FOOD.map((f,i)=>`<div class="food-card rv" style="transition-delay:${i*.04}s"><div class="food-flag">${f.flag}</div><div class="food-ctry">${f.country}</div><div class="food-name">${f.name}</div><div class="food-menu">${f.menu}</div>${f.url?`<a href="${f.url}" target="_blank" rel="noopener" class="food-link">🔗 INSTAGRAM</a>`:''}</div>`).join('');
   // Food Truck
   document.getElementById('foodTruckGrid').innerHTML=FOOD_TRUCK.map((f,i)=>`<div class="food-card rv" style="transition-delay:${i*.04}s"><div class="food-flag">${f.flag}</div><div class="food-ctry">${f.country}</div><div class="food-name">${f.name}</div><div class="food-menu">${f.menu}</div>${f.url?`<a href="${f.url}" target="_blank" rel="noopener" class="food-link">🔗 詳細を見る</a>`:''}</div>`).join('');
   // Culture
