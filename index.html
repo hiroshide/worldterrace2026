@@ -897,7 +897,7 @@ function renderAll(){
   // Food
   document.getElementById('foodGrid').innerHTML=FOOD.map((f,i)=>`<div class="food-card rv" style="transition-delay:${i*.04}s"><div class="food-flag">${f.flag}</div><div class="food-ctry">${f.country}</div><div class="food-name">${f.name}</div><div class="food-menu">${f.menu}</div>${f.url?`<a href="${f.url}" target="_blank" rel="noopener" class="food-link">🔗 INSTAGRAM</a>`:''}</div>`).join('');
   // Food Truck
-  document.getElementById('foodTruckGrid').innerHTML=FOOD_TRUCK.map((f,i)=>`<div class="food-card rv" style="transition-delay:${i*.04}s"><div class="food-flag">${f.flag}</div><div class="food-ctry">${f.country}</div><div class="food-name">${f.name}</div><div class="food-menu">${f.menu}</div>${f.url?`<a href="${f.url}" target="_blank" rel="noopener" class="food-link">🔗 詳細を見る</a>`:''}</div>`).join('');
+  document.getElementById('foodTruckGrid').innerHTML=FOOD_TRUCK.map((f,i)=>`<div class="food-card rv" style="transition-delay:${i*.04}s"><div class="food-flag">${f.flag}</div><div class="food-ctry">${f.country}</div><div class="food-name">${f.name}</div><div class="food-menu">${f.menu}</div>${f.url?`<a href="${f.url}" target="_blank" rel="noopener" class="food-link">🔗 INSTAGRAM</a>`:''}</div>`).join('');
   // Culture
   document.getElementById('culGrid').innerHTML=CULTURE.map((c,i)=>`<div class="cul-card rv" style="transition-delay:${i*.06}s"><div class="cul-icon">${c.icon}</div><div><div class="cul-name">${c.name}</div><div class="cul-desc">${c.desc}</div><span class="cul-org">${c.org}</span></div></div>`).join('');
   // Sports
