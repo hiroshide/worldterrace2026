@@ -905,7 +905,7 @@ function renderAll(){
   // Bousai
   document.getElementById('bouGrid').innerHTML=BOUSAI.map((b,i)=>`<div class="bou-card rv" style="transition-delay:${i*.06}s"><div class="bou-head"><span>${b.icon}</span>${b.t}</div><div class="bou-body">${b.b}</div><div class="bou-lang"><div class="bou-lbl">🌐 やさしい日本語 / English</div><div class="bou-ya">📖 ${b.ya}</div><div class="bou-en">🔤 ${b.en}</div></div></div>`).join('');
   // Sponsors
-  document.getElementById('spList').innerHTML=SPONSORS.map(s=>`<div class="spon-card" style="padding:14px 16px;border-radius:14px;background:var(--glass);border:1px solid var(--glassb);display:flex;align-items:center;gap:12px"><div><div class="spon-name" style="font-size:13px;font-weight:700">${s.name}</div>${s.desc?`<div class="spon-desc" style="font-size:11px;color:var(--t3)">${s.desc}</div>`:''}</div></div>`).join('');
+  document.getElementById('splist').innerHTML=SPONSORS.map(s=>`<div class="spon-card" style="padding:14px 16px;border-radius:14px;background:var(--glassb);border:1px solid var(--glassb);display:flex;align-items:center;gap:12px">${s.url?`<a href="${s.url}" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;font-size:13px;font-weight:700">${s.name}</a>`:`<div class="spon-name" style="font-size:13px;font-weight:700">${s.name}</div>`}${s.desc?`<div class="spon-desc" style="font-size:11px;color:var(--t3)">${s.desc}</div>`:''}</div>`).join('');
   // 景品（1つ）
   const pl=document.getElementById('prizeList');
   if(pl) pl.innerHTML=`<div class="prize-card" id="prz_main"><div class="prz-icon">${PRIZE.icon}</div><div><div class="prz-cond">5スタンプ達成</div><div class="prz-name">${PRIZE.name}</div><div class="prz-desc">${PRIZE.desc}</div></div><div class="prz-lock">🔒</div></div>`;
