@@ -239,15 +239,28 @@ section::before{content:'';position:absolute;inset:0;z-index:-1;background:linea
 .capacity-badge{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:100px;background:rgba(230,57,70,.15);border:1px solid rgba(230,57,70,.35);font-size:12px;font-weight:700;color:#ff6b6b;margin:0 16px 16px;font-family:'Cinzel',serif;letter-spacing:.04em}
 
 /* === SPONSORS === */
-.sp-list{display:flex;flex-direction:column;gap:9px;margin:0 16px}
-.spon-card{padding:14px 16px;border-radius:14px;background:var(--glass);border:1px solid var(--glassb);display:flex;align-items:center;gap:12px}
-.spon-rank{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:100px;flex-shrink:0}
-.r-gold{background:rgba(255,209,102,.12);border:1px solid rgba(255,209,102,.28);color:#ffd166}
-.r-silver{background:rgba(200,200,220,.08);border:1px solid rgba(200,200,220,.2);color:#c8c8dc}
-.r-bronze{background:rgba(205,127,50,.09);border:1px solid rgba(205,127,50,.2);color:#cd7f32}
-.r-support{background:rgba(91,200,235,.09);border:1px solid rgba(91,200,235,.2);color:var(--cyan)}
-.spon-name{font-size:13px;font-weight:700}
-.spon-desc{font-size:11px;color:var(--t3);margin-top:1px}
+.sp-list{display:flex;flex-direction:column;gap:12px;margin:0 16px}
+.spon-card{width:100%;padding:18px 16px;border-radius:16px;background:var(--glass);border:1px solid var(--glassb);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:7px;transition:transform .18s ease,background .18s ease,border-color .18s ease}
+.spon-card:active{transform:scale(.985);background:rgba(255,248,240,.1)}
+.spon-card.has-url{cursor:pointer}
+.spon-rank{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border-radius:100px;margin-bottom:1px}
+.r-platinum{background:linear-gradient(135deg,rgba(255,255,255,.18),rgba(180,220,255,.08));border:1px solid rgba(220,240,255,.42);color:#eef8ff;box-shadow:0 0 20px rgba(180,220,255,.08)}
+.r-gold{background:rgba(255,209,102,.12);border:1px solid rgba(255,209,102,.32);color:#ffd166}
+.r-silver{background:rgba(200,200,220,.09);border:1px solid rgba(200,200,220,.24);color:#d8d8e6}
+.r-support{background:rgba(91,200,235,.09);border:1px solid rgba(91,200,235,.22);color:var(--cyan)}
+.spon-card.rank-platinum{padding:24px 16px;border-color:rgba(220,240,255,.28);background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(91,200,235,.05))}
+.spon-card.rank-gold{padding:22px 16px;border-color:rgba(255,209,102,.23);background:linear-gradient(135deg,rgba(255,209,102,.07),rgba(255,248,240,.045))}
+.spon-card.rank-silver{padding:20px 16px}
+.spon-logo-wrap{display:flex;align-items:center;justify-content:center;background:#fff;border-radius:12px;padding:10px 14px;box-shadow:0 4px 18px rgba(0,0,0,.16);margin:2px 0 3px}
+.rank-platinum .spon-logo-wrap{width:min(240px,80%);height:112px}
+.rank-gold .spon-logo-wrap{width:min(210px,74%);height:96px}
+.rank-silver .spon-logo-wrap{width:min(180px,68%);height:82px}
+.rank-support .spon-logo-wrap{width:min(150px,62%);height:70px}
+.spon-logo{display:block;max-width:100%;max-height:100%;object-fit:contain}
+.spon-name{font-size:14px;font-weight:700;line-height:1.5}
+.rank-platinum .spon-name{font-size:18px}.rank-gold .spon-name{font-size:16px}.rank-silver .spon-name{font-size:15px}
+.spon-desc{font-size:11px;color:var(--t3);line-height:1.65;max-width:360px}
+.spon-link{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.05em;color:var(--amber);margin-top:1px}
 
 /* === ACCESS === */
 .acc-list{display:flex;flex-direction:column;gap:9px;margin:0 16px}
@@ -686,22 +699,22 @@ const ALL_SPOTS=[...CULTURE_SPOTS,...FIXED_SPOTS];
 /* 景品（1つ） */
 const PRIZE={icon:'🎯',name:'スタンプラリー達成賞',desc:'先着500名様限定！景品交換所でこの画面を見せてください'};
 const SPONSORS=[
-  {name:'南九州大学',desc:'',url:'https://www.nankyudai.ac.jp/'},
-  {name:'宮崎総合学院',desc:'',url:'https://www.msg.ac.jp/'},
-  {name:'米良電機株式会社',desc:'',url:'https://www.mera-denki.co.jp/'},
-  {name:'株式会社宮崎太陽銀行',desc:'',url:'https://www.taiyobank.co.jp/'},
-  {name:'株式会社八興商事',desc:'',url:'http://hakkoshoji.com/'},
-  {name:'ウイングジャパン留学センター',desc:'',url:'https://wingjpn.net/profile/'},
-  {name:'株式会社大興不動産',desc:'',url:'https://www.miyazaki-shinchiku.com/?gad_source=1&gad_campaignid=22496043528&gbraid=0AAAAACbhr-tKNaacnFVesSwBVva5Bz5E-&gclid=CjwKCAjwwL_UBhAjEiwAEhuT5OVWHv1epThzIJsKFpjYP5SHjgxZlndkEvPfhi8sQe7O3Dx-wOAIIhoCOasQAvD_BwE'},
-  {name:'株式会社桝元',desc:'',url:'https://www.karamenya-masumoto.com/company/'},
-  {name:'株式会社坂下組',desc:'',url:'https://www.sakashita-gumi.jp/'},
-  {name:'スパークジャパン株式会社',desc:'',url:'https://www.sparkjapan.co.jp/'},
-  {name:'株式会社井上商店',desc:'',url:'https://www.inoue-r.co.jp/'},
-  {name:'株式会社ドリームブロッサム',desc:'',url:'https://www.dreamblossom.jp/showroom'},
-  {name:'インテリアショップナカムラ',desc:'',url:'https://isn1990.com/'},
-  {name:'アミュプラザみやざき',desc:'',url:'https://www.amu-miyazaki.com/'},
-  {name:'合同会社グレース',desc:'',url:'https://www.rec-miyazaki.com/buy/search/list.php?ac=11&mypage=1&mc=181'},
-  {name:'CLUB ZERO',desc:'',url:'https://www.instagram.com/club_zero_miyazaki/?hl=ja'},
+  {name:'南九州大学',desc:'',url:'https://www.nankyudai.ac.jp/',rank:'',logo:''},
+  {name:'宮崎総合学院',desc:'',url:'https://www.msg.ac.jp/',rank:'',logo:''},
+  {name:'米良電機株式会社',desc:'',url:'https://www.mera-denki.co.jp/',rank:'',logo:''},
+  {name:'株式会社宮崎太陽銀行',desc:'',url:'https://www.taiyobank.co.jp/',rank:'',logo:''},
+  {name:'株式会社八興商事',desc:'',url:'http://hakkoshoji.com/',rank:'',logo:''},
+  {name:'ウイングジャパン留学センター',desc:'',url:'https://wingjpn.net/profile/',rank:'',logo:''},
+  {name:'株式会社大興不動産',desc:'',url:'https://www.miyazaki-shinchiku.com/?gad_source=1&gad_campaignid=22496043528&gbraid=0AAAAACbhr-tKNaacnFVesSwBVva5Bz5E-&gclid=CjwKCAjwwL_UBhAjEiwAEhuT5OVWHv1epThzIJsKFpjYP5SHjgxZlndkEvPfhi8sQe7O3Dx-wOAIIhoCOasQAvD_BwE',rank:'',logo:''},
+  {name:'株式会社桝元',desc:'',url:'https://www.karamenya-masumoto.com/company/',rank:'',logo:''},
+  {name:'株式会社坂下組',desc:'',url:'https://www.sakashita-gumi.jp/',rank:'',logo:''},
+  {name:'スパークジャパン株式会社',desc:'',url:'https://www.sparkjapan.co.jp/',rank:'',logo:''},
+  {name:'株式会社井上商店',desc:'',url:'https://www.inoue-r.co.jp/',rank:'',logo:''},
+  {name:'株式会社ドリームブロッサム',desc:'',url:'https://www.dreamblossom.jp/showroom',rank:'',logo:''},
+  {name:'インテリアショップナカムラ',desc:'',url:'https://isn1990.com/',rank:'',logo:''},
+  {name:'アミュプラザみやざき',desc:'',url:'https://www.amu-miyazaki.com/',rank:'',logo:''},
+  {name:'合同会社グレース',desc:'',url:'https://www.rec-miyazaki.com/buy/search/list.php?ac=11&mypage=1&mc=181',rank:'',logo:''},
+  {name:'CLUB ZERO',desc:'',url:'https://www.instagram.com/club_zero_miyazaki/?hl=ja',rank:'',logo:''},
 ];
 
 /* ==================================================
@@ -905,18 +918,31 @@ function renderAll(){
   // Bousai
   document.getElementById('bouGrid').innerHTML=BOUSAI.map((b,i)=>`<div class="bou-card rv" style="transition-delay:${i*.06}s"><div class="bou-head"><span>${b.icon}</span>${b.t}</div><div class="bou-body">${b.b}</div><div class="bou-lang"><div class="bou-lbl">🌐 やさしい日本語 / English</div><div class="bou-ya">📖 ${b.ya}</div><div class="bou-en">🔤 ${b.en}</div></div></div>`).join('');
   // Sponsors
-const spList = document.getElementById('spList');
-if (spList) {
-  spList.innerHTML = SPONSORS.map(s => `
-    <div class="spon-card" style="padding:14px 16px;border-radius:14px;background:var(--glassb);border:1px solid var(--glassb);display:flex;align-items:center;gap:12px">
-      ${s.url
-        ? `<a href="${s.url}" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;font-size:13px;font-weight:700">${s.name}</a>`
-        : `<div class="spon-name" style="font-size:13px;font-weight:700">${s.name}</div>`
-      }
-      ${s.desc ? `<div class="spon-desc" style="font-size:11px;color:var(--t3)">${s.desc}</div>` : ''}
-    </div>
-  `).join('');
-}
+  const spList = document.getElementById('spList');
+  if (spList) {
+    const rankMeta={
+      platinum:{label:'PLATINUM',order:1},
+      gold:{label:'GOLD',order:2},
+      silver:{label:'SILVER',order:3},
+      support:{label:'SUPPORT',order:4}
+    };
+    const sponsorsSorted=[...SPONSORS].sort((a,b)=>(rankMeta[a.rank]?.order||99)-(rankMeta[b.rank]?.order||99));
+    spList.innerHTML=sponsorsSorted.map(s=>{
+      const rank=rankMeta[s.rank]?s.rank:'support';
+      const meta=rankMeta[rank];
+      const logo=s.logo?`<div class="spon-logo-wrap"><img class="spon-logo" src="${s.logo}" alt="${s.name} ロゴ" loading="lazy"></div>`:'';
+      const inner=`
+        <div class="spon-rank r-${rank}">${meta.label}</div>
+        ${logo}
+        <div class="spon-name">${s.name}</div>
+        ${s.url?'<div class="spon-link">公式サイトを見る ↗</div>':''}
+        ${s.desc?`<div class="spon-desc">${s.desc}</div>`:''}
+      `;
+      return s.url
+        ? `<a href="${s.url}" target="_blank" rel="noopener noreferrer" class="spon-card rank-${rank} has-url">${inner}</a>`
+        : `<div class="spon-card rank-${rank}">${inner}</div>`;
+    }).join('');
+  }
 
 // 景品
 const pl = document.getElementById('prizeList');
