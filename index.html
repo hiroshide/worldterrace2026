@@ -239,13 +239,26 @@ section::before{content:'';position:absolute;inset:0;z-index:-1;background:linea
 .capacity-badge{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:100px;background:rgba(230,57,70,.15);border:1px solid rgba(230,57,70,.35);font-size:12px;font-weight:700;color:#ff6b6b;margin:0 16px 16px;font-family:'Cinzel',serif;letter-spacing:.04em}
 
 /* === SPONSORS === */
-.sp-list{display:flex;flex-direction:column;gap:9px;margin:0 16px}
-.spon-card{padding:14px 16px;border-radius:14px;background:var(--glass);border:1px solid var(--glassb);display:flex;align-items:center;gap:14px}
-.spon-logo{width:76px;height:76px;flex:0 0 76px;border-radius:10px;background:#fff;padding:7px;object-fit:contain;display:block}
-.spon-info{flex:1;min-width:0;text-align:left}
-.spon-name{font-size:13px;font-weight:700;line-height:1.45}
-.spon-link{font-size:10px;color:var(--amber);margin-top:4px}
-.spon-desc{font-size:11px;color:var(--t3);margin-top:4px;line-height:1.55}
+.sp-list{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:9px;
+  margin:0 auto;
+  padding:0 16px;
+}
+
+.spon-card{
+  width:100%;
+  max-width:460px;
+  padding:14px 16px;
+  border-radius:14px;
+  background:var(--glass);
+  border:1px solid var(--glassb);
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
 
 /* === ACCESS === */
 .acc-list{display:flex;flex-direction:column;gap:9px;margin:0 16px}
