@@ -910,8 +910,8 @@ if (spList) {
   spList.innerHTML = SPONSORS.map(s => `
     <div class="spon-card" style="padding:14px 16px;border-radius:14px;background:var(--glassb);border:1px solid var(--glassb);display:flex;align-items:center;gap:12px">
       ${s.url
-        ?`<a href="${s.url}" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;font-size:13px;font-weight:700">`${s.name}</a>
-        :` <div class="spon-name" style="font-size:13px;font-weight:700">`${s.name}</div>
+        ? `<a href="${s.url}" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;font-size:13px;font-weight:700">${s.name}</a>`
+        : ` <div class="spon-name" style="font-size:13px;font-weight:700">${s.name}</div>`
       }
       ${s.desc ? <div class="spon-desc" style="font-size:11px;color:var(--t3)">${s.desc}</div> : ''}
     </div>
