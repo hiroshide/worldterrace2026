@@ -924,7 +924,7 @@ function renderAll(){
       platinum:{label:'PLATINUM',order:1},
       gold:{label:'GOLD',order:2},
       silver:{label:'SILVER',order:3},
-      support:{label:'SUPPORT',order:4}
+      support:{label:'',order:4}
     };
     const sponsorsSorted=[...SPONSORS].sort((a,b)=>(rankMeta[a.rank]?.order||99)-(rankMeta[b.rank]?.order||99));
     spList.innerHTML=sponsorsSorted.map(s=>{
