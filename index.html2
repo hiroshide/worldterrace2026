@@ -895,10 +895,10 @@ function renderAll(){
    COUNTER — Google Apps Script連携
    GASをデプロイしたら下のURLを差し替えてください
 ================================================== */
-const GAS_URL = 'YOUR_GAS_URL_HERE'; // ← デプロイ後にここを書き換える
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbyBoUGgLfWMNLKQ0xlcqzIPFOvGBMQS3r8gOJSt36twUQLlik0q9J35X-Tk0TEEiyZoJw/exec'; // ← デプロイ後にここを書き換える
 
 async function fetchCount(){
-  if(!GAS_URL||GAS_URL==='YOUR_GAS_URL_HERE') return;
+  if(!GAS_URL||GAS_URL==='https://script.google.com/macros/s/AKfycbyBoUGgLfWMNLKQ0xlcqzIPFOvGBMQS3r8gOJSt36twUQLlik0q9J35X-Tk0TEEiyZoJw/exec') return;
   try{
     const r=await fetch(GAS_URL+'?action=get',{cache:'no-store'});
     const d=await r.json();
@@ -908,7 +908,7 @@ async function fetchCount(){
 }
 
 async function addCount(adults,children,id,nation,age){
-  if(!GAS_URL||GAS_URL==='YOUR_GAS_URL_HERE'){
+  if(!GAS_URL||GAS_URL==='https://script.google.com/macros/s/AKfycbyBoUGgLfWMNLKQ0xlcqzIPFOvGBMQS3r8gOJSt36twUQLlik0q9J35X-Tk0TEEiyZoJw/exec'){
     const n=parseInt(localStorage.getItem('wt26c')||'0',10)+(adults+children);
     localStorage.setItem('wt26c',n);
     animN(n,document.getElementById('ctrNum'));
@@ -938,7 +938,7 @@ function updateRank(n){
 function initCtr(){
   const reg=JSON.parse(localStorage.getItem(K.REG)||'{}');
   if(reg.id) document.getElementById('ctrMyId').textContent='あなたの来場ID: '+reg.id;
-  if(GAS_URL&&GAS_URL!=='YOUR_GAS_URL_HERE'){
+  if(GAS_URL&&GAS_URL!=='https://script.google.com/macros/s/AKfycbyBoUGgLfWMNLKQ0xlcqzIPFOvGBMQS3r8gOJSt36twUQLlik0q9J35X-Tk0TEEiyZoJw/exec'){
     fetchCount();
   } else {
     const n=parseInt(localStorage.getItem('wt26c')||'0',10);
