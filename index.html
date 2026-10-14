@@ -925,7 +925,7 @@ function loadReg(reg){
 function applyBeerVisibility(){
   const reg=JSON.parse(localStorage.getItem(K.REG)||'{}');
   const age=parseInt(reg.age||'99',10);
-  const adultCount=parseInt(reg.adults||'1',10);
+  const adultCount=Number(reg.adults ?? 1);
   const el=document.getElementById('beerSection');
   if(!el) return;
   // 20歳未満、または大人0（子どものみ）の場合は非表示
